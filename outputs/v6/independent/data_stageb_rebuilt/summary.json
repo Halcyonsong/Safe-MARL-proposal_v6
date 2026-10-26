@@ -1,0 +1,46 @@
+{
+  "schema": "v6.h_targets.rebuilt.v1",
+  "source": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_stageb",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_stageb_rebuilt",
+  "horizon": 32,
+  "margin_scale": 0.2,
+  "include_wall": false,
+  "splits": {
+    "train": {
+      "rows": 20480,
+      "unsafe_rate": 0.0057861328125,
+      "ignored_rate": 0.020245361328125,
+      "target_negative_rate": 0.026031494140625,
+      "target_mean": 0.7308560609817505,
+      "margin_mean": 0.33380457758903503,
+      "gradient_abs_mean": 0.3388572037220001,
+      "future_margin_mean": 0.2649907171726227,
+      "future_margin_min": -0.08156892657279968,
+      "future_margin_max": 0.44999998807907104
+    },
+    "val": {
+      "rows": 2560,
+      "unsafe_rate": 0.008056640625,
+      "ignored_rate": 0.019140625,
+      "target_negative_rate": 0.027197265625,
+      "target_mean": 0.7228602170944214,
+      "margin_mean": 0.33120715618133545,
+      "gradient_abs_mean": 0.34560298919677734,
+      "future_margin_mean": 0.25913459062576294,
+      "future_margin_min": -0.05168372765183449,
+      "future_margin_max": 0.44999998807907104
+    },
+    "test": {
+      "rows": 2560,
+      "unsafe_rate": 0.006298828125,
+      "ignored_rate": 0.01201171875,
+      "target_negative_rate": 0.018310546875,
+      "target_mean": 0.7363365888595581,
+      "margin_mean": 0.3448249399662018,
+      "gradient_abs_mean": 0.3021150231361389,
+      "future_margin_mean": 0.26567068696022034,
+      "future_margin_min": -0.048446737229824066,
+      "future_margin_max": 0.44999998807907104
+    }
+  }
+}

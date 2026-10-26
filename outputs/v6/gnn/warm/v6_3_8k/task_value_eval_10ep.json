@@ -1,0 +1,24 @@
+{
+  "checkpoint": "../outputs/v6/gnn/warm/v6_3_8k/policy_final.pth",
+  "h_checkpoint": "../outputs/v6/safety_h/safety_h.pt",
+  "episodes": 10,
+  "seed": 10000,
+  "metrics": {
+    "episodes": 10,
+    "rows": 20480,
+    "value_mean": 25.26198959350586,
+    "value_std": 8.054930686950684,
+    "return_mean": 23.259090423583984,
+    "return_std": 33.94196701049805,
+    "value_mse": 1061.2218017578125,
+    "explained_variance": 0.07884629790902464,
+    "pearson": 0.29211579826687,
+    "spearman": 0.3083361830562761,
+    "value_rmse": 32.576399459698,
+    "a_t_abs_mean": 1.368112325668335,
+    "a_t_clip_saturation": 0.0,
+    "grad_norm_mean": 1.0,
+    "grad_norm_std": 3.8489659459628456e-08,
+    "next_value_std": 8.06897258758545
+  }
+}

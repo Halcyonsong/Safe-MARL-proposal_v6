@@ -1,0 +1,57 @@
+{
+  "schema": "v6.c0_h2_data_merge.v1",
+  "actor1": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_c0_h2/seed0_actor1",
+  "random": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_random_rebuilt",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_c0_h2/seed0_merged",
+  "actor1_behavior": [
+    "outputs/v6/independent/nav_stageb_repair_16k/seed0/policy_final.pth"
+  ],
+  "actor1_h": "outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+  "actor1_stochastic": true,
+  "actor1_seed": 30000,
+  "random_source": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data",
+  "splits": {
+    "train": {
+      "rows": 40960,
+      "actor1_rows": 20480,
+      "random_rows": 20480,
+      "actor1_episodes": 80,
+      "random_episodes": 80,
+      "unsafe_rate": 0.0289642333984375,
+      "ignored_rate": 0.0416839599609375,
+      "target_mean": 0.7945863008499146,
+      "target_std": 0.3193366825580597,
+      "target_negative_rate": 0.070648193359375,
+      "actor1_target_mean": 0.8854705691337585,
+      "actor1_target_negative_rate": 0.006939697265625
+    },
+    "val": {
+      "rows": 5120,
+      "actor1_rows": 2560,
+      "random_rows": 2560,
+      "actor1_episodes": 10,
+      "random_episodes": 10,
+      "unsafe_rate": 0.0230712890625,
+      "ignored_rate": 0.0344970703125,
+      "target_mean": 0.8130959272384644,
+      "target_std": 0.29455459117889404,
+      "target_negative_rate": 0.057568359375,
+      "actor1_target_mean": 0.8971985578536987,
+      "actor1_target_negative_rate": 0.00302734375
+    },
+    "test": {
+      "rows": 5120,
+      "actor1_rows": 2560,
+      "random_rows": 2560,
+      "actor1_episodes": 10,
+      "random_episodes": 10,
+      "unsafe_rate": 0.0405029296875,
+      "ignored_rate": 0.0521240234375,
+      "target_mean": 0.7558830976486206,
+      "target_std": 0.35358452796936035,
+      "target_negative_rate": 0.092626953125,
+      "actor1_target_mean": 0.8866807818412781,
+      "actor1_target_negative_rate": 0.00244140625
+    }
+  }
+}

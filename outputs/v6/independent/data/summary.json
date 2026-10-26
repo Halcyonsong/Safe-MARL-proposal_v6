@@ -1,0 +1,37 @@
+{
+  "schema": "v6.h_data.v1",
+  "behavior": "random",
+  "behavior_h": null,
+  "seed": 2026,
+  "episodes": 100,
+  "rows": 25600,
+  "horizon": 32,
+  "unsafe_rate": 0.0567919921875,
+  "horizon_safe_rate": 0.8630224609375,
+  "ignored_rate": 0.080185546875,
+  "instant_unsafe_rate": 0.0567919921875,
+  "hdot_rows": 25500,
+  "splits": {
+    "train": {
+      "episodes": 80,
+      "rows": 20480,
+      "unsafe_rate": 0.055364990234375,
+      "horizon_safe_rate": 0.865643310546875,
+      "ignored_rate": 0.07899169921875
+    },
+    "val": {
+      "episodes": 10,
+      "rows": 2560,
+      "unsafe_rate": 0.044677734375,
+      "horizon_safe_rate": 0.887890625,
+      "ignored_rate": 0.067431640625
+    },
+    "test": {
+      "episodes": 10,
+      "rows": 2560,
+      "unsafe_rate": 0.080322265625,
+      "horizon_safe_rate": 0.8171875,
+      "ignored_rate": 0.102490234375
+    }
+  }
+}

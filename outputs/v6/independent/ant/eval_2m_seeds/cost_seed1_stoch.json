@@ -1,0 +1,41 @@
+{
+  "schema": "v6.ant_mappo.eval.v1",
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/mappo_cost_ramp10_2m/seed1/policy_002000000.pth",
+  "h_checkpoint": null,
+  "use_h_features": false,
+  "stochastic": true,
+  "episodes": 100,
+  "seed": 20000,
+  "env": {
+    "n_agents": 2,
+    "obs_dim": 31,
+    "action_dim": 4,
+    "global_state_dim": 31,
+    "episode_limit": 1000
+  },
+  "metrics": {
+    "safe_episode": 0.02,
+    "unsafe_episode": 0.98,
+    "wall_episode": 0.63,
+    "topple_episode": 0.61,
+    "episode_return": 839.6817739243238,
+    "forward_return": 513.4559621695269,
+    "ctrl_return": -305.2529018891044,
+    "survive_return": 632.25,
+    "episode_length": 632.25,
+    "survived": 0.39,
+    "cost_rate": 0.98,
+    "cost_fraction": 0.11654298732400908,
+    "wall_fraction": 0.11338611429703464,
+    "topple_fraction": 0.0034617305129426945,
+    "h_mean": 0.0,
+    "h_min": 0.0,
+    "h_neg_frac": 0.0,
+    "final_x": 25.67938267469406,
+    "mean_x": 13.283277004008132,
+    "action_abs": 0.2814443999862114,
+    "episodes": 100,
+    "eval_seed_start": 20000,
+    "deterministic": 0.0
+  }
+}

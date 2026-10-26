@@ -1,0 +1,33 @@
+{
+  "episodes": 60,
+  "rows": 15360,
+  "horizon": 32,
+  "unsafe_rate": 0.0517822265625,
+  "horizon_safe_rate": 0.8474690755208333,
+  "ignored_rate": 0.10074869791666667,
+  "instant_unsafe_rate": 0.0517822265625,
+  "hdot_rows": 15300,
+  "splits": {
+    "train": {
+      "episodes": 48,
+      "rows": 12288,
+      "unsafe_rate": 0.051493326822916664,
+      "horizon_safe_rate": 0.8493855794270834,
+      "ignored_rate": 0.09912109375
+    },
+    "val": {
+      "episodes": 6,
+      "rows": 1536,
+      "unsafe_rate": 0.049072265625,
+      "horizon_safe_rate": 0.8438313802083334,
+      "ignored_rate": 0.10709635416666667
+    },
+    "test": {
+      "episodes": 6,
+      "rows": 1536,
+      "unsafe_rate": 0.056803385416666664,
+      "horizon_safe_rate": 0.8357747395833334,
+      "ignored_rate": 0.107421875
+    }
+  }
+}

@@ -1,0 +1,83 @@
+seed: 0
+env:
+  num_agents: 8
+  area_size: 4.0
+  max_step: 256
+  num_obstacles: 8
+  n_rays: 32
+  max_neighbors: 5
+h:
+  checkpoint: outputs/v6/safety_h/safety_h.pt
+  h_offset: null
+  use_features: true
+  use_losses: true
+  train:
+    data: outputs/v6/h_data
+    train_data: outputs/v6/h_data/train_merged.npz
+    out: outputs/v6/safety_h
+    episodes: 30
+    steps: 256
+    epochs: 25
+    batch_size: 512
+    lr: 0.001
+    weight_decay: 0.0001
+    margin: 0.05
+    arch: graph
+    graph_hidden: 128
+    graph_layers: 2
+    unsafe_weight: 8.0
+    margin_coef: 0.0
+    invariance_coef: 0.0
+    alpha: 0.1
+    hidden:
+    - 256
+    - 256
+task_value:
+  arch: graph
+  graph_hidden: 128
+  graph_layers: 2
+  hidden:
+  - 256
+  - 256
+  lr: 0.0003
+  epochs: 4
+  batch_size: 256
+  warmup_count: 1
+  clip: 5.0
+policy:
+  hidden: 256
+  correction_radius: 0.3
+  initial_log_std: -1.0
+training:
+  device: auto
+  total_steps: 8192
+  rollout_steps: 128
+  lr: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  epochs: 4
+  minibatch_size: 256
+  value_coef: 0.5
+  cost_coef: 1.0
+  cost_actor_coef: 0.5
+  entropy_coef: 0.005
+  invariance_coef: 1.0
+  gradient_coef: 0.2
+  barrier_coef: 5.0
+  barrier_margin: 0.1
+  correction_coef: 0.01
+  alpha: 0.1
+  gradient_margin: 0.5
+  reward_scale: 20.0
+  reach_bonus: 5.0
+  terminal_reach_bonus: 20.0
+  unsafe_penalty: 10.0
+  max_grad_norm: 0.5
+  eval_interval: 0
+  eval_episodes: 10
+  save_interval: 4096
+  use_task_scalar: true
+  use_task_grad: true
+  task_grad_start_steps: 1024
+  task_grad_scale: 0.5

@@ -1,0 +1,30 @@
+{
+  "schema": "v6.h_only_pilot.v1",
+  "seed": 0,
+  "train_steps": 8192,
+  "eval_episodes": 20,
+  "arms": {
+    "h": {
+      "collision_episode": 0.4,
+      "safe_episode": 0.6,
+      "safety": 0.9954833984375,
+      "reach_final": 0.01875,
+      "reach_episode_any": 0.65,
+      "success": 0.11875,
+      "h_mean": 0.1211083706599311,
+      "h_min": -0.03806005753576756
+    },
+    "no_h": {
+      "collision_episode": 0.95,
+      "safe_episode": 0.05,
+      "safety": 0.949853515625,
+      "reach_final": 0.0,
+      "reach_episode_any": 0.3,
+      "success": 0.01875,
+      "h_mean": 0.022762621189758647,
+      "h_min": -0.26061959490180014
+    }
+  },
+  "h_on_better": true,
+  "note": "single-seed pilot only; do not claim superiority"
+}

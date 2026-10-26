@@ -1,0 +1,32 @@
+# Official V5 learned-h configuration (Ant-2x4).
+#
+# Stage 1 of the official chain: train a shared safety trunk with separate
+# cost-margin and survival-risk heads.  No task return and no QP label is used.
+# Stage 2 freezes this checkpoint and trains the QP-free policy.
+schema: v5.safety_h.v1
+kind: learned
+state_dim: 9
+cost_names: [wall, floor, ceil, upright]
+model:
+  hidden: [128, 128]
+  survival_hidden: [128]
+train:
+  data: outputs/v5/official/ant/learned_h/safety_data.npz
+  out: outputs/v5/official/ant/learned_h
+  epochs: 50
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.0001
+  val_fraction: 0.1
+  seed: 0
+  margin: 0.05
+  survival_coef: 1.0
+  calibration_coef: 0.1
+  barrier_coef: 0.5
+  invariance_coef: 0.5
+  alpha: 0.1
+  max_grad_norm: 1.0
+  checkpoint_name: learned_h.pt
+# The frozen checkpoint consumed by train_ant_qp_free.py / the official policy
+# stage.  This is not the fixed analytic Ant h.
+checkpoint: outputs/v5/official/ant/learned_h/learned_h.pt

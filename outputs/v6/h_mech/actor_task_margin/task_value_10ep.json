@@ -1,0 +1,24 @@
+{
+  "checkpoint": "outputs/v6/h_mech/actor_task_margin/policy_final.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/h_mech/horizon_hdot_margin/official_h.pkl",
+  "episodes": 10,
+  "seed": 10000,
+  "metrics": {
+    "episodes": 10,
+    "rows": 20480,
+    "value_mean": 21.3687686920166,
+    "value_std": 4.508308410644531,
+    "return_mean": 16.449813842773438,
+    "return_std": 21.765878677368164,
+    "value_mse": 469.76226806640625,
+    "explained_variance": 0.00842472166403474,
+    "pearson": 0.2471902922093082,
+    "spearman": 0.2989462316064421,
+    "value_rmse": 21.673999816979013,
+    "a_t_abs_mean": 2.0349109172821045,
+    "a_t_clip_saturation": 0.0,
+    "grad_norm_mean": 1.0,
+    "grad_norm_std": 3.82409730548261e-08,
+    "next_value_std": 4.509114742279053
+  }
+}

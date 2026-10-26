@@ -1,0 +1,19 @@
+# V6 Ant safety h(s): 9-D torso geometry -> scalar h.
+# Safety-only: official wall/fall cost and geometric margins. No task return.
+data: outputs/v6/independent/ant/h_data
+out: outputs/v6/independent/ant/h
+seed: 0
+h_scale: 0.5
+horizon: 32
+model:
+  hidden: [128, 128]
+train:
+  epochs: 40
+  batch_size: 512
+  lr: 0.001
+  weight_decay: 0.0001
+  margin: 0.05
+  margin_coef: 0.5
+  grad_coef: 0.1
+  unsafe_weight: 1.0
+  max_grad_norm: 1.0

@@ -1,0 +1,32 @@
+{
+  "architecture": "local_graph",
+  "checkpoint": "outputs/v6/safety_h/safety_h.pt",
+  "threshold": -0.05593785464763641,
+  "h_offset": 0.05593785464763641,
+  "val": {
+    "accuracy": 0.957763671875,
+    "balanced_accuracy": 0.8838463729003212,
+    "unsafe_recall": 0.7992277992277992,
+    "safe_recall": 0.9684649465728433,
+    "false_alarm": 0.029541015625,
+    "miss": 0.0126953125,
+    "auroc": 0.9263845829522139,
+    "unsafe_rate": 0.063232421875,
+    "h_mean": 0.07573936879634857,
+    "h_std": 0.1581106334924698,
+    "h_neg_rate": 0.080078125
+  },
+  "test": {
+    "accuracy": 0.9654541015625,
+    "balanced_accuracy": 0.8050236176801846,
+    "unsafe_recall": 0.6265060240963856,
+    "safe_recall": 0.9835412112639835,
+    "false_alarm": 0.015625,
+    "miss": 0.0189208984375,
+    "auroc": 0.8356801256717754,
+    "unsafe_rate": 0.0506591796875,
+    "h_mean": 0.0984094887971878,
+    "h_std": 0.21747225522994995,
+    "h_neg_rate": 0.04736328125
+  }
+}

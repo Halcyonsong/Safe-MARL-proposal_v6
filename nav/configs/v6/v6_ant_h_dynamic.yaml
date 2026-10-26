@@ -1,0 +1,20 @@
+# Dynamic V6 Ant h: threshold margin includes approach speed / downward speed.
+data: outputs/v6/independent/ant/h_data
+out: outputs/v6/independent/ant/h_dynamic
+seed: 0
+h_scale: 0.5
+kappa: 0.5
+kappa_z: 0.2
+horizon: 32
+model:
+  hidden: [128, 128]
+train:
+  epochs: 40
+  batch_size: 512
+  lr: 0.001
+  weight_decay: 0.0001
+  margin: 0.05
+  margin_coef: 0.5
+  grad_coef: 0.1
+  unsafe_weight: 1.0
+  max_grad_norm: 1.0

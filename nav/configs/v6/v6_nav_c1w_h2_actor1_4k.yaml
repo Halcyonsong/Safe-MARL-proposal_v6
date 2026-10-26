@@ -1,0 +1,187 @@
+# V6 navigation C1w: 4k warm-start of actor1 seed 0 with the C0 h2 checkpoint.
+#
+# This is a diagnostic adaptation arm, not a from-scratch V6 result and not a
+# controlled h2-vs-h1 comparison.  C1a (actor2 from scratch with h2) failed in
+# practice; the post-hoc actor1+h2 h-swap was slightly better than h1 but one
+# seed and not significant.  C1w asks whether a short continuation of actor1
+# with h2 makes the actor and h2 better matched.
+#
+# The user explicitly chose the h2 arm only, with NO h1-continued control.
+# Therefore any change cannot be attributed to h2 rather than to the extra
+# 4,096 training steps.
+#
+# Independence rules:
+#   allowed: official navigation scene, generic network/PPO/MAPPO code,
+#            V6 self-collected data, V6 self-trained h and actor;
+#   forbidden: official h / cbf.pkl / QP / u_ref / expert labels/actions,
+#              V5 weights, V5 data, V5 checkpoints, and any margin/offset
+#              calibrated against official h.
+#
+# Compared with C1a, only the starting point changes: the actor1 seed-0 final
+# checkpoint is continued for 4,096 steps instead of training from scratch.
+# The frozen h2 checkpoint, gate calibration, cost, network, optimizer, seed,
+# and 100-episode evaluation are unchanged.  No gate sweep, task channel, QP,
+# action filter, or action conditioning.  The gate is disabled at evaluation.
+
+seed: 0
+env:
+  num_agents: 8
+  area_size: 4.0
+  max_step: 256
+  num_obstacles: 8
+  n_rays: 32
+  max_neighbors: 5
+
+h:
+  # V6-owned full-graph safety network. The implementation module is kept
+  # under a legacy filename for compatibility; it never loads official h.
+  arch: v6_safety_graph
+  checkpoint: outputs/v6/independent/h_c0/seed0/v6_h_c0.pkl
+  # No official-h affine calibration. Threshold/offset live in the V6 h
+  # checkpoint and are calibrated only on V6 validation data.
+  h_offset: null
+  h_scale: null
+  use_features: true
+  # Scale only the actor's h/grad_h channels; h semantics are unchanged.
+  feature_scale: 1.0
+  # The invariance/gradient/barrier terms are constants w.r.t. the actor.
+  # The optional action-space CBF loss is an ablation and stays off.
+  use_losses: false
+  co_train: false
+  update_every: 1
+  lr: 0.0001
+  weight_decay: 0.0001
+  update_epochs: 2
+  batch_size: 128
+  replay_size: 2048
+  train:
+    # Unused in C1w: co_train=false, so no h training or h data is read here.
+    # Retained because the config loader expects the block.
+    # V6 self-collected data only; no legacy behavior data or official-h labels.
+    data: outputs/v6/independent/data_stageb
+    train_data: outputs/v6/independent/data_stageb/train_data.npz
+    out: outputs/v6/independent/h_stageb
+    tag: v6_h_stageb
+    episodes: 100
+    steps: 256
+    epochs: 10
+    batch_size: 128
+    lr: 0.0001
+    weight_decay: 0.0001
+    margin: 0.05
+    arch: graph
+    graph_hidden: 128
+    graph_layers: 2
+    gnn_layers: 1
+    unsafe_weight: 1.0
+    # Generic margin anchor for the V6 h classification target. Confirm it on
+    # V6 validation only; do not copy an official-h h-swap margin/work point.
+    safe_margin: 0.02
+    target_key: graph_margin_targets
+    target_coef: 0.5
+    target_on_all: true
+    margin_coef: 0.0
+    hdot_coef: 0.2
+    hdot_alpha: 1.0
+    hdot_eps: 0.02
+    # Random behavior can itself be unsafe; restrict the barrier consistency
+    # term to horizon-safe states so unsafe transitions do not push h upward.
+    hdot_safe_only: true
+    dt: 0.03
+    invariance_coef: 0.0
+    alpha: 0.1
+    hidden: [256, 256]
+
+task_value:
+  # Reserved for the later task-channel stage. Disabled in the h-only main
+  # protocol; V_T must be trained from V6-collected task returns.
+  arch: graph
+  graph_hidden: 128
+  graph_layers: 2
+  hidden: [256, 256]
+  lr: 0.0003
+  epochs: 8
+  batch_size: 256
+  warmup_count: 1024
+  clip: 3.0
+  ema_decay: 0.99
+  var_floor: 1.0
+
+policy:
+  hidden: 256
+  correction_radius: 0.3
+  initial_log_std: -1.0
+  # Kept null: the warm start is supplied explicitly with --resume in the
+  # runner, and must be the V6-owned actor1 seed-0 checkpoint.  Never load
+  # V5/V4/official weights.
+  init_checkpoint: null
+
+training:
+  device: cuda
+  # C1w: actor1 checkpoint is at steps=16384; run 4096 additional steps
+  # (16384 -> 20480).  The runner passes this explicitly too.
+  total_steps: 20480
+  rollout_steps: 128
+  lr: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  # Dense safety cost from frozen V6 h; off in the main h-only arm.
+  h_barrier_coef: 0.0
+  h_barrier_margin: 0.05
+  clip_range: 0.2
+  epochs: 4
+  minibatch_size: 256
+  # No projection, no QP, no expert. Action-space CBF loss is an ablation.
+  cbf_coef: 0.0
+  cbf_alpha: 1.0
+  cbf_eps: 0.02
+  mass: 0.1
+  value_coef: 0.5
+  cost_coef: 1.0
+  cost_actor_coef: 0.5
+  entropy_coef: 0.005
+  invariance_coef: 0.0
+  gradient_coef: 0.0
+  barrier_coef: 0.0
+  barrier_margin: 0.1
+  correction_coef: 0.01
+  alpha: 0.1
+  gradient_margin: 0.5
+  reward_scale: 20.0
+  reach_bonus: 5.0
+  terminal_reach_bonus: 20.0
+  unsafe_penalty: 10.0
+  # Ant-style predictive safety gate for navigation.  Thresholds are
+  # calibrated from the **new Stage-B h** after it is trained:
+  #   low  = 0.0 (provider-space calibrated h=0 boundary)
+  #   high = max(0.02, q10(h_shifted | validation label > 0))
+  # Do not copy the old h's 0.0/0.13 pair.  high <= low disables the gate.
+  # This is V6 nav h, not the Ant 0.05 scale.
+  task_gate_low: 0.0
+  # C1a uses the C0 h2 seed-0 checkpoint and its own pre-registered gate
+  # calibration (2026-10-26): threshold_raw=-0.018901, safe shifted
+  # q10=0.662083, so high=max(0.02, q10)=0.662083.  Do not sweep.
+  task_gate_high: 0.6620830297470093
+  task_gate_positive_only: true
+  # Stage A: scale dense progress only.  Reach/terminal success bonuses are
+  # intentionally un-gated so this arm differs from the first gate experiment
+  # by coupling structure, not by h data, h target, or gate thresholds.
+  task_gate_scope: progress_only
+  max_grad_norm: 0.5
+  # Monitor-only safety/task eval at 18432 and 20480; the final checkpoint is
+  # still the one evaluated for the diagnostic.  This does not select or
+  # alter the actor.
+  eval_interval: 2048
+  eval_episodes: 20
+  eval_seed: 10000
+  # Separate Ant-style robustness evaluation can be enabled with
+  # --eval-stochastic; formal midpoint monitoring stays deterministic.
+  eval_stochastic: false
+  deterministic: true
+  # Retain the 18432 and 20480 checkpoints for retention diagnostics.
+  save_interval: 2048
+  # Main protocol is h-only; task channel is deferred.
+  use_task_scalar: false
+  use_task_grad: false
+  task_grad_start_steps: 1024
+  task_grad_scale: 0.5

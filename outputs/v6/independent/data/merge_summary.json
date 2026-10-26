@@ -1,0 +1,12 @@
+{
+  "schema": "v6.h_merge.v1",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data/train_merged.npz",
+  "base_data": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data/train_data.npz",
+  "aug_data": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data/train_aug.npz",
+  "base_rows": 20480,
+  "aug_rows": 8000,
+  "rows": 28480,
+  "agent_rows": 227840,
+  "hdot_rows": 20400,
+  "unsafe_rate": 0.0781908356741573
+}

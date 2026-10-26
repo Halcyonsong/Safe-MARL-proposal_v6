@@ -1,0 +1,134 @@
+# Full V6 future config (task channel). Main independent h-only protocol is
+# configs/v6/v6_nav_independent.yaml. No official h, QP, or projection.
+seed: 0
+env:
+  num_agents: 8
+  area_size: 4.0
+  max_step: 256
+  num_obstacles: 8
+  n_rays: 32
+  max_neighbors: 5
+
+h:
+  # V6-owned full-graph safety network trained from V6 data only.
+  # The implementation module name is legacy; no official h is loaded.
+  arch: v6_safety_graph
+  checkpoint: outputs/v6/independent/h/v6_h.pkl
+  # null: use the threshold calibrated in the checkpoint.  Set a number only
+  # to override the operating point for an ablation.
+  h_offset: null
+  # Optional diagnostic affine scale for h (null/1 = no scaling).
+  h_scale: null
+  use_features: true
+  use_losses: true
+  # Alternating co-training: h is updated from the current actor rollout
+  # (safety labels + h_dot) every `update_every` PPO iterations.
+  co_train: false
+  update_every: 1
+  lr: 0.0001
+  weight_decay: 0.0001
+  update_epochs: 2
+  batch_size: 128
+  replay_size: 2048
+  train:
+    data: outputs/v6/independent/data
+    train_data: outputs/v6/independent/data/train_merged.npz
+    out: outputs/v6/independent/h
+    episodes: 40
+    steps: 256
+    epochs: 15
+    batch_size: 128
+    lr: 0.0001
+    weight_decay: 0.0001
+    margin: 0.05
+    # Generic full-graph GNN over agent/goal/LiDAR nodes.
+    arch: graph
+    graph_hidden: 128
+    graph_layers: 2
+    # Full-graph V6 h settings (used by train_v6_official_h.py).
+    tag: v6_h
+    gnn_layers: 1
+    unsafe_weight: 1.0
+    # Generic margin; calibrated on V6 validation only.
+    safe_margin: 0.02
+    margin_coef: 0.0
+    hdot_coef: 0.2
+    hdot_alpha: 1.0
+    hdot_eps: 0.02
+    hdot_safe_only: true
+    dt: 0.03
+    invariance_coef: 0.0
+    alpha: 0.1
+    # MLP fallback (arch: mlp).
+    hidden: [256, 256]
+
+task_value:
+  # V_T uses its own local graph encoder; weights are never shared with h.
+  arch: graph
+  graph_hidden: 128
+  graph_layers: 2
+  hidden: [256, 256]
+  lr: 0.0003
+  epochs: 8
+  batch_size: 256
+  # A_T is disabled until this many samples have populated the baseline.
+  # With 128-step rollouts, 1024 samples is 8 rollouts.
+  warmup_count: 1024
+  clip: 3.0
+  # A_T baseline update.  Do not use a cumulative mean: the actor distribution
+  # changes and old V_T values would bias A_T.  0.0 means use the latest
+  # post-warmup rollout's per-agent mean/variance.
+  ema_decay: 0.0
+  # Per-agent V_T can be constant within one rollout; without a variance
+  # floor A_T saturates immediately.  Keep values in a sane task-return scale.
+  var_floor: 1.0
+
+policy:
+  hidden: 256
+  correction_radius: 0.3
+  initial_log_std: -1.0
+  # Main V6 actor is from scratch; no external checkpoint.
+  init_checkpoint: null
+
+training:
+  device: auto
+  total_steps: 8192
+  rollout_steps: 128
+  lr: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  epochs: 4
+  minibatch_size: 256
+  # Action-space CBF loss: relu(-(grad_p h . v + grad_v h . u/m) - alpha*h + eps).
+  # 0 disables it; the old invariance/gradient/barrier terms are constants
+  # w.r.t. the actor and should not be used as evidence of h shaping the actor.
+  cbf_coef: 0.0
+  cbf_alpha: 1.0
+  cbf_eps: 0.02
+  mass: 0.1
+  value_coef: 0.5
+  cost_coef: 1.0
+  cost_actor_coef: 0.5
+  entropy_coef: 0.005
+  invariance_coef: 1.0
+  gradient_coef: 0.2
+  barrier_coef: 5.0
+  barrier_margin: 0.1
+  correction_coef: 0.01
+  alpha: 0.1
+  gradient_margin: 0.5
+  reward_scale: 20.0
+  reach_bonus: 5.0
+  terminal_reach_bonus: 20.0
+  unsafe_penalty: 10.0
+  max_grad_norm: 0.5
+  eval_interval: 2048
+  eval_episodes: 5
+  save_interval: 0
+  # Ablation switches: V6-0 (false/false), V6-1 (true/false),
+  # V6-2 (false/true), V6-3 main (true/true).
+  use_task_scalar: true
+  use_task_grad: true
+  task_grad_start_steps: 1024
+  task_grad_scale: 0.5

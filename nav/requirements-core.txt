@@ -1,0 +1,26 @@
+# V6 navigation main path: actor training, graph h training, and tests.
+# The graph h and the vendored GCBF+ environment use JAX/Flax.
+torch>=2.0
+numpy>=1.24
+gymnasium>=0.29,<2
+pyyaml>=6
+tensorboard>=2.13
+pytest>=7
+
+# JAX graph h + vendored official GCBF+ DoubleIntegrator
+jax[cpu]==0.4.35
+jaxlib==0.4.35
+flax==0.8.5
+jraph>=0.0.6.dev0
+jaxtyping>=0.2.21
+optax>=0.1.7
+einops>=0.6.1
+scipy>=1.10
+
+# Environment rendering / plotting imports
+matplotlib>=3.7
+seaborn>=0.12.2
+colour>=0.1.5
+control>=0.9.4
+tqdm>=4.65
+rich>=13.5.3

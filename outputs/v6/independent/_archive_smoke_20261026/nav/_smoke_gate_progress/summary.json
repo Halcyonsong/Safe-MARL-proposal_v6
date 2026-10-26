@@ -1,0 +1,83 @@
+{
+  "steps": 256,
+  "seed": 0,
+  "obs_dim": 92,
+  "eval": {},
+  "h_co_train": false,
+  "h_checkpoint": null,
+  "best_step": null,
+  "best_score": null,
+  "history": [
+    {
+      "steps": 128,
+      "update": {
+        "loss": 26.005900144577026,
+        "policy": -0.01290250790771097,
+        "value": 51.283132672309875,
+        "cost": 0.39558430295437574,
+        "invariance": 0.0,
+        "gradient": 0.0,
+        "barrier": 0.0,
+        "cbf": 0.0,
+        "correction": 0.0007716862983215833,
+        "entropy": 0.8381057642400265,
+        "ratio": 1.0039104372262955
+      },
+      "task_update": {
+        "loss": 1.5687952972948551,
+        "value_mean": -1.7854095306247473,
+        "target_mean": -1.873527530580759
+      },
+      "h_update": {},
+      "completed": {},
+      "reward_mean": -0.2505767345428467,
+      "task_reward_mean": -0.1431548297405243,
+      "task_gate_mean": 0.9759646654129028,
+      "task_gate_closed": 0.0234375,
+      "task_gate_scope": "progress_only",
+      "unsafe_mean": 0.0107421875,
+      "h_mean": 0.11253347247838974,
+      "h_neg_rate": 0.0234375,
+      "task_ema_count": 128.0,
+      "task_a_mean": 0.0,
+      "task_a_absmax": 0.0,
+      "task_grad_active": false
+    },
+    {
+      "steps": 256,
+      "update": {
+        "loss": 1.6472128629684448,
+        "policy": -0.006261001224629581,
+        "value": 3.332856222987175,
+        "cost": 0.0013896411019231891,
+        "invariance": 0.0,
+        "gradient": 0.0,
+        "barrier": 0.0,
+        "cbf": 0.0,
+        "correction": 0.0005775073823315324,
+        "entropy": 0.8366042524576187,
+        "ratio": 1.0019719675183296
+      },
+      "task_update": {
+        "loss": 1.6083748955279589,
+        "value_mean": -0.5113493092358112,
+        "target_mean": -0.5443420582450926
+      },
+      "h_update": {},
+      "completed": {},
+      "reward_mean": -0.0004261806607246399,
+      "task_reward_mean": -0.0004261806607246399,
+      "task_gate_mean": 0.9782732129096985,
+      "task_gate_closed": 0.01953125,
+      "task_gate_scope": "progress_only",
+      "unsafe_mean": 0.0,
+      "h_mean": 0.1293756365776062,
+      "h_neg_rate": 0.0166015625,
+      "task_ema_count": 256.0,
+      "task_a_mean": 0.0,
+      "task_a_absmax": 0.0,
+      "task_grad_active": false
+    }
+  ],
+  "eval_history": []
+}

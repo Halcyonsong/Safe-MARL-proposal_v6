@@ -1,0 +1,55 @@
+{
+  "schema": "v6-nav-stageb-repair-manifest.v1",
+  "created": "2026-10-25",
+  "experiment": "repaired Stage-B predictive-h task gate, navigation",
+  "protocol": {
+    "steps": 16384,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "episodes": 100,
+    "eval_seed": 10000,
+    "deterministic": true,
+    "checkpoint": "policy_final.pth (fixed final)",
+    "environment": "official GCBF+ DoubleIntegrator, 8 agents, area 4.0, 8 obstacles, 256 steps"
+  },
+  "gate": {
+    "low": 0.0,
+    "high": 0.26726993918418884,
+    "scope": "positive progress only",
+    "cost_gated": false,
+    "active_at_eval": false
+  },
+  "config": {
+    "path": "nav/configs/v6/v6_nav_stageb_repair_16k.yaml",
+    "sha256": "4ee69c9e99a427708d17f1157991786d41a60e2624721e7e478b90a0aabebd16"
+  },
+  "h_checkpoint": {
+    "path": "outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+    "sha256": "0f67eaeec99912881017231234aa10846c5edfda767118da2157b2da7df7fb13"
+  },
+  "runner": {
+    "path": "nav/scripts/run_v6_nav_stageb_repair_actor.sh",
+    "sha256": "2cc7496c7270e4badec7a1345179069000ec2b98a9059fcf9209bc1f2d619954"
+  },
+  "files": {
+    "seed0_eval": {
+      "path": "outputs/v6/independent/nav_stageb_repair_16k/seed0/eval_100ep_final.json",
+      "sha256": "a33d33e4ab12de40c93a50c1f7100c11e7ef52852539274e2e035c46b65ff990"
+    },
+    "seed1_eval": {
+      "path": "outputs/v6/independent/nav_stageb_repair_16k/seed1/eval_100ep_final.json",
+      "sha256": "1ef0041a92802e9d3d305b94561f22eb53b2dd8b3beb1175147657d70c3a971e"
+    },
+    "seed2_eval": {
+      "path": "outputs/v6/independent/nav_stageb_repair_16k/seed2/eval_100ep_final.json",
+      "sha256": "6c112ae2396d5a75ae676763fa3aae4f1d041b726065536cd247db4d48b59f19"
+    }
+  },
+  "aggregate": {
+    "path": "outputs/v6/independent/nav_stageb_repair_16k/aggregate_100ep.json",
+    "sha256": "bdde52ad58bab2a84686df1ffa6acd4cb300395382b4fa840502dc17fc4659a3"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "v6-formal-3seed.v1",
+  "created_utc": "2026-10-23T08:56:59.128847+00:00",
+  "purpose": "reproducible h-only baseline; frozen V6 h, from-scratch actor, no task channel, final checkpoint, fixed eval seeds",
+  "config": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/configs/v6/v6_nav_h_only_16k.yaml",
+  "config_sha256": "843791e1e7ea35447aafba64dae8dbe50c0812b8ac966691c363f84e482decd7",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+  "h_sha256": "76aaa47d66dc51856850525b610bfdf253d216c4f2f6d4cda6485713fe4b2e9d",
+  "data_sha256": {
+    "train_merged.npz": "59a18a5530922b2e7f7e924bfd9dc19619ab7ff29cafec0a797d26de2c7f95d8",
+    "val_data.npz": "cca4af3553b03313e336e837216efc0275a328dfae8ed39eafe6d508bae1fc60",
+    "test_data.npz": "b7c1f415b83dca8116a2f7852453ca47cb344002d8754cad9a1d3839e527b1d1"
+  },
+  "seeds": [
+    0
+  ],
+  "train_steps": 16384,
+  "eval_episodes": 100,
+  "eval_seed": 10000,
+  "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "versions": {
+    "torch": "2.14.0",
+    "jax": "0.4.35",
+    "jaxlib": "0.4.35",
+    "numpy": "2.4.6"
+  },
+  "reuse_seed0": "0",
+  "source_seed0": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/single_seed_16k/h_only",
+  "train_extra": ""
+}

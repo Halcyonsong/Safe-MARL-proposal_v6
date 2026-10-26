@@ -1,0 +1,123 @@
+{
+  "schema": "v6.ant_mappo.train.config.v1",
+  "config_path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/configs/v6/v6_ant_h_only.yaml",
+  "seed": 0,
+  "device": "cuda",
+  "deterministic": true,
+  "total_steps": 1000000,
+  "rollout_steps": 2048,
+  "eval_interval": 100000,
+  "eval_episodes": 20,
+  "eval_seed": 20000,
+  "save_interval": 100000,
+  "cost_penalty": 10.0,
+  "use_h_features": true,
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/h/ant_h.pkl",
+  "env": {
+    "n_agents": 2,
+    "obs_dim": 31,
+    "action_dim": 4,
+    "global_state_dim": 29,
+    "episode_limit": 1000
+  },
+  "env_cfg": {
+    "episode_limit": 1000,
+    "agent_obsk": 1,
+    "h_scale": 0.5,
+    "h_kappa": 0.0,
+    "h_kappa_z": 0.0,
+    "upright_scale": 0.2
+  },
+  "policy": {
+    "actor_hidden": [
+      64,
+      64
+    ],
+    "critic_hidden": [
+      128,
+      128
+    ],
+    "actor_activation": "tanh",
+    "critic_activation": "tanh",
+    "initial_log_std": -0.5,
+    "h_feature_scale": 1.0,
+    "grad_feature_scale": 1.0
+  },
+  "policy_cfg": {
+    "actor_hidden": [
+      64,
+      64
+    ],
+    "critic_hidden": [
+      128,
+      128
+    ],
+    "actor_activation": "tanh",
+    "critic_activation": "tanh",
+    "initial_log_std": -0.5,
+    "h_feature_scale": 1.0,
+    "grad_feature_scale": 1.0
+  },
+  "training": {
+    "total_steps": 1000000,
+    "rollout_steps": 2048,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "value_coef": 0.5,
+    "entropy_coef": 0.001,
+    "max_grad_norm": 0.5,
+    "cost_penalty": 10.0,
+    "normalize_advantage": true,
+    "deterministic": true,
+    "device": "auto",
+    "eval_interval": 100000,
+    "eval_episodes": 20,
+    "eval_seed": 20000,
+    "save_interval": 100000
+  },
+  "training_cfg": {
+    "total_steps": 1000000,
+    "rollout_steps": 2048,
+    "epochs": 4,
+    "minibatch_size": 256,
+    "lr": 0.0003,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "value_coef": 0.5,
+    "entropy_coef": 0.001,
+    "max_grad_norm": 0.5,
+    "cost_penalty": 10.0,
+    "normalize_advantage": true,
+    "deterministic": true,
+    "device": "auto",
+    "eval_interval": 100000,
+    "eval_episodes": 20,
+    "eval_seed": 20000,
+    "save_interval": 100000
+  },
+  "h": {
+    "checkpoint": "outputs/v6/independent/ant/h/ant_h.pkl",
+    "use_features": true
+  },
+  "model_config": {
+    "obs_dim": 31,
+    "state_dim": 29,
+    "action_dim": 4,
+    "num_agents": 2,
+    "use_h_features": true,
+    "actor_hidden": [
+      64,
+      64
+    ],
+    "critic_hidden": [
+      128,
+      128
+    ],
+    "actor_input_dim": 41
+  }
+}

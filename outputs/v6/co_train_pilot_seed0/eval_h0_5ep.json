@@ -1,0 +1,29 @@
+{
+  "checkpoint": "../outputs/v6/co_train_pilot_seed0/policy_final.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/../outputs/v6/official_h/official_h.pkl",
+  "steps": 8192,
+  "episodes": 5,
+  "training_seed": 0,
+  "eval_seed": 10000,
+  "metrics": {
+    "episode_return": 46.83801927585155,
+    "safety": 0.95146484375,
+    "unsafe": 0.04853515625,
+    "safe_mask": 0.85732421875,
+    "warning": 0.06044921875,
+    "collision_episode": 1.0,
+    "safe_episode": 0.0,
+    "warning_episode": 1.0,
+    "collision_final_any": 0.4,
+    "reach": 0.275,
+    "reach_episode_any": 1.0,
+    "reach_final": 0.0,
+    "reach_final_any": 0.0,
+    "official_safety": 0.325,
+    "official_reach": 0.275,
+    "official_success": 0.075,
+    "h_mean": 0.023961206913736533,
+    "h_min": 0.00816092249006033,
+    "action_abs": 0.27018455057404933
+  }
+}

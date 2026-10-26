@@ -1,0 +1,49 @@
+# V5 QP-free training configuration for the official GCBF+ DoubleIntegrator.
+# h(s) is the frozen official checkpoint; this file never selects a QP teacher,
+# expert u_ref, or BC target.
+seed: 0
+env:
+  num_agents: 8
+  area_size: 4.0
+  max_step: 256
+  num_obstacles: 8
+  n_rays: 32
+  max_neighbors: 5
+h:
+  checkpoint: third_party/gcbfplus/pretrained/DoubleIntegrator/gcbf+/models/1000/cbf.pkl
+  gnn_layers: 1
+  use_features: false
+  use_losses: false
+policy:
+  hidden: 256
+  correction_radius: 0.0
+  initial_log_std: -1.0
+training:
+  device: auto
+  total_steps: 1024
+  rollout_steps: 128
+  lr: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  epochs: 4
+  minibatch_size: 256
+  value_coef: 0.5
+  cost_coef: 0.0
+  cost_actor_coef: 0.0
+  entropy_coef: 0.005
+  invariance_coef: 1.0
+  gradient_coef: 0.2
+  barrier_coef: 5.0
+  barrier_margin: 0.1
+  correction_coef: 0.01
+  alpha: 0.1
+  gradient_margin: 0.5
+  reward_scale: 20.0
+  reach_bonus: 5.0
+  terminal_reach_bonus: 20.0
+  unsafe_penalty: 10.0
+  max_grad_norm: 0.5
+  eval_interval: 256
+  eval_episodes: 2
+  save_interval: 256

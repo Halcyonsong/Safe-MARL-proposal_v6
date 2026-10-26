@@ -1,0 +1,142 @@
+{
+  "schema": "v6-formal-aggregate.v1",
+  "root": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only",
+  "runs": [
+    {
+      "seed": 0,
+      "eval_seed": 10000,
+      "episodes": 100,
+      "steps": 16384,
+      "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/single_seed_16k/h_only/policy_final.pth",
+      "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+      "metrics": {
+        "official_reach": 0.57625,
+        "official_success": 0.5325,
+        "official_safety": 0.92875,
+        "safe_episode": 0.62,
+        "collision_episode": 0.38,
+        "reach_final": 0.055,
+        "episode_return": 69.77963927437085,
+        "h_mean": 0.11548669566895114,
+        "h_min": -0.08317217357456684,
+        "action_abs": 0.287305852000718,
+        "cbf_true_sat": 0.95611328125,
+        "cbf_violation": 0.0795995715716937
+      },
+      "path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only/seed0/eval_100ep_final.json"
+    },
+    {
+      "seed": 1,
+      "eval_seed": 10000,
+      "episodes": 100,
+      "steps": 16384,
+      "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only/seed1/policy_final.pth",
+      "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+      "metrics": {
+        "official_reach": 0.44875,
+        "official_success": 0.4175,
+        "official_safety": 0.9025,
+        "safe_episode": 0.49,
+        "collision_episode": 0.51,
+        "reach_final": 0.0475,
+        "episode_return": 65.73931176987476,
+        "h_mean": 0.10968173875109642,
+        "h_min": -0.10747215792536735,
+        "action_abs": 0.2462905281424173,
+        "cbf_true_sat": 0.9489892578125,
+        "cbf_violation": 0.08756217412188295
+      },
+      "path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only/seed1/eval_100ep_final.json"
+    },
+    {
+      "seed": 2,
+      "eval_seed": 10000,
+      "episodes": 100,
+      "steps": 16384,
+      "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only/seed2/policy_final.pth",
+      "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+      "metrics": {
+        "official_reach": 0.31,
+        "official_success": 0.27,
+        "official_safety": 0.80375,
+        "safe_episode": 0.24,
+        "collision_episode": 0.76,
+        "reach_final": 0.0325,
+        "episode_return": 49.66688951065764,
+        "h_mean": 0.09639430027775234,
+        "h_min": -0.1314155426248908,
+        "action_abs": 0.19120642622830927,
+        "cbf_true_sat": 0.9384912109375,
+        "cbf_violation": 0.10433966026986363
+      },
+      "path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only/seed2/eval_100ep_final.json"
+    }
+  ],
+  "aggregate": {
+    "official_reach": {
+      "mean": 0.445,
+      "std": 0.13316460678423528,
+      "n": 3
+    },
+    "official_success": {
+      "mean": 0.4066666666666667,
+      "std": 0.13158489021667089,
+      "n": 3
+    },
+    "official_safety": {
+      "mean": 0.8783333333333333,
+      "std": 0.06591108278076863,
+      "n": 3
+    },
+    "safe_episode": {
+      "mean": 0.44999999999999996,
+      "std": 0.19313207915827965,
+      "n": 3
+    },
+    "collision_episode": {
+      "mean": 0.5499999999999999,
+      "std": 0.19313207915827965,
+      "n": 3
+    },
+    "reach_final": {
+      "mean": 0.045000000000000005,
+      "std": 0.0114564392373896,
+      "n": 3
+    },
+    "episode_return": {
+      "mean": 61.728613518301096,
+      "std": 10.639311590197863,
+      "n": 3
+    },
+    "h_mean": {
+      "mean": 0.10718757823259999,
+      "std": 0.00978751847827054,
+      "n": 3
+    },
+    "h_min": {
+      "mean": -0.10735329137494166,
+      "std": 0.024121904180102502,
+      "n": 3
+    },
+    "action_abs": {
+      "mean": 0.24160093545714822,
+      "std": 0.048221044349038844,
+      "n": 3
+    },
+    "cbf_true_sat": {
+      "mean": 0.9478645833333332,
+      "std": 0.008864705863013151,
+      "n": 3
+    },
+    "cbf_violation": {
+      "mean": 0.0905004686544801,
+      "std": 0.01262906086249277,
+      "n": 3
+    }
+  },
+  "primary_metrics": [
+    "safe_episode",
+    "collision_episode"
+  ],
+  "note": "safe_episode/collision_episode are episode-level; official_safety/official_success are per-agent any-time legacy field names and are not episode-level safety."
+}

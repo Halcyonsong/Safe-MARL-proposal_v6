@@ -1,0 +1,187 @@
+# Navigation DoubleIntegrator — v4 corrected MAPPO base
+#
+# Main changes vs. the v3 formal config:
+#   * area_size=4.0, matching the GCBF+ DoubleIntegrator evaluation scale
+#   * per-agent task reward (shared_reward=false) instead of broadcasting the mean
+#   * max_grad_norm=10.0 instead of 0.5
+#   * actor width is explicit: [256, 256] -> hidden_size=256, layer_N=1
+#   * batch_size is honored by computing num_mini_batch = rollout_samples // batch_size
+#   * n_steps=128 rollout chunk; episodes are 500 steps (v3 small_map horizon)
+#
+# This is the task-only base. It intentionally has no safety cost; the base is
+# expected to be good at the task but not safe. Safety layers are evaluated later.
+
+env:
+  name: "DoubleIntegrator"
+  type: "navigation"
+
+  # Map and agents
+  area_size: 4.0
+  num_agents_train: 8
+  num_agents_test: [8, 16]
+  agent_radius: 0.06
+
+  # Obstacles (circular in this implementation)
+  num_obstacles_train: 8
+  num_obstacles_test: [8, 16]
+  obstacle_radius_min: 0.10
+  obstacle_radius_max: 0.20
+
+  # DoubleIntegrator dynamics: x_ddot = u
+  dt: 0.05
+  max_speed: 0.4
+  max_acceleration: 0.2
+
+  # Safety / sensing
+  safe_distance_agent: 0.12
+  sensing_radius: 0.6
+  max_neighbors: 5
+
+  # Episode
+  max_steps: 500
+  terminate_on_collision: false
+  success_threshold: 0.06
+
+  # Observation
+  obs_type: "local"
+  include_velocity: true
+  include_goal: true
+  normalize_obs: false
+
+# Stage 1: CBF network (not used by the task-only base run)
+stage1:
+  data_collection:
+    num_episodes: 1000
+    exploration_policy: "random"
+    boundary_sampling: true
+    boundary_ratio: 0.5
+    augmentation: true
+  network:
+    edge_feature_dim: 5
+    encoder_dims: [128, 256, 256]
+    attention_dims: [128, 128]
+    output_dims: [256, 256, 128]
+    activation: "softplus"
+    softplus_beta: 10
+    dropout: 0.0
+  training:
+    batch_size: 2048
+    epochs: 100
+    lr: 1.0e-5
+    optimizer: "adam"
+    weight_decay: 0.0
+    gradient_clip: 1.0
+    loss_safe_coef: 1.0
+    loss_unsafe_coef: 1.0
+    loss_h_dot_coef: 0.0
+    loss_grad_reg_coef: 0.0
+    alpha: 1.0
+    margin: 0.1
+    patience: 10
+    min_delta: 0.001
+  validation:
+    val_ratio: 0.2
+    test_ratio: 0.1
+    target_accuracy: 0.95
+
+# Stage 2: task-only MAPPO base
+stage2:
+  actor:
+    # The vendored upstream MLP uses a uniform hidden width. [256, 256]
+    # means hidden_size=256 and layer_N=1.
+    hidden_dims: [256, 256]
+    activation: "tanh"
+    init_method: "orthogonal"
+    init_gain: 1.414
+    output_gain: 0.01
+  critic:
+    # Upstream R_Critic shares hidden_size with the actor; this field is
+    # retained for documentation and future custom critics.
+    hidden_dims: [256, 256]
+    activation: "tanh"
+    use_value_norm: true
+    use_popart: false
+
+  training:
+    total_timesteps: 3_000_000
+    n_envs: 16
+    n_steps: 128          # rollout chunk; env episode is 500 steps
+    batch_size: 4096      # samples per PPO minibatch; num_mini_batch is computed
+    n_epochs: 10
+    use_huber_loss: true
+    use_clipped_value_loss: true
+    use_tanh_actions: true
+    action_logstd: -0.5
+
+    lr_actor: 5.0e-4
+    lr_critic: 1.0e-3
+    eps: 1.0e-5
+    use_linear_lr_decay: true
+
+    clip_range: 0.2
+    gamma: 0.99
+    gae_lambda: 0.95
+    entropy_coef: 0.01
+    value_coef: 0.5
+    max_grad_norm: 10.0
+
+    eval_interval: 500_000
+    eval_episodes: 50
+    save_interval: 250_000
+
+  reward:
+    distance_improvement: 1.0
+    success_bonus: 10.0
+    time_penalty: -0.01
+    # Per-agent task reward. The centralized critic still sees the joint state.
+    shared_reward: false
+
+# Stage 3: correction (kept for the next experiment)
+stage3:
+  network:
+    encoder_dims: [256, 256, 128]
+    critic_hidden_dims: [256, 256]
+    grad_dim: 4
+    initial_log_std: -2.0
+    use_value_norm: true
+    activation: "tanh"
+    init_method: "orthogonal"
+    output_init: "zeros"
+  training:
+    total_timesteps: 10_000_000
+    n_envs: 16
+    n_steps: 128
+    batch_size: 256
+    lr: 3.0e-4
+    lr_critic: 1.0e-3
+    use_linear_lr_decay: true
+    eps: 1.0e-5
+    clip_range: 0.2
+    n_epochs: 10
+    gamma: 0.99
+    gae_lambda: 0.95
+    entropy_coef: 0.01
+    value_coef: 0.5
+    max_grad_norm: 10.0
+    eval_interval: 500_000
+    eval_episodes: 50
+    save_interval: 250_000
+  reward:
+    lambda_safety: 100.0
+    lambda_deviation: 0.1
+    lambda_cbf: 10.0
+    lambda_task: 1.0
+    alpha: 1.0
+    dt: 0.05
+
+logging:
+  use_tensorboard: true
+  use_wandb: false
+  log_interval: 1000
+  save_dir: "outputs"
+  experiment_name: "navigation_v4_mappo_h500"
+
+seed: 42
+deterministic: true
+device: "cuda"
+num_threads: 4

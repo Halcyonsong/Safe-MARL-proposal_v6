@@ -1,0 +1,8 @@
+# Extra dependencies for official baselines only.
+#
+# GCBF+ config/checkpoint and CBF-QP modules import tensorflow_probability.
+tensorflow-probability==0.25.0
+# Required by the official GCBF/GCBF+ training code and CBF-QP code. GCBF+
+# inference in the official code uses the actor only and does not call the QP.
+# jaxproxqp @ git+https://github.com/oswinso/jaxproxqp.git
+# proxsuite>=0.7.3  # optional CPU QP bridge when jaxproxqp is unavailable

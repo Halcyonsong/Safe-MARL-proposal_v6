@@ -1,0 +1,22 @@
+{
+  "episodes": 20,
+  "rows": 5120,
+  "unsafe_rate": 0.0590576171875,
+  "splits": {
+    "train": {
+      "episodes": 16,
+      "rows": 4096,
+      "unsafe_rate": 0.0533447265625
+    },
+    "val": {
+      "episodes": 2,
+      "rows": 512,
+      "unsafe_rate": 0.103271484375
+    },
+    "test": {
+      "episodes": 2,
+      "rows": 512,
+      "unsafe_rate": 0.060546875
+    }
+  }
+}

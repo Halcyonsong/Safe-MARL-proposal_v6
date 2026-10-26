@@ -1,0 +1,14 @@
+{
+  "schema": "v6.ant_task_value.data.v1",
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/mappo_h_pred_gate_10m/seed0/policy_010000000.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/h_predictive/ant_h.pkl",
+  "episodes": 100,
+  "seed": 30000,
+  "num_agents": 2,
+  "obs_dim": 31,
+  "max_step": 1000,
+  "stochastic": true,
+  "reward": "official Ant task reward; ungated; no cost",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant_vt/data/ant_h10m_seed0_100ep.npz",
+  "mean_episode_length": 935.91
+}

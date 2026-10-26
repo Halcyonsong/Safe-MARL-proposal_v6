@@ -1,0 +1,98 @@
+{
+  "schema": "v6.ant_h_data.v1",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/smoke/h_data",
+  "seed": 0,
+  "episodes": 4,
+  "episode_limit": 100,
+  "horizon": 16,
+  "h_scale": 0.5,
+  "action_mode": "random",
+  "action_std": 0.7,
+  "aug_rows": 1000,
+  "perturb_rows": 500,
+  "rows": 1835,
+  "rollout_rows": 335,
+  "aug_rows_used": 1000,
+  "perturb_rows_used": 500,
+  "rollout_episodes": 4,
+  "label_unsafe": 627,
+  "label_safe": 1208,
+  "source_counts": {
+    "0": 335,
+    "1": 1000,
+    "2": 500
+  },
+  "episode_stats": [
+    {
+      "episode": 0,
+      "length": 80,
+      "cost": 1.0,
+      "wall": 0.0,
+      "topple": 1.0,
+      "terminated": true,
+      "truncated": false,
+      "rows": 65,
+      "unsafe_rows": 1,
+      "safe_rows": 64
+    },
+    {
+      "episode": 1,
+      "length": 100,
+      "cost": 0.0,
+      "wall": 0.0,
+      "topple": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "rows": 101,
+      "unsafe_rows": 0,
+      "safe_rows": 101
+    },
+    {
+      "episode": 2,
+      "length": 83,
+      "cost": 1.0,
+      "wall": 0.0,
+      "topple": 1.0,
+      "terminated": true,
+      "truncated": false,
+      "rows": 68,
+      "unsafe_rows": 1,
+      "safe_rows": 67
+    },
+    {
+      "episode": 3,
+      "length": 100,
+      "cost": 0.0,
+      "wall": 0.0,
+      "topple": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "rows": 101,
+      "unsafe_rows": 0,
+      "safe_rows": 101
+    }
+  ],
+  "splits": {
+    "train": {
+      "rows": 1183,
+      "unsafe": 422,
+      "safe": 761,
+      "rollout": 133,
+      "augmented": 1050
+    },
+    "val": {
+      "rows": 326,
+      "unsafe": 113,
+      "safe": 213,
+      "rollout": 101,
+      "augmented": 225
+    },
+    "test": {
+      "rows": 326,
+      "unsafe": 92,
+      "safe": 234,
+      "rollout": 101,
+      "augmented": 225
+    }
+  }
+}

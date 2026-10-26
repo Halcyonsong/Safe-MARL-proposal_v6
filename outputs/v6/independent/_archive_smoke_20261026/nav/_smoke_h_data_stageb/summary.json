@@ -1,0 +1,54 @@
+{
+  "schema": "v6.h_data.v1",
+  "behavior": [
+    "outputs/v6/independent/formal_3seed/h_only/seed0/policy_final.pth",
+    "outputs/v6/independent/nav_gate_progress_16k/seed0/policy_final.pth"
+  ],
+  "behavior_h": "outputs/v6/independent/h/v6_h.pkl",
+  "stochastic_actions": true,
+  "seed": 9000,
+  "episodes": 4,
+  "rows": 256,
+  "horizon": 32,
+  "margin_scale": 0.2,
+  "unsafe_rate": 0.0,
+  "horizon_safe_rate": 1.0,
+  "ignored_rate": 0.0,
+  "instant_unsafe_rate": 0.0,
+  "target_mean": 0.6207530498504639,
+  "target_std": 0.2834831774234772,
+  "target_negative_rate": 0.0185546875,
+  "future_margin_mean": 0.19040104746818542,
+  "future_margin_min": -0.10060596466064453,
+  "future_margin_max": 0.44999998807907104,
+  "hdot_rows": 252,
+  "splits": {
+    "train": {
+      "episodes": 2,
+      "rows": 128,
+      "unsafe_rate": 0.0,
+      "horizon_safe_rate": 1.0,
+      "ignored_rate": 0.0,
+      "target_mean": 0.5651821494102478,
+      "target_negative_rate": 0.037109375
+    },
+    "val": {
+      "episodes": 1,
+      "rows": 64,
+      "unsafe_rate": 0.0,
+      "horizon_safe_rate": 1.0,
+      "ignored_rate": 0.0,
+      "target_mean": 0.7134474515914917,
+      "target_negative_rate": 0.0
+    },
+    "test": {
+      "episodes": 1,
+      "rows": 64,
+      "unsafe_rate": 0.0,
+      "horizon_safe_rate": 1.0,
+      "ignored_rate": 0.0,
+      "target_mean": 0.6392005681991577,
+      "target_negative_rate": 0.0
+    }
+  }
+}

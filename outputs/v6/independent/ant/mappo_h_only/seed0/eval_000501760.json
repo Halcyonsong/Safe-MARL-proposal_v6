@@ -1,0 +1,21 @@
+{
+  "safe_episode": 1.0,
+  "unsafe_episode": 0.0,
+  "wall_episode": 0.0,
+  "topple_episode": 0.0,
+  "episode_return": 991.6921269139775,
+  "forward_return": -0.666689338236076,
+  "ctrl_return": -3.112616721398081,
+  "survive_return": 1000.0,
+  "episode_length": 1000.0,
+  "survived": 1.0,
+  "cost_rate": 0.0,
+  "h_mean": 0.5263635598644616,
+  "h_min": 0.421995570473373,
+  "h_neg_frac": 0.0,
+  "final_x": -0.031031857151538132,
+  "mean_x": -0.14227783527582213,
+  "action_abs": 0.022360389446932822,
+  "episodes": 20,
+  "eval_seed_start": 20000
+}

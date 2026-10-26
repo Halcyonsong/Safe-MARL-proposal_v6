@@ -1,0 +1,231 @@
+{
+  "schema": "v6.ant_mappo.train.v1",
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/smoke_task_base/policy_final.pth",
+  "total_steps": 4096,
+  "updates": 2,
+  "wall_time": 5.776137351989746,
+  "final_eval": {},
+  "history": [
+    {
+      "update": 1,
+      "total_steps": 2048,
+      "wall_time": 2.891814947128296,
+      "rollout": {
+        "safe_episode": 0.0,
+        "unsafe_episode": 1.0,
+        "wall_episode": 0.3333333333333333,
+        "topple_episode": 1.0,
+        "episode_return": 221.36293012319186,
+        "forward_return": -28.919316735304886,
+        "ctrl_return": -304.0170240662992,
+        "survive_return": 555.0,
+        "episode_length": 555.0,
+        "survived": 0.0,
+        "cost_rate": 1.0,
+        "h_mean": 0.0,
+        "h_min": 0.0,
+        "h_neg_frac": 0.0,
+        "final_x": -1.4832379420598347
+      },
+      "gae": {
+        "adv_mean": 6.63505220413208,
+        "adv_std": 5.255444288253784
+      },
+      "ppo": {
+        "loss": 1.5898238261540731,
+        "policy_loss": -0.005606210687741016,
+        "value_loss": 1.612173287073771,
+        "entropy": 1.6743268847465516
+      },
+      "cost_penalty": 0.0,
+      "num_envs": 2
+    },
+    {
+      "update": 2,
+      "total_steps": 4096,
+      "wall_time": 5.774008512496948,
+      "rollout": {
+        "safe_episode": 0.3333333333333333,
+        "unsafe_episode": 0.6666666666666666,
+        "wall_episode": 0.0,
+        "topple_episode": 0.6666666666666666,
+        "episode_return": 216.1164104842236,
+        "forward_return": 4.951095744441775,
+        "ctrl_return": -250.27031678706408,
+        "survive_return": 462.0,
+        "episode_length": 462.0,
+        "survived": 0.3333333333333333,
+        "cost_rate": 0.6666666666666666,
+        "h_mean": 0.0,
+        "h_min": 0.0,
+        "h_neg_frac": 0.0,
+        "final_x": 0.2556144694487254
+      },
+      "gae": {
+        "adv_mean": 6.567943811416626,
+        "adv_std": 5.197397232055664
+      },
+      "ppo": {
+        "loss": 1.5848156571388246,
+        "policy_loss": 0.00498610755506282,
+        "value_loss": 1.5965517282485961,
+        "entropy": 1.6722169041633606
+      },
+      "cost_penalty": 0.0,
+      "num_envs": 2
+    }
+  ],
+  "config": {
+    "schema": "v6.ant_mappo.train.config.v1",
+    "config_path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/configs/v6/v6_ant_task_base.yaml",
+    "seed": 0,
+    "device": "cpu",
+    "deterministic": true,
+    "total_steps": 4096,
+    "rollout_steps": 1024,
+    "num_envs": 2,
+    "eval_interval": 0,
+    "eval_episodes": 2,
+    "eval_seed": 20000,
+    "save_interval": 0,
+    "cost_penalty": 0.0,
+    "use_h_features": false,
+    "h_checkpoint": null,
+    "env": {
+      "n_agents": 2,
+      "obs_dim": 31,
+      "action_dim": 4,
+      "global_state_dim": 31,
+      "episode_limit": 1000
+    },
+    "env_cfg": {
+      "episode_limit": 1000,
+      "agent_obsk": 1,
+      "h_scale": 0.5,
+      "h_kappa": 0.0,
+      "h_kappa_z": 0.0,
+      "upright_scale": 0.2
+    },
+    "policy": {
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        64,
+        64
+      ],
+      "actor_activation": "relu",
+      "critic_activation": "relu",
+      "actor_feature_norm": true,
+      "actor_layer_norm": true,
+      "critic_feature_norm": true,
+      "critic_layer_norm": true,
+      "use_value_norm": true,
+      "action_dist": "gaussian",
+      "initial_log_std": -1.0,
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    },
+    "policy_cfg": {
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        64,
+        64
+      ],
+      "actor_activation": "relu",
+      "critic_activation": "relu",
+      "actor_feature_norm": true,
+      "actor_layer_norm": true,
+      "critic_feature_norm": true,
+      "critic_layer_norm": true,
+      "use_value_norm": true,
+      "action_dist": "gaussian",
+      "initial_log_std": -1.0,
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    },
+    "training": {
+      "total_steps": 10000000,
+      "num_envs": 16,
+      "rollout_steps": 1024,
+      "epochs": 5,
+      "minibatch_size": 400,
+      "lr": 9e-05,
+      "critic_lr": 0.005,
+      "opti_eps": 1e-05,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "value_coef": 1.0,
+      "entropy_coef": 0.01,
+      "max_grad_norm": 10.0,
+      "huber_delta": 10.0,
+      "update_value_norm": true,
+      "cost_penalty": 0.0,
+      "normalize_advantage": true,
+      "deterministic": true,
+      "device": "auto",
+      "eval_interval": 500000,
+      "eval_episodes": 20,
+      "eval_seed": 20000,
+      "save_interval": 1000000
+    },
+    "training_cfg": {
+      "total_steps": 10000000,
+      "num_envs": 16,
+      "rollout_steps": 1024,
+      "epochs": 5,
+      "minibatch_size": 400,
+      "lr": 9e-05,
+      "critic_lr": 0.005,
+      "opti_eps": 1e-05,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "value_coef": 1.0,
+      "entropy_coef": 0.01,
+      "max_grad_norm": 10.0,
+      "huber_delta": 10.0,
+      "update_value_norm": true,
+      "cost_penalty": 0.0,
+      "normalize_advantage": true,
+      "deterministic": true,
+      "device": "auto",
+      "eval_interval": 500000,
+      "eval_episodes": 20,
+      "eval_seed": 20000,
+      "save_interval": 1000000
+    },
+    "h": {
+      "use_features": false
+    },
+    "model_config": {
+      "obs_dim": 31,
+      "state_dim": 31,
+      "action_dim": 4,
+      "num_agents": 2,
+      "use_h_features": false,
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        64,
+        64
+      ],
+      "actor_input_dim": 31,
+      "actor_feature_norm": true,
+      "actor_layer_norm": true,
+      "critic_feature_norm": true,
+      "critic_layer_norm": true,
+      "use_value_norm": true,
+      "action_dist": "gaussian",
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    }
+  }
+}

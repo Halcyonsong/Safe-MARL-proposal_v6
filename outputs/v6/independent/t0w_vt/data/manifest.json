@@ -1,0 +1,14 @@
+{
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_stageb_repair_16k/seed0/policy_final.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+  "episodes": 100,
+  "seed": 30000,
+  "num_agents": 8,
+  "max_step": 256,
+  "reward_scale": 20.0,
+  "reach_bonus": 5.0,
+  "terminal_reach_bonus": 20.0,
+  "stochastic": true,
+  "task_reward": "ungated: reward_scale*progress + reach_bonus*reached + terminal_reach_bonus*reached_at_timeout",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/t0w_vt/data/actor1_seed0_100ep.npz"
+}

@@ -1,0 +1,53 @@
+# V6 Ant h-only arm on the corrected MAPPO base: h + grad_s h features
+# plus the fixed official-cost penalty.  Frozen V6 h checkpoint only.
+seed: 0
+out: outputs/v6/independent/ant/mappo_h_p01
+env:
+  episode_limit: 1000
+  agent_obsk: 1
+  h_scale: 0.5
+  h_kappa: 0.0
+  h_kappa_z: 0.0
+  upright_scale: 0.2
+h:
+  use_features: true
+  checkpoint: outputs/v6/independent/ant/h/ant_h.pkl
+policy:
+  actor_hidden: [64, 64]
+  critic_hidden: [64, 64]
+  actor_activation: relu
+  critic_activation: relu
+  actor_feature_norm: true
+  actor_layer_norm: true
+  critic_feature_norm: true
+  critic_layer_norm: true
+  use_value_norm: true
+  action_dist: gaussian
+  initial_log_std: -1.0
+  h_feature_scale: 1.0
+  grad_feature_scale: 1.0
+training:
+  total_steps: 1000000
+  num_envs: 8
+  rollout_steps: 2048
+  epochs: 5
+  minibatch_size: 400
+  lr: 0.00009
+  critic_lr: 0.005
+  opti_eps: 0.00001
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  value_coef: 1.0
+  entropy_coef: 0.01
+  max_grad_norm: 10.0
+  huber_delta: 10.0
+  update_value_norm: true
+  cost_penalty: 0.1
+  normalize_advantage: true
+  deterministic: true
+  device: cpu
+  eval_interval: 250000
+  eval_episodes: 20
+  eval_seed: 20000
+  save_interval: 1000000

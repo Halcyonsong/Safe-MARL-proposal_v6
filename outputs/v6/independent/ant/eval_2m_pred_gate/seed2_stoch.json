@@ -1,0 +1,41 @@
+{
+  "schema": "v6.ant_mappo.eval.v1",
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/mappo_h_pred_gate_2m/seed2/policy_002000000.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/h_predictive/ant_h.pkl",
+  "use_h_features": true,
+  "stochastic": true,
+  "episodes": 100,
+  "seed": 20000,
+  "env": {
+    "n_agents": 2,
+    "obs_dim": 31,
+    "action_dim": 4,
+    "global_state_dim": 31,
+    "episode_limit": 1000
+  },
+  "metrics": {
+    "safe_episode": 0.38,
+    "unsafe_episode": 0.62,
+    "wall_episode": 0.24,
+    "topple_episode": 0.4,
+    "episode_return": 952.515750156937,
+    "forward_return": 515.1138342182991,
+    "ctrl_return": -335.40107806731015,
+    "survive_return": 773.81,
+    "episode_length": 773.81,
+    "survived": 0.6,
+    "cost_rate": 0.62,
+    "cost_fraction": 0.01981519765126521,
+    "wall_fraction": 0.018089036267538435,
+    "topple_fraction": 0.001736632587915252,
+    "h_mean": 0.043521006550257785,
+    "h_min": -0.3563278109126259,
+    "h_neg_frac": 0.04838853186157668,
+    "final_x": 25.76227648139,
+    "mean_x": 14.102264143398786,
+    "action_abs": 0.2650533956790468,
+    "episodes": 100,
+    "eval_seed_start": 20000,
+    "deterministic": 0.0
+  }
+}

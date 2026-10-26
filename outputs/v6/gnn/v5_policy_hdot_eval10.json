@@ -1,0 +1,24 @@
+{
+  "note": "V5 seed0 policy + h GNN with h_dot, 10 eval scenes",
+  "metrics": {
+    "episode_return": 62.88545866832137,
+    "safety": 0.96171875,
+    "unsafe": 0.03828125,
+    "safe_mask": 0.903955078125,
+    "warning": 0.047607421875,
+    "collision_episode": 1.0,
+    "safe_episode": 0.0,
+    "warning_episode": 1.0,
+    "collision_final_any": 0.2,
+    "reach": 0.5125,
+    "reach_episode_any": 1.0,
+    "reach_final": 0.0375,
+    "reach_final_any": 0.2,
+    "official_safety": 0.475,
+    "official_reach": 0.5125,
+    "official_success": 0.225,
+    "h_mean": 0.06383419638768828,
+    "h_min": 0.025483041442930697,
+    "action_abs": 0.17003170657262673
+  }
+}

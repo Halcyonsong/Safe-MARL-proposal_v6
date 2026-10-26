@@ -1,0 +1,306 @@
+{
+  "schema": "v6.ant_mappo.train.v1",
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/smoke/h_only/policy_final.pth",
+  "total_steps": 1024,
+  "updates": 4,
+  "wall_time": 3.6115965843200684,
+  "final_eval": {
+    "safe_episode": 1.0,
+    "unsafe_episode": 0.0,
+    "wall_episode": 0.0,
+    "topple_episode": 0.0,
+    "episode_return": 196.86947689587237,
+    "episode_length": 200.0,
+    "survived": 1.0,
+    "cost_rate": 0.0,
+    "h_mean": 0.11244073117151857,
+    "h_min": 0.10034308768808842,
+    "h_neg_frac": 0.0,
+    "final_x": -0.15439895167946815,
+    "mean_x": -0.14190772166184615,
+    "action_abs": 0.011272842690814286,
+    "episodes": 2,
+    "eval_seed_start": 20000
+  },
+  "history": [
+    {
+      "update": 1,
+      "total_steps": 256,
+      "wall_time": 0.46083498001098633,
+      "rollout": {
+        "safe_episode": 1.0,
+        "unsafe_episode": 0.0,
+        "wall_episode": 0.0,
+        "topple_episode": 0.0,
+        "episode_return": 32.72511431534147,
+        "episode_length": 200.0,
+        "survived": 1.0,
+        "cost_rate": 0.0,
+        "h_mean": 0.08581319499760866,
+        "h_min": 0.04380421154201031,
+        "h_neg_frac": 0.0,
+        "final_x": 0.6341042518615723
+      },
+      "gae": {
+        "adv_mean": 1.7426217794418335,
+        "adv_std": 4.342014789581299
+      },
+      "ppo": {
+        "loss": 5.654354214668274,
+        "policy_loss": 0.27169928699731827,
+        "value_loss": 10.770102500915527,
+        "entropy": 2.3963564038276672
+      },
+      "cost_penalty": 10.0
+    },
+    {
+      "update": 2,
+      "total_steps": 512,
+      "wall_time": 0.918257474899292,
+      "rollout": {
+        "safe_episode": 0.0,
+        "unsafe_episode": 1.0,
+        "wall_episode": 0.0,
+        "topple_episode": 1.0,
+        "episode_return": -10.206641031954714,
+        "episode_length": 60.0,
+        "survived": 0.0,
+        "cost_rate": 1.0,
+        "h_mean": 0.0798265092119309,
+        "h_min": 0.02869478240609169,
+        "h_neg_frac": 0.014084507042253521,
+        "final_x": -0.842045396566391
+      },
+      "gae": {
+        "adv_mean": -3.6489686965942383,
+        "adv_std": 7.489737033843994
+      },
+      "ppo": {
+        "loss": 17.62997055053711,
+        "policy_loss": 0.316244974732399,
+        "value_loss": 34.63226318359375,
+        "entropy": 2.406106472015381
+      },
+      "cost_penalty": 10.0,
+      "eval": {
+        "safe_episode": 1.0,
+        "unsafe_episode": 0.0,
+        "wall_episode": 0.0,
+        "topple_episode": 0.0,
+        "episode_return": 194.93307082818112,
+        "episode_length": 200.0,
+        "survived": 1.0,
+        "cost_rate": 0.0,
+        "h_mean": 0.1132191165536642,
+        "h_min": 0.09951951168477535,
+        "h_neg_frac": 0.0,
+        "final_x": -0.2535875365138054,
+        "mean_x": -0.2194063421132159,
+        "action_abs": 0.009101815118920059,
+        "episodes": 2,
+        "eval_seed_start": 20000
+      }
+    },
+    {
+      "update": 3,
+      "total_steps": 768,
+      "wall_time": 1.9663934707641602,
+      "rollout": {
+        "safe_episode": 0.0,
+        "unsafe_episode": 1.0,
+        "wall_episode": 0.0,
+        "topple_episode": 1.0,
+        "episode_return": 1.2687302108976368,
+        "episode_length": 55.0,
+        "survived": 0.0,
+        "cost_rate": 1.0,
+        "h_mean": 0.08803723868078146,
+        "h_min": 0.03262321464717388,
+        "h_neg_frac": 0.0,
+        "final_x": -0.0556161105632782
+      },
+      "gae": {
+        "adv_mean": 1.176234245300293,
+        "adv_std": 6.5615997314453125
+      },
+      "ppo": {
+        "loss": 11.291489124298096,
+        "policy_loss": 0.22027131170034409,
+        "value_loss": 22.147234439849854,
+        "entropy": 2.39949631690979
+      },
+      "cost_penalty": 10.0
+    },
+    {
+      "update": 4,
+      "total_steps": 1024,
+      "wall_time": 2.4358928203582764,
+      "rollout": {
+        "safe_episode": 0.0,
+        "unsafe_episode": 1.0,
+        "wall_episode": 0.0,
+        "topple_episode": 1.0,
+        "episode_return": -21.797391569060604,
+        "episode_length": 108.0,
+        "survived": 0.0,
+        "cost_rate": 1.0,
+        "h_mean": 0.09308922111436173,
+        "h_min": 0.0035074595361948013,
+        "h_neg_frac": 0.0,
+        "final_x": -1.3950116634368896
+      },
+      "gae": {
+        "adv_mean": -3.902632713317871,
+        "adv_std": 5.379331588745117
+      },
+      "ppo": {
+        "loss": 11.254631519317627,
+        "policy_loss": 0.2674449756741524,
+        "value_loss": 21.979193687438965,
+        "entropy": 2.410531461238861
+      },
+      "cost_penalty": 10.0,
+      "eval": {
+        "safe_episode": 1.0,
+        "unsafe_episode": 0.0,
+        "wall_episode": 0.0,
+        "topple_episode": 0.0,
+        "episode_return": 196.86947689587237,
+        "episode_length": 200.0,
+        "survived": 1.0,
+        "cost_rate": 0.0,
+        "h_mean": 0.11244073117151857,
+        "h_min": 0.10034308768808842,
+        "h_neg_frac": 0.0,
+        "final_x": -0.15439895167946815,
+        "mean_x": -0.14190772166184615,
+        "action_abs": 0.011272842690814286,
+        "episodes": 2,
+        "eval_seed_start": 20000
+      }
+    }
+  ],
+  "config": {
+    "schema": "v6.ant_mappo.train.config.v1",
+    "config_path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/configs/v6/v6_ant_h_only.yaml",
+    "seed": 0,
+    "device": "cpu",
+    "deterministic": true,
+    "total_steps": 1024,
+    "rollout_steps": 256,
+    "eval_interval": 512,
+    "eval_episodes": 2,
+    "eval_seed": 20000,
+    "save_interval": 0,
+    "cost_penalty": 10.0,
+    "use_h_features": true,
+    "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/smoke/h/ant_h.pkl",
+    "env": {
+      "n_agents": 2,
+      "obs_dim": 31,
+      "action_dim": 4,
+      "global_state_dim": 29,
+      "episode_limit": 200
+    },
+    "env_cfg": {
+      "episode_limit": 1000,
+      "agent_obsk": 1,
+      "h_scale": 0.5,
+      "h_kappa": 0.0,
+      "h_kappa_z": 0.0,
+      "upright_scale": 0.2
+    },
+    "policy": {
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        128,
+        128
+      ],
+      "actor_activation": "tanh",
+      "critic_activation": "tanh",
+      "initial_log_std": -0.5,
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    },
+    "policy_cfg": {
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        128,
+        128
+      ],
+      "actor_activation": "tanh",
+      "critic_activation": "tanh",
+      "initial_log_std": -0.5,
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    },
+    "training": {
+      "total_steps": 1000000,
+      "rollout_steps": 2048,
+      "epochs": 4,
+      "minibatch_size": 256,
+      "lr": 0.0003,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "value_coef": 0.5,
+      "entropy_coef": 0.001,
+      "max_grad_norm": 0.5,
+      "cost_penalty": 10.0,
+      "normalize_advantage": true,
+      "deterministic": true,
+      "device": "auto",
+      "eval_interval": 100000,
+      "eval_episodes": 20,
+      "eval_seed": 20000,
+      "save_interval": 100000
+    },
+    "training_cfg": {
+      "total_steps": 1000000,
+      "rollout_steps": 2048,
+      "epochs": 4,
+      "minibatch_size": 256,
+      "lr": 0.0003,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "value_coef": 0.5,
+      "entropy_coef": 0.001,
+      "max_grad_norm": 0.5,
+      "cost_penalty": 10.0,
+      "normalize_advantage": true,
+      "deterministic": true,
+      "device": "auto",
+      "eval_interval": 100000,
+      "eval_episodes": 20,
+      "eval_seed": 20000,
+      "save_interval": 100000
+    },
+    "h": {
+      "checkpoint": "outputs/v6/independent/ant/h/ant_h.pkl",
+      "use_features": true
+    },
+    "model_config": {
+      "obs_dim": 31,
+      "state_dim": 29,
+      "action_dim": 4,
+      "num_agents": 2,
+      "use_h_features": true,
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        128,
+        128
+      ],
+      "actor_input_dim": 41
+    }
+  }
+}

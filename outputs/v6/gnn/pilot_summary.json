@@ -1,0 +1,434 @@
+{
+  "note": "single-seed pilot; V6-3 8k selected; 16k continuation degraded reach",
+  "h": {
+    "architecture": "local_graph",
+    "checkpoint": "outputs/v6/safety_h/safety_h.pt",
+    "threshold": -0.05593785464763641,
+    "h_offset": 0.05593785464763641,
+    "val": {
+      "accuracy": 0.957763671875,
+      "balanced_accuracy": 0.8838463729003212,
+      "unsafe_recall": 0.7992277992277992,
+      "safe_recall": 0.9684649465728433,
+      "false_alarm": 0.029541015625,
+      "miss": 0.0126953125,
+      "auroc": 0.9263845829522139,
+      "unsafe_rate": 0.063232421875,
+      "h_mean": 0.07573936879634857,
+      "h_std": 0.1581106334924698,
+      "h_neg_rate": 0.080078125
+    },
+    "test": {
+      "accuracy": 0.9654541015625,
+      "balanced_accuracy": 0.8050236176801846,
+      "unsafe_recall": 0.6265060240963856,
+      "safe_recall": 0.9835412112639835,
+      "false_alarm": 0.015625,
+      "miss": 0.0189208984375,
+      "auroc": 0.8356801256717754,
+      "unsafe_rate": 0.0506591796875,
+      "h_mean": 0.0984094887971878,
+      "h_std": 0.21747225522994995,
+      "h_neg_rate": 0.04736328125
+    }
+  },
+  "v6_3_8k": {
+    "path": "../outputs/v6/gnn/warm/v6_3_8k/eval_10ep.json",
+    "metrics": {
+      "episode_return": 93.6408,
+      "safety": 0.9761,
+      "safe_episode": 0.2,
+      "reach": 0.5375,
+      "reach_final": 0.05,
+      "official_safety": 0.6375,
+      "official_reach": 0.5375,
+      "official_success": 0.2875,
+      "collision_episode": 0.8,
+      "collision_final_any": 0.1,
+      "h_mean": 0.1427,
+      "action_abs": 0.2884
+    }
+  },
+  "v6_0_8k": {
+    "path": "../outputs/v6/gnn/warm/v6_0_8k/eval_10ep.json",
+    "metrics": {
+      "episode_return": 15.7319,
+      "safety": 0.9666,
+      "safe_episode": 0.2,
+      "reach": 0.175,
+      "reach_final": 0.0,
+      "official_safety": 0.6375,
+      "official_reach": 0.175,
+      "official_success": 0.1,
+      "collision_episode": 0.8,
+      "collision_final_any": 0.1,
+      "h_mean": 0.234,
+      "action_abs": 0.3357
+    }
+  },
+  "v6_3_16k": {
+    "path": "../outputs/v6/gnn/warm/v6_3_16k/eval_10ep.json",
+    "metrics": {
+      "episode_return": 106.9296,
+      "safety": 0.9801,
+      "safe_episode": 0.1,
+      "reach": 0.4,
+      "reach_final": 0.0875,
+      "official_safety": 0.625,
+      "official_reach": 0.4,
+      "official_success": 0.2375,
+      "collision_episode": 0.9,
+      "collision_final_any": 0.0,
+      "h_mean": 0.0848,
+      "action_abs": 0.1983
+    }
+  },
+  "v6_3_8k_hoffset0": {
+    "path": "../outputs/v6/gnn/warm/v6_3_8k/eval_5ep_hoff0.json",
+    "metrics": {
+      "episode_return": 65.7119,
+      "safety": 0.9784,
+      "safe_episode": 0.0,
+      "reach": 0.425,
+      "reach_final": 0.05,
+      "official_safety": 0.6,
+      "official_reach": 0.425,
+      "official_success": 0.225,
+      "collision_episode": 1.0,
+      "collision_final_any": 0.0,
+      "h_mean": 0.1179,
+      "action_abs": 0.2904
+    }
+  },
+  "v5_8k_10ep": {
+    "action_abs": {
+      "mean": 0.21367158439679768,
+      "std": 0.016156673344073134,
+      "values": [
+        0.1960078257441637,
+        0.2173042506823549,
+        0.22770267676387448
+      ]
+    },
+    "collision_episode": {
+      "mean": 0.5666666666666667,
+      "std": 0.30550504633038933,
+      "values": [
+        0.3,
+        0.9,
+        0.5
+      ]
+    },
+    "collision_final_any": {
+      "mean": 0.0,
+      "std": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "episode_return": {
+      "mean": 63.78406972472245,
+      "std": 7.042565622417258,
+      "values": [
+        57.68870593439787,
+        71.49357913103886,
+        62.169924108730626
+      ]
+    },
+    "h_mean": {
+      "mean": 0.5217438347986899,
+      "std": 0.00765717513417829,
+      "values": [
+        0.5133972854469903,
+        0.5284437013440766,
+        0.523390517605003
+      ]
+    },
+    "h_min": {
+      "mean": 0.3922030081351598,
+      "std": 0.014212509096628823,
+      "values": [
+        0.4020319014787674,
+        0.3759069949388504,
+        0.3986701279878616
+      ]
+    },
+    "reach": {
+      "mean": 0.5499999999999999,
+      "std": 0.09762812094883316,
+      "values": [
+        0.4875,
+        0.6625,
+        0.5
+      ]
+    },
+    "reach_episode_any": {
+      "mean": 0.9666666666666667,
+      "std": 0.05773502691896256,
+      "values": [
+        0.9,
+        1.0,
+        1.0
+      ]
+    },
+    "reach_final": {
+      "mean": 0.07083333333333333,
+      "std": 0.007216878364870321,
+      "values": [
+        0.075,
+        0.075,
+        0.0625
+      ]
+    },
+    "reach_final_any": {
+      "mean": 0.5,
+      "std": 0.09999999999999998,
+      "values": [
+        0.5,
+        0.6,
+        0.4
+      ]
+    },
+    "safe_episode": {
+      "mean": 0.4333333333333333,
+      "std": 0.3055050463303893,
+      "values": [
+        0.7,
+        0.1,
+        0.5
+      ]
+    },
+    "safe_mask": {
+      "mean": 0.959130859375,
+      "std": 0.00419154686171993,
+      "values": [
+        0.962646484375,
+        0.9544921875,
+        0.96025390625
+      ]
+    },
+    "safety": {
+      "mean": 0.9919921875000001,
+      "std": 0.00347092074268515,
+      "values": [
+        0.991796875,
+        0.988623046875,
+        0.995556640625
+      ]
+    },
+    "unsafe": {
+      "mean": 0.008007812500000001,
+      "std": 0.0034709207426851384,
+      "values": [
+        0.008203125,
+        0.011376953125,
+        0.004443359375
+      ]
+    },
+    "warning": {
+      "mean": 0.010270182291666667,
+      "std": 0.004230142916045423,
+      "values": [
+        0.009326171875,
+        0.014892578125,
+        0.006591796875
+      ]
+    },
+    "warning_episode": {
+      "mean": 0.7333333333333334,
+      "std": 0.2081665999466133,
+      "values": [
+        0.5,
+        0.9,
+        0.8
+      ]
+    }
+  },
+  "v5_16k_10ep": {
+    "action_abs": {
+      "mean": 0.24635341445464287,
+      "std": 0.06941695149011724,
+      "values": [
+        0.24685409346129744,
+        0.31551867222297003,
+        0.17668747767966125
+      ]
+    },
+    "collision_episode": {
+      "mean": 0.26666666666666666,
+      "std": 0.15275252316519466,
+      "values": [
+        0.1,
+        0.4,
+        0.3
+      ]
+    },
+    "collision_final_any": {
+      "mean": 0.0,
+      "std": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "episode_return": {
+      "mean": 86.88609915818864,
+      "std": 10.350766550810844,
+      "values": [
+        95.88037524430547,
+        89.20553037351928,
+        75.57239185674116
+      ]
+    },
+    "h_mean": {
+      "mean": 0.5441123190568761,
+      "std": 0.001992930996717231,
+      "values": [
+        0.5440724259708076,
+        0.5421396340825595,
+        0.5461248971172609
+      ]
+    },
+    "h_min": {
+      "mean": 0.43443944056828815,
+      "std": 0.024816451395341662,
+      "values": [
+        0.4357288211584091,
+        0.40900343358516694,
+        0.45858606696128845
+      ]
+    },
+    "reach": {
+      "mean": 0.625,
+      "std": 0.1352081728298996,
+      "values": [
+        0.6625,
+        0.7375,
+        0.475
+      ]
+    },
+    "reach_episode_any": {
+      "mean": 1.0,
+      "std": 0.0,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "reach_final": {
+      "mean": 0.07083333333333335,
+      "std": 0.03818813079129867,
+      "values": [
+        0.0625,
+        0.0375,
+        0.1125
+      ]
+    },
+    "reach_final_any": {
+      "mean": 0.4666666666666666,
+      "std": 0.15275252316519466,
+      "values": [
+        0.5,
+        0.3,
+        0.6
+      ]
+    },
+    "safe_episode": {
+      "mean": 0.7333333333333334,
+      "std": 0.1527525231651947,
+      "values": [
+        0.9,
+        0.6,
+        0.7
+      ]
+    },
+    "safe_mask": {
+      "mean": 0.9702636718750001,
+      "std": 0.010767459618940212,
+      "values": [
+        0.982373046875,
+        0.961767578125,
+        0.966650390625
+      ]
+    },
+    "safety": {
+      "mean": 0.99814453125,
+      "std": 0.0022333196535213257,
+      "values": [
+        0.9998046875,
+        0.99560546875,
+        0.9990234375
+      ]
+    },
+    "unsafe": {
+      "mean": 0.0018554687500000001,
+      "std": 0.002233319653521342,
+      "values": [
+        0.0001953125,
+        0.00439453125,
+        0.0009765625
+      ]
+    },
+    "warning": {
+      "mean": 0.0026529947916666668,
+      "std": 0.0027696065457559617,
+      "values": [
+        0.000634765625,
+        0.005810546875,
+        0.001513671875
+      ]
+    },
+    "warning_episode": {
+      "mean": 0.39999999999999997,
+      "std": 0.17320508075688773,
+      "values": [
+        0.3,
+        0.6,
+        0.3
+      ]
+    }
+  },
+  "h_substitution_diagnostic": {
+    "note": "V5 seed0 8k policy, same 10 eval scenes, only h differs",
+    "official_h": {
+      "path": "V5 seeds_8192_collision/seed0/eval_10ep.json",
+      "metrics": {
+        "episode_return": 57.6887,
+        "safety": 0.9918,
+        "collision_episode": 0.3,
+        "safe_episode": 0.7,
+        "reach": 0.4875,
+        "h_mean": 0.5134,
+        "action_abs": 0.196
+      }
+    },
+    "learned_h": {
+      "path": "outputs/v6/gnn/v5_policy_learned_h_eval10.json",
+      "metrics": {
+        "episode_return": 62.0895,
+        "safety": 0.9704,
+        "collision_episode": 0.9,
+        "safe_episode": 0.1,
+        "reach": 0.4875,
+        "h_mean": 0.0806,
+        "action_abs": 0.1714
+      }
+    },
+    "learned_h_scaled3_5ep": {
+      "path": "outputs/v6/gnn/v5_policy_learned_h_scale3_eval5.json",
+      "metrics": {
+        "episode_return": 62.2887,
+        "safety": 0.9798,
+        "safe_episode": 0.0,
+        "reach": 0.475,
+        "collision_episode": 1.0,
+        "h_mean": 0.3117,
+        "action_abs": 0.185
+      }
+    }
+  }
+}

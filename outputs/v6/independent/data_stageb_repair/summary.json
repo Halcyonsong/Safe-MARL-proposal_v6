@@ -1,0 +1,56 @@
+{
+  "schema": "v6.h_repair_merge.v1",
+  "stageb": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_stageb_rebuilt",
+  "random": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_random_rebuilt",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_stageb_repair",
+  "splits": {
+    "train": {
+      "rows": 40960,
+      "stageb_rows": 20480,
+      "random_rows": 20480,
+      "unsafe_rate": 0.0305755615234375,
+      "ignored_rate": 0.0496185302734375,
+      "safe_rate": 0.919805908203125,
+      "target_mean": 0.7172790765762329,
+      "target_std": 0.35262495279312134,
+      "target_negative_rate": 0.080194091796875,
+      "target_corr_current": 0.728914264054639,
+      "gradient_abs_mean": 0.32193630933761597,
+      "stageb_episode_ids": 80,
+      "random_episode_ids": 80,
+      "merged_episode_ids": 160
+    },
+    "val": {
+      "rows": 5120,
+      "stageb_rows": 2560,
+      "random_rows": 2560,
+      "unsafe_rate": 0.0263671875,
+      "ignored_rate": 0.0432861328125,
+      "safe_rate": 0.9303466796875,
+      "target_mean": 0.7259267568588257,
+      "target_std": 0.3387710750102997,
+      "target_negative_rate": 0.0696533203125,
+      "target_corr_current": 0.7210804178250511,
+      "gradient_abs_mean": 0.3136556148529053,
+      "stageb_episode_ids": 10,
+      "random_episode_ids": 10,
+      "merged_episode_ids": 20
+    },
+    "test": {
+      "rows": 5120,
+      "stageb_rows": 2560,
+      "random_rows": 2560,
+      "unsafe_rate": 0.043310546875,
+      "ignored_rate": 0.0572509765625,
+      "safe_rate": 0.8994384765625,
+      "target_mean": 0.6807109713554382,
+      "target_std": 0.3783411383628845,
+      "target_negative_rate": 0.1005615234375,
+      "target_corr_current": 0.6935606186025003,
+      "gradient_abs_mean": 0.3399074673652649,
+      "stageb_episode_ids": 10,
+      "random_episode_ids": 10,
+      "merged_episode_ids": 20
+    }
+  }
+}

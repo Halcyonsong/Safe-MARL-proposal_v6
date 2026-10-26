@@ -1,0 +1,197 @@
+{
+  "schema": "v6.ant_mappo.train.v1",
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/ant/smoke_task_base4/policy_final.pth",
+  "total_steps": 16384,
+  "updates": 1,
+  "wall_time": 23.20247483253479,
+  "final_eval": {},
+  "history": [
+    {
+      "update": 1,
+      "total_steps": 16384,
+      "wall_time": 23.20016074180603,
+      "rollout": {
+        "safe_episode": 0.02857142857142857,
+        "unsafe_episode": 0.9714285714285714,
+        "wall_episode": 0.2571428571428571,
+        "topple_episode": 0.9142857142857143,
+        "episode_return": 204.65810932183146,
+        "forward_return": -0.5680900367308243,
+        "ctrl_return": -244.60833517014981,
+        "survive_return": 450.37142857142857,
+        "episode_length": 450.37142857142857,
+        "survived": 0.08571428571428572,
+        "cost_rate": 0.9714285714285714,
+        "h_mean": 0.0,
+        "h_min": 0.0,
+        "h_neg_frac": 0.0,
+        "final_x": -0.032994369523865835
+      },
+      "gae": {
+        "adv_mean": 7.337198257446289,
+        "adv_std": 5.525303244590759
+      },
+      "ppo": {
+        "loss": 1.863692995397056,
+        "policy_loss": -0.004261562379258798,
+        "value_loss": 1.8846544068034101,
+        "entropy": 1.6699849820718533
+      },
+      "cost_penalty": 0.0,
+      "num_envs": 4
+    }
+  ],
+  "config": {
+    "schema": "v6.ant_mappo.train.config.v1",
+    "config_path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/configs/v6/v6_ant_task_base.yaml",
+    "seed": 0,
+    "device": "cpu",
+    "deterministic": true,
+    "total_steps": 16384,
+    "rollout_steps": 4096,
+    "num_envs": 4,
+    "eval_interval": 0,
+    "eval_episodes": 2,
+    "eval_seed": 20000,
+    "save_interval": 0,
+    "cost_penalty": 0.0,
+    "use_h_features": false,
+    "h_checkpoint": null,
+    "env": {
+      "n_agents": 2,
+      "obs_dim": 31,
+      "action_dim": 4,
+      "global_state_dim": 31,
+      "episode_limit": 1000
+    },
+    "env_cfg": {
+      "episode_limit": 1000,
+      "agent_obsk": 1,
+      "h_scale": 0.5,
+      "h_kappa": 0.0,
+      "h_kappa_z": 0.0,
+      "upright_scale": 0.2
+    },
+    "policy": {
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        64,
+        64
+      ],
+      "actor_activation": "relu",
+      "critic_activation": "relu",
+      "actor_feature_norm": true,
+      "actor_layer_norm": true,
+      "critic_feature_norm": true,
+      "critic_layer_norm": true,
+      "use_value_norm": true,
+      "action_dist": "gaussian",
+      "initial_log_std": -1.0,
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    },
+    "policy_cfg": {
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        64,
+        64
+      ],
+      "actor_activation": "relu",
+      "critic_activation": "relu",
+      "actor_feature_norm": true,
+      "actor_layer_norm": true,
+      "critic_feature_norm": true,
+      "critic_layer_norm": true,
+      "use_value_norm": true,
+      "action_dist": "gaussian",
+      "initial_log_std": -1.0,
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    },
+    "training": {
+      "total_steps": 10000000,
+      "num_envs": 16,
+      "rollout_steps": 1024,
+      "epochs": 5,
+      "minibatch_size": 400,
+      "lr": 9e-05,
+      "critic_lr": 0.005,
+      "opti_eps": 1e-05,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "value_coef": 1.0,
+      "entropy_coef": 0.01,
+      "max_grad_norm": 10.0,
+      "huber_delta": 10.0,
+      "update_value_norm": true,
+      "cost_penalty": 0.0,
+      "normalize_advantage": true,
+      "deterministic": true,
+      "device": "auto",
+      "eval_interval": 500000,
+      "eval_episodes": 20,
+      "eval_seed": 20000,
+      "save_interval": 1000000
+    },
+    "training_cfg": {
+      "total_steps": 10000000,
+      "num_envs": 16,
+      "rollout_steps": 1024,
+      "epochs": 5,
+      "minibatch_size": 400,
+      "lr": 9e-05,
+      "critic_lr": 0.005,
+      "opti_eps": 1e-05,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "value_coef": 1.0,
+      "entropy_coef": 0.01,
+      "max_grad_norm": 10.0,
+      "huber_delta": 10.0,
+      "update_value_norm": true,
+      "cost_penalty": 0.0,
+      "normalize_advantage": true,
+      "deterministic": true,
+      "device": "auto",
+      "eval_interval": 500000,
+      "eval_episodes": 20,
+      "eval_seed": 20000,
+      "save_interval": 1000000
+    },
+    "h": {
+      "use_features": false
+    },
+    "model_config": {
+      "obs_dim": 31,
+      "state_dim": 31,
+      "action_dim": 4,
+      "num_agents": 2,
+      "use_h_features": false,
+      "actor_hidden": [
+        64,
+        64
+      ],
+      "critic_hidden": [
+        64,
+        64
+      ],
+      "actor_input_dim": 31,
+      "actor_feature_norm": true,
+      "actor_layer_norm": true,
+      "critic_feature_norm": true,
+      "critic_layer_norm": true,
+      "use_value_norm": true,
+      "action_dist": "gaussian",
+      "h_feature_scale": 1.0,
+      "grad_feature_scale": 1.0
+    }
+  }
+}

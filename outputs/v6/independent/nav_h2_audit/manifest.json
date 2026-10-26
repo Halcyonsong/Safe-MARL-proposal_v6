@@ -1,0 +1,113 @@
+{
+  "schema": "v6-nav-h2-audit-manifest.v1",
+  "created": "2026-10-25",
+  "experiment": "read-only h2/actor2 diagnostic on fixed final repaired Stage-B actor1 checkpoints",
+  "training": false,
+  "protocol": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "episodes": 100,
+    "eval_seed": 10000,
+    "deterministic": true,
+    "checkpoint": "policy_final.pth (fixed final)",
+    "gate_low": 0.0,
+    "gate_high": 0.26726993918418884,
+    "gate_active_at_eval": false,
+    "environment": "official GCBF+ DoubleIntegrator, 8 agents, area 4.0, 8 obstacles, 256 steps",
+    "target": "wall-free tanh(future_min_margin/0.2), horizon 32, horizon-unsafe <= -0.1"
+  },
+  "inputs": {
+    "h_checkpoint": {
+      "path": "outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+      "sha256": "0f67eaeec99912881017231234aa10846c5edfda767118da2157b2da7df7fb13"
+    },
+    "actor_checkpoints": {
+      "seed0": {
+        "path": "outputs/v6/independent/nav_stageb_repair_16k/seed0/policy_final.pth",
+        "sha256": "68340ec47535ec63dd6374dc73141b033acec42f8f475f7f2988d4ca32130b51"
+      },
+      "seed1": {
+        "path": "outputs/v6/independent/nav_stageb_repair_16k/seed1/policy_final.pth",
+        "sha256": "0cb174deaacb3119a64f7b3ec1245804584775ab5152290696dbeade9eba2766"
+      },
+      "seed2": {
+        "path": "outputs/v6/independent/nav_stageb_repair_16k/seed2/policy_final.pth",
+        "sha256": "e77fe939d38c57bd15dd68a7826aae45d8e583873f6ad6596492a61dd99a9cb5"
+      }
+    },
+    "reference_evals": {
+      "seed0": {
+        "path": "outputs/v6/independent/nav_stageb_repair_16k/seed0/eval_100ep_final.json",
+        "sha256": "a33d33e4ab12de40c93a50c1f7100c11e7ef52852539274e2e035c46b65ff990"
+      },
+      "seed1": {
+        "path": "outputs/v6/independent/nav_stageb_repair_16k/seed1/eval_100ep_final.json",
+        "sha256": "1ef0041a92802e9d3d305b94561f22eb53b2dd8b3beb1175147657d70c3a971e"
+      },
+      "seed2": {
+        "path": "outputs/v6/independent/nav_stageb_repair_16k/seed2/eval_100ep_final.json",
+        "sha256": "6c112ae2396d5a75ae676763fa3aae4f1d041b726065536cd247db4d48b59f19"
+      }
+    }
+  },
+  "scripts": {
+    "diagnose": {
+      "path": "nav/scripts/diagnose_v6_nav_h2.py",
+      "sha256": "77a3bb4473abe9276bd3430a5688a4d485a53dc25ac82065ddfd45a13186c1ea"
+    },
+    "summarize": {
+      "path": "nav/scripts/summarize_v6_nav_h2_audit.py",
+      "sha256": "083676048b3a9da7536a0ca7301b0ab51e9de0feb957c8fcc9b3e19d52e775f4"
+    }
+  },
+  "outputs": {
+    "seed0_json": {
+      "path": "outputs/v6/independent/nav_h2_audit/seed0_100ep.json",
+      "sha256": "596292401035aaf9f759ed7f119611e2de3b6e5fd4feb69464e59bbd8d189ec8"
+    },
+    "seed0_npz": {
+      "path": "outputs/v6/independent/nav_h2_audit/seed0_100ep.npz",
+      "sha256": "39b783aa8cbe3715b9e67c8f34eadd9ad52a6491b0f7c63daf025dd48dc15922"
+    },
+    "seed1_json": {
+      "path": "outputs/v6/independent/nav_h2_audit/seed1_100ep.json",
+      "sha256": "25cfdaea91221876de4f462e9436823acf17649706ad8f5fe6d2f24caea06ee5"
+    },
+    "seed1_npz": {
+      "path": "outputs/v6/independent/nav_h2_audit/seed1_100ep.npz",
+      "sha256": "fd65a53c0a1536b67c85092bbe2afc3da5ba89060c0afe74a25ed4ca81322fcd"
+    },
+    "seed2_json": {
+      "path": "outputs/v6/independent/nav_h2_audit/seed2_100ep.json",
+      "sha256": "87d1ac54938361752e8ff866d58d52f6b83f9e102c7d60bb333a9a3842c7e29d"
+    },
+    "seed2_npz": {
+      "path": "outputs/v6/independent/nav_h2_audit/seed2_100ep.npz",
+      "sha256": "6ec504b08ddb90e19f201b709c72af5cf74ebcd6b7efad1ceea3114f16b88590"
+    },
+    "summary_json": {
+      "path": "outputs/v6/independent/nav_h2_audit/summary.json",
+      "sha256": "3ce0f5378b2c0b14dd1334f4b58b6f3f2bf9abc290964b65d043d85176f375c7"
+    },
+    "summary_md": {
+      "path": "outputs/v6/independent/nav_h2_audit/summary.md",
+      "sha256": "01d4ddcc04c878921682e3fb0e90247ef5a84ca538796f2331d3cff704b8a235"
+    }
+  },
+  "result": {
+    "classification_impact_state": "actor/action-limited: h2 likely marginal",
+    "overall_diagnosis": "mixed: temporal h limitation before impact + actor/action limitation at impact",
+    "collision_onsets": 155,
+    "frac_h_cur_above_high": 0.0,
+    "frac_gate_next_open": 0.0,
+    "frac_h_cur_below_zero": 1.0,
+    "frac_gate_next_closed": 1.0,
+    "pooled_target_mae": 0.09764018719209654,
+    "pooled_safe_target_corr": 0.6967571252981061,
+    "future_collision_region_mae": 0.3944183112287341,
+    "recommendation": "Stage C0 h2-only temporal-calibration screen first; Stage C1 actor2 only if C0 passes; both need explicit approval"
+  }
+}

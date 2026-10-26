@@ -1,0 +1,267 @@
+{
+  "schema": "v6.ant.pred_gate.2m.eval.v1",
+  "episodes": 100,
+  "seed": 20000,
+  "arms": {
+    "cost": {
+      "det": {
+        "seeds": {
+          "0": {
+            "forward_return": 840.1096581379857,
+            "final_x": 42.01206750869751,
+            "mean_x": 23.406300610313455,
+            "safe_episode": 0.9,
+            "unsafe_episode": 0.1,
+            "wall_episode": 0.1,
+            "topple_episode": 0.01,
+            "survived": 0.99,
+            "cost_fraction": 0.004402155009451796,
+            "cost_rate": 0.1,
+            "h_mean": 0.0,
+            "h_min": 0.0,
+            "h_neg_frac": 0.0
+          },
+          "1": {
+            "forward_return": 888.46823830465,
+            "final_x": 44.42999631881714,
+            "mean_x": 25.780254525768346,
+            "safe_episode": 0.24,
+            "unsafe_episode": 0.76,
+            "wall_episode": 0.74,
+            "topple_episode": 0.02,
+            "survived": 0.98,
+            "cost_fraction": 0.04301689159796298,
+            "cost_rate": 0.76,
+            "h_mean": 0.0,
+            "h_min": 0.0,
+            "h_neg_frac": 0.0
+          },
+          "2": {
+            "forward_return": 988.6739445843859,
+            "final_x": 49.44028179168701,
+            "mean_x": 27.726928807688004,
+            "safe_episode": 0.58,
+            "unsafe_episode": 0.42,
+            "wall_episode": 0.42,
+            "topple_episode": 0.0,
+            "survived": 1.0,
+            "cost_fraction": 0.0124,
+            "cost_rate": 0.42,
+            "h_mean": 0.0,
+            "h_min": 0.0,
+            "h_neg_frac": 0.0
+          }
+        },
+        "mean": {
+          "forward_return": 905.7506136756738,
+          "final_x": 45.294115206400555,
+          "mean_x": 25.637827981256603,
+          "safe_episode": 0.5733333333333334,
+          "unsafe_episode": 0.4266666666666667,
+          "wall_episode": 0.42,
+          "topple_episode": 0.01,
+          "survived": 0.9899999999999999,
+          "cost_fraction": 0.019939682202471592,
+          "cost_rate": 0.4266666666666667,
+          "h_mean": 0.0,
+          "h_min": 0.0,
+          "h_neg_frac": 0.0
+        }
+      },
+      "stoch": {
+        "seeds": {
+          "0": {
+            "forward_return": 496.91119010163146,
+            "final_x": 24.852144212722777,
+            "mean_x": 13.290374534507876,
+            "safe_episode": 0.14,
+            "unsafe_episode": 0.86,
+            "wall_episode": 0.57,
+            "topple_episode": 0.54,
+            "survived": 0.46,
+            "cost_fraction": 0.07212725199256145,
+            "cost_rate": 0.86,
+            "h_mean": 0.0,
+            "h_min": 0.0,
+            "h_neg_frac": 0.0
+          },
+          "1": {
+            "forward_return": 513.4559621695269,
+            "final_x": 25.67938267469406,
+            "mean_x": 13.283277004008132,
+            "safe_episode": 0.02,
+            "unsafe_episode": 0.98,
+            "wall_episode": 0.63,
+            "topple_episode": 0.61,
+            "survived": 0.39,
+            "cost_fraction": 0.11654298732400908,
+            "cost_rate": 0.98,
+            "h_mean": 0.0,
+            "h_min": 0.0,
+            "h_neg_frac": 0.0
+          },
+          "2": {
+            "forward_return": 565.7705152725403,
+            "final_x": 28.2951103413105,
+            "mean_x": 14.703527478660693,
+            "safe_episode": 0.04,
+            "unsafe_episode": 0.96,
+            "wall_episode": 0.61,
+            "topple_episode": 0.54,
+            "survived": 0.47,
+            "cost_fraction": 0.10747528103841335,
+            "cost_rate": 0.96,
+            "h_mean": 0.0,
+            "h_min": 0.0,
+            "h_neg_frac": 0.0
+          }
+        },
+        "mean": {
+          "forward_return": 525.3792225145662,
+          "final_x": 26.275545742909113,
+          "mean_x": 13.759059672392233,
+          "safe_episode": 0.06666666666666667,
+          "unsafe_episode": 0.9333333333333332,
+          "wall_episode": 0.6033333333333334,
+          "topple_episode": 0.5633333333333334,
+          "survived": 0.44,
+          "cost_fraction": 0.0987151734516613,
+          "cost_rate": 0.9333333333333332,
+          "h_mean": 0.0,
+          "h_min": 0.0,
+          "h_neg_frac": 0.0
+        }
+      }
+    },
+    "pred": {
+      "det": {
+        "seeds": {
+          "0": {
+            "forward_return": 572.1252584491511,
+            "final_x": 28.61284757614136,
+            "mean_x": 18.373878612816153,
+            "safe_episode": 0.95,
+            "unsafe_episode": 0.05,
+            "wall_episode": 0.05,
+            "topple_episode": 0.0,
+            "survived": 1.0,
+            "cost_fraction": 0.00689,
+            "cost_rate": 0.05,
+            "h_mean": 0.061303187584831866,
+            "h_min": -0.03755025716382081,
+            "h_neg_frac": 0.01106
+          },
+          "1": {
+            "forward_return": 779.3036983303153,
+            "final_x": 38.97176931381225,
+            "mean_x": 24.349380019131424,
+            "safe_episode": 0.98,
+            "unsafe_episode": 0.02,
+            "wall_episode": 0.02,
+            "topple_episode": 0.0,
+            "survived": 1.0,
+            "cost_fraction": 7.000000000000001e-05,
+            "cost_rate": 0.02,
+            "h_mean": 0.06065134424521759,
+            "h_min": -0.04782578227110212,
+            "h_neg_frac": 0.013269999999999999
+          },
+          "2": {
+            "forward_return": 918.3711699411192,
+            "final_x": 45.9251428604126,
+            "mean_x": 24.463339166646605,
+            "safe_episode": 1.0,
+            "unsafe_episode": 0.0,
+            "wall_episode": 0.0,
+            "topple_episode": 0.0,
+            "survived": 1.0,
+            "cost_fraction": 0.0,
+            "cost_rate": 0.0,
+            "h_mean": 0.067532582837583,
+            "h_min": 0.026517440599272933,
+            "h_neg_frac": 0.00017
+          }
+        },
+        "mean": {
+          "forward_return": 756.6000422401952,
+          "final_x": 37.83658658345541,
+          "mean_x": 22.395532599531393,
+          "safe_episode": 0.9766666666666666,
+          "unsafe_episode": 0.023333333333333334,
+          "wall_episode": 0.023333333333333334,
+          "topple_episode": 0.0,
+          "survived": 1.0,
+          "cost_fraction": 0.00232,
+          "cost_rate": 0.023333333333333334,
+          "h_mean": 0.06316237155587749,
+          "h_min": -0.019619532945216664,
+          "h_neg_frac": 0.008166666666666668
+        }
+      },
+      "stoch": {
+        "seeds": {
+          "0": {
+            "forward_return": 402.2361337015391,
+            "final_x": 20.11839132577181,
+            "mean_x": 10.828840627306754,
+            "safe_episode": 0.27,
+            "unsafe_episode": 0.73,
+            "wall_episode": 0.27,
+            "topple_episode": 0.53,
+            "survived": 0.47,
+            "cost_fraction": 0.03058277622263923,
+            "cost_rate": 0.73,
+            "h_mean": 0.033824263605377713,
+            "h_min": -0.35746740257367493,
+            "h_neg_frac": 0.05975442231532439
+          },
+          "1": {
+            "forward_return": 499.3043522246511,
+            "final_x": 24.97180225789547,
+            "mean_x": 13.45243910365992,
+            "safe_episode": 0.3,
+            "unsafe_episode": 0.7,
+            "wall_episode": 0.29,
+            "topple_episode": 0.48,
+            "survived": 0.52,
+            "cost_fraction": 0.028756472341491,
+            "cost_rate": 0.7,
+            "h_mean": 0.033529524138553785,
+            "h_min": -0.373481385614723,
+            "h_neg_frac": 0.06642874097253065
+          },
+          "2": {
+            "forward_return": 515.1138342182991,
+            "final_x": 25.76227648139,
+            "mean_x": 14.102264143398786,
+            "safe_episode": 0.38,
+            "unsafe_episode": 0.62,
+            "wall_episode": 0.24,
+            "topple_episode": 0.4,
+            "survived": 0.6,
+            "cost_fraction": 0.01981519765126521,
+            "cost_rate": 0.62,
+            "h_mean": 0.043521006550257785,
+            "h_min": -0.3563278109126259,
+            "h_neg_frac": 0.04838853186157668
+          }
+        },
+        "mean": {
+          "forward_return": 472.21810671482973,
+          "final_x": 23.617490021685757,
+          "mean_x": 12.794514624788485,
+          "safe_episode": 0.31666666666666665,
+          "unsafe_episode": 0.6833333333333332,
+          "wall_episode": 0.26666666666666666,
+          "topple_episode": 0.47000000000000003,
+          "survived": 0.5299999999999999,
+          "cost_fraction": 0.026384815405131812,
+          "cost_rate": 0.6833333333333332,
+          "h_mean": 0.03695826476472976,
+          "h_min": -0.3624255330336746,
+          "h_neg_frac": 0.05819056504981057
+        }
+      }
+    }
+  }
+}

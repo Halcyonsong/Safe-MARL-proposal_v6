@@ -1,0 +1,245 @@
+{
+  "schema": "v6.nav.h2_audit.v1",
+  "tag": "smoke_seed0",
+  "checkpoint": "outputs/v6/independent/nav_stageb_repair_16k/seed0/policy_final.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+  "training_seed": 0,
+  "eval_seed": 10000,
+  "episodes": 2,
+  "device": "cuda",
+  "protocol": {
+    "steps": 256,
+    "horizon": 32,
+    "gate_low": 0.0,
+    "gate_high": 0.26726993918418884,
+    "gate_scope": "progress_only",
+    "h_offset": -0.061149153709411624,
+    "target": "tanh(future_min_margin/0.2), wall-free, horizon 32"
+  },
+  "aggregate": {
+    "agent_steps": 4096,
+    "collision_steps": 0,
+    "collision_events": 0,
+    "collision_episodes": 0,
+    "safe_episode": 1.0,
+    "official_safety": 1.0,
+    "official_success": 0.5,
+    "official_reach": 0.5,
+    "episode_return": 34.389741480350494
+  },
+  "h_all": {
+    "count": 4096,
+    "mean": 0.845687907752108,
+    "std": 0.16379676683485683,
+    "min": -0.07575030624866486,
+    "max": 0.9388508200645447,
+    "q01": 0.2826924368739128,
+    "q05": 0.49936196208000183,
+    "q10": 0.5913872122764587,
+    "q25": 0.8120881766080856,
+    "q50": 0.9388508200645447,
+    "q75": 0.9388508200645447,
+    "q90": 0.9388508200645447,
+    "q95": 0.9388508200645447,
+    "q99": 0.9388508200645447
+  },
+  "h_next_all": {
+    "count": 4096,
+    "mean": 0.8462805531626145,
+    "std": 0.1634170407796754,
+    "min": -0.07575030624866486,
+    "max": 0.9388508200645447,
+    "q01": 0.2826924368739128,
+    "q05": 0.5003338158130646,
+    "q10": 0.5919853746891022,
+    "q25": 0.8134595602750778,
+    "q50": 0.9388508200645447,
+    "q75": 0.9388508200645447,
+    "q90": 0.9388508200645447,
+    "q95": 0.9388508200645447,
+    "q99": 0.9388508200645447
+  },
+  "gate_all": {
+    "quantiles": {
+      "count": 4096,
+      "mean": 0.9944953524268385,
+      "std": 0.06748975034977449,
+      "min": 0.0,
+      "max": 1.0,
+      "q01": 1.0,
+      "q05": 1.0,
+      "q10": 1.0,
+      "q25": 1.0,
+      "q50": 1.0,
+      "q75": 1.0,
+      "q90": 1.0,
+      "q95": 1.0,
+      "q99": 1.0
+    },
+    "mean": 0.9944953524268385,
+    "closed_frac": 0.00537109375,
+    "fully_closed_frac": 0.0029296875,
+    "open_frac": 0.990966796875
+  },
+  "collision": {
+    "events": 0,
+    "collision_steps": 0,
+    "h_cur": {
+      "count": 0
+    },
+    "h_next": {
+      "count": 0
+    },
+    "gate_next": {
+      "count": 0
+    },
+    "frac_h_cur_above_high": null,
+    "frac_h_cur_above_zero": null,
+    "frac_h_cur_in_gate": null,
+    "frac_h_cur_below_zero": null,
+    "frac_h_next_above_high": null,
+    "frac_h_next_above_zero": null,
+    "frac_h_next_below_zero": null,
+    "frac_gate_open": null,
+    "frac_gate_half": null,
+    "frac_gate_closed": null
+  },
+  "pre_collision": {
+    "lag_0": {
+      "count": 0,
+      "mean_h": null,
+      "median_h": null,
+      "frac_above_high": null,
+      "frac_above_zero": null
+    },
+    "lag_1": {
+      "count": 0,
+      "mean_h": null,
+      "median_h": null,
+      "frac_above_high": null,
+      "frac_above_zero": null
+    },
+    "lag_2": {
+      "count": 0,
+      "mean_h": null,
+      "median_h": null,
+      "frac_above_high": null,
+      "frac_above_zero": null
+    },
+    "lag_3": {
+      "count": 0,
+      "mean_h": null,
+      "median_h": null,
+      "frac_above_high": null,
+      "frac_above_zero": null
+    },
+    "lag_4": {
+      "count": 0,
+      "mean_h": null,
+      "median_h": null,
+      "frac_above_high": null,
+      "frac_above_zero": null
+    },
+    "lag_5": {
+      "count": 0,
+      "mean_h": null,
+      "median_h": null,
+      "frac_above_high": null,
+      "frac_above_zero": null
+    }
+  },
+  "calibration": {
+    "target_corr": 0.6505696460633847,
+    "safe_target_corr": 0.6505696460633847,
+    "unsafe_target_corr": null,
+    "auroc_unsafe": null,
+    "binary_at_zero": {
+      "threshold": 0.0,
+      "tp": 0,
+      "fn": 0,
+      "fp": 12,
+      "tn": 4084,
+      "unsafe_recall": null,
+      "safe_recall": 0.9970703125,
+      "false_alarm": 0.0029296875,
+      "balanced_accuracy": null
+    },
+    "target": {
+      "count": 4096,
+      "mean": 0.89833011041992,
+      "std": 0.10924084230997799,
+      "min": 0.15248890221118927,
+      "max": 0.9780260920524597,
+      "q01": 0.33283495903015137,
+      "q05": 0.7576119601726532,
+      "q10": 0.823444664478302,
+      "q25": 0.8748481571674347,
+      "q50": 0.9188670516014099,
+      "q75": 0.9780260920524597,
+      "q90": 0.9780260920524597,
+      "q95": 0.9780260920524597,
+      "q99": 0.9780260920524597
+    },
+    "margin": {
+      "count": 4096,
+      "mean": 0.32945144306813745,
+      "std": 0.0908612373012859,
+      "min": 0.03073752298951149,
+      "max": 0.44999998807907104,
+      "q01": 0.06920260190963745,
+      "q05": 0.1981179490685463,
+      "q10": 0.23348484933376312,
+      "q25": 0.2706756368279457,
+      "q50": 0.3163401484489441,
+      "q75": 0.44999998807907104,
+      "q90": 0.44999998807907104,
+      "q95": 0.44999998807907104,
+      "q99": 0.44999998807907104
+    },
+    "future_collision_auroc": null,
+    "future_collision_count": 0,
+    "future_unsafe_auroc": null,
+    "future_unsafe_count": 0
+  },
+  "verification": {
+    "reference": "outputs/v6/independent/nav_stageb_repair_16k/seed0/eval_100ep_final.json",
+    "reference_safe_episode": 0.84,
+    "audit_safe_episode": 1.0,
+    "reference_official_safety": 0.97375,
+    "audit_official_safety": 1.0,
+    "reference_official_success": 0.4275,
+    "audit_official_success": 0.5,
+    "reference_episode_return": 60.908530456952285,
+    "audit_episode_return": 34.389741480350494
+  },
+  "episode_rows": [
+    {
+      "episode": 0,
+      "seed": 10000,
+      "steps": 256,
+      "episode_return": 39.942596316337585,
+      "safe_episode": 1.0,
+      "collision_episode": 0.0,
+      "official_safety": 1.0,
+      "official_reach": 0.375,
+      "official_success": 0.375,
+      "h_min": -0.07575030624866486,
+      "h_mean": 0.8451381921768188,
+      "action_abs": 0.2889665710972622
+    },
+    {
+      "episode": 1,
+      "seed": 10001,
+      "steps": 256,
+      "episode_return": 28.836886644363403,
+      "safe_episode": 1.0,
+      "collision_episode": 0.0,
+      "official_safety": 1.0,
+      "official_reach": 0.625,
+      "official_success": 0.625,
+      "h_min": 0.1182580292224884,
+      "h_mean": 0.8462373614311218,
+      "action_abs": 0.21340064314426854
+    }
+  ]
+}

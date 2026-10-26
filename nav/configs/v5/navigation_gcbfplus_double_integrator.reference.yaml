@@ -1,0 +1,25 @@
+# Reference values only. Do not feed this file to the legacy v4 env adapter.
+# Source: official GCBF+ DoubleIntegrator implementation/settings.
+status: reference_only
+env:
+  name: DoubleIntegrator
+  area_size: 4.0
+  num_agents_train: 8
+  num_agents_test: [16]
+  dt: 0.03
+  max_step: 256
+  car_radius: 0.05
+  comm_radius: 0.5
+  n_rays: 32
+  n_obs: 8
+  obs_len_range: [0.1, 0.5]
+  mass: 0.1
+  action_low: -1.0
+  action_high: 1.0
+  velocity_low: -0.5
+  velocity_high: 0.5
+  obstacles: rectangle
+  observation: graph_lidar
+  h_source: official_gcbfplus_fixed
+  u_ref: external_baseline_only
+  qp: external_baseline_only

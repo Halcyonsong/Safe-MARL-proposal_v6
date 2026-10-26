@@ -1,0 +1,96 @@
+{
+  "schema": "v6-formal-aggregate.v1",
+  "root": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only_det",
+  "runs": [
+    {
+      "seed": 0,
+      "eval_seed": 10000,
+      "episodes": 100,
+      "steps": 16384,
+      "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only_det/seed0/policy_final.pth",
+      "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+      "metrics": {
+        "official_reach": 0.57625,
+        "official_success": 0.5325,
+        "official_safety": 0.92875,
+        "safe_episode": 0.62,
+        "collision_episode": 0.38,
+        "reach_final": 0.055,
+        "episode_return": 69.77963927437085,
+        "h_mean": 0.11548669566895114,
+        "h_min": -0.08317217357456684,
+        "action_abs": 0.287305852000718,
+        "cbf_true_sat": 0.95611328125,
+        "cbf_violation": 0.0795995715716937
+      },
+      "path": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/formal_3seed/h_only_det/seed0/eval_100ep_final.json"
+    }
+  ],
+  "aggregate": {
+    "official_reach": {
+      "mean": 0.57625,
+      "std": 0.0,
+      "n": 1
+    },
+    "official_success": {
+      "mean": 0.5325,
+      "std": 0.0,
+      "n": 1
+    },
+    "official_safety": {
+      "mean": 0.92875,
+      "std": 0.0,
+      "n": 1
+    },
+    "safe_episode": {
+      "mean": 0.62,
+      "std": 0.0,
+      "n": 1
+    },
+    "collision_episode": {
+      "mean": 0.38,
+      "std": 0.0,
+      "n": 1
+    },
+    "reach_final": {
+      "mean": 0.055,
+      "std": 0.0,
+      "n": 1
+    },
+    "episode_return": {
+      "mean": 69.77963927437085,
+      "std": 0.0,
+      "n": 1
+    },
+    "h_mean": {
+      "mean": 0.11548669566895114,
+      "std": 0.0,
+      "n": 1
+    },
+    "h_min": {
+      "mean": -0.08317217357456684,
+      "std": 0.0,
+      "n": 1
+    },
+    "action_abs": {
+      "mean": 0.287305852000718,
+      "std": 0.0,
+      "n": 1
+    },
+    "cbf_true_sat": {
+      "mean": 0.95611328125,
+      "std": 0.0,
+      "n": 1
+    },
+    "cbf_violation": {
+      "mean": 0.0795995715716937,
+      "std": 0.0,
+      "n": 1
+    }
+  },
+  "primary_metrics": [
+    "safe_episode",
+    "collision_episode"
+  ],
+  "note": "safe_episode/collision_episode are episode-level; official_safety/official_success are per-agent any-time legacy field names and are not episode-level safety."
+}

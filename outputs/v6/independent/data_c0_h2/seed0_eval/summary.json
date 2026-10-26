@@ -1,0 +1,53 @@
+{
+  "schema": "v6.h_data.v1",
+  "behavior": [
+    "outputs/v6/independent/nav_stageb_repair_16k/seed0/policy_final.pth"
+  ],
+  "behavior_h": "outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+  "stochastic_actions": false,
+  "seed": 31000,
+  "episodes": 101,
+  "rows": 25856,
+  "horizon": 32,
+  "margin_scale": 0.2,
+  "unsafe_rate": 0.0023495513613861385,
+  "horizon_safe_rate": 0.9935943301361386,
+  "ignored_rate": 0.004056118502475247,
+  "instant_unsafe_rate": 0.0023495513613861385,
+  "target_mean": 0.8843843340873718,
+  "target_std": 0.14466693997383118,
+  "target_negative_rate": 0.006405669863861386,
+  "future_margin_mean": 0.3263932168483734,
+  "future_margin_min": -0.09310650080442429,
+  "future_margin_max": 0.44999998807907104,
+  "hdot_rows": 25755,
+  "splits": {
+    "train": {
+      "episodes": 0,
+      "rows": 0,
+      "unsafe_rate": NaN,
+      "horizon_safe_rate": NaN,
+      "ignored_rate": NaN,
+      "target_mean": NaN,
+      "target_negative_rate": NaN
+    },
+    "val": {
+      "episodes": 1,
+      "rows": 256,
+      "unsafe_rate": 0.0166015625,
+      "horizon_safe_rate": 0.96337890625,
+      "ignored_rate": 0.02001953125,
+      "target_mean": 0.8478907942771912,
+      "target_negative_rate": 0.03662109375
+    },
+    "test": {
+      "episodes": 100,
+      "rows": 25600,
+      "unsafe_rate": 0.00220703125,
+      "horizon_safe_rate": 0.993896484375,
+      "ignored_rate": 0.003896484375,
+      "target_mean": 0.8847492933273315,
+      "target_negative_rate": 0.006103515625
+    }
+  }
+}

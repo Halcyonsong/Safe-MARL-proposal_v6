@@ -1,0 +1,11 @@
+{
+  "note": "200 random states; diagnostic only; no official h in main",
+  "learned_h_mean": 0.1044,
+  "learned_h_std": 0.1369,
+  "official_h_mean": 0.511,
+  "official_h_std": 0.0741,
+  "h_pearson": 0.1664,
+  "grad_cosine": 0.1506,
+  "learned_grad_norm": 0.1975,
+  "official_grad_norm": 0.3013
+}

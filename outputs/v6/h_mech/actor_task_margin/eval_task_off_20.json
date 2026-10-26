@@ -1,0 +1,33 @@
+{
+  "checkpoint": "outputs/v6/h_mech/actor_task_margin/policy_final.pth",
+  "h_checkpoint": "outputs/v6/h_mech/horizon_hdot_margin/official_h.pkl",
+  "episodes": 20,
+  "eval_seed": 10000,
+  "task_features": false,
+  "metrics": {
+    "episode_return": 58.01720798460301,
+    "safety": 0.998681640625,
+    "unsafe": 0.001318359375,
+    "safe_mask": 0.9875,
+    "warning": 0.0017822265625,
+    "collision_episode": 0.1,
+    "safe_episode": 0.9,
+    "warning_episode": 0.15,
+    "collision_final_any": 0.0,
+    "reach": 0.4875,
+    "reach_episode_any": 1.0,
+    "reach_final": 0.025,
+    "reach_final_any": 0.2,
+    "official_safety": 0.98125,
+    "official_reach": 0.4875,
+    "official_success": 0.48125,
+    "h_mean": 0.6495143010339234,
+    "h_min": 0.49410186111927035,
+    "action_abs": 0.25408273532957537,
+    "cbf_pred_sat": 0.9551513671875,
+    "cbf_true_sat": 0.9349609375,
+    "cbf_feasible": 0.9974853515625,
+    "cbf_violation": 0.04449838071981133,
+    "grad_vel_norm": 0.6568174365179644
+  }
+}

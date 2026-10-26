@@ -1,0 +1,29 @@
+{
+  "checkpoint": "../outputs/v6/smoke_co_train/policy_final.pth",
+  "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/nav/../outputs/v6/smoke_co_train/h_final.pkl",
+  "steps": 256,
+  "episodes": 2,
+  "training_seed": 0,
+  "eval_seed": 10000,
+  "metrics": {
+    "episode_return": 49.11429707147181,
+    "safety": 0.978271484375,
+    "unsafe": 0.021728515625,
+    "safe_mask": 0.894287109375,
+    "warning": 0.035400390625,
+    "collision_episode": 1.0,
+    "safe_episode": 0.0,
+    "warning_episode": 1.0,
+    "collision_final_any": 0.0,
+    "reach": 0.4375,
+    "reach_episode_any": 1.0,
+    "reach_final": 0.0,
+    "reach_final_any": 0.0,
+    "official_safety": 0.5625,
+    "official_reach": 0.4375,
+    "official_success": 0.25,
+    "h_mean": 0.009055708598225465,
+    "h_min": -0.019641251303255558,
+    "action_abs": 0.18394654194707982
+  }
+}

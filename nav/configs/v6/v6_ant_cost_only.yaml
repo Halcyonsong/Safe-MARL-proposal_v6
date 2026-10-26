@@ -1,0 +1,40 @@
+# V6 Ant from-scratch MAPPO: no h features, fixed official-cost penalty.
+seed: 0
+out: outputs/v6/independent/ant/mappo_cost_only
+env:
+  episode_limit: 1000
+  agent_obsk: 1
+  h_scale: 0.5
+  h_kappa: 0.0
+  h_kappa_z: 0.0
+  upright_scale: 0.2
+h:
+  use_features: false
+policy:
+  actor_hidden: [64, 64]
+  critic_hidden: [128, 128]
+  actor_activation: tanh
+  critic_activation: tanh
+  initial_log_std: -0.5
+  h_feature_scale: 1.0
+  grad_feature_scale: 1.0
+training:
+  total_steps: 1000000
+  rollout_steps: 2048
+  epochs: 4
+  minibatch_size: 256
+  lr: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  value_coef: 0.5
+  entropy_coef: 0.001
+  max_grad_norm: 0.5
+  cost_penalty: 10.0
+  normalize_advantage: true
+  deterministic: true
+  device: auto
+  eval_interval: 100000
+  eval_episodes: 20
+  eval_seed: 20000
+  save_interval: 100000

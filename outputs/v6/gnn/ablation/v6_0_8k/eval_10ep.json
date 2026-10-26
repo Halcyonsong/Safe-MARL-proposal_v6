@@ -1,0 +1,29 @@
+{
+  "checkpoint": "../outputs/v6/gnn/ablation/v6_0_8k/policy_final.pth",
+  "h_checkpoint": "../outputs/v6/safety_h/safety_h.pt",
+  "steps": 8192,
+  "episodes": 10,
+  "training_seed": 0,
+  "eval_seed": 10000,
+  "metrics": {
+    "episode_return": 17.35363451037556,
+    "safety": 0.924755859375,
+    "unsafe": 0.075244140625,
+    "safe_mask": 0.826708984375,
+    "warning": 0.093359375,
+    "collision_episode": 1.0,
+    "safe_episode": 0.0,
+    "warning_episode": 1.0,
+    "collision_final_any": 0.4,
+    "reach": 0.125,
+    "reach_episode_any": 0.6,
+    "reach_final": 0.0125,
+    "reach_final_any": 0.1,
+    "official_safety": 0.2625,
+    "official_reach": 0.125,
+    "official_success": 0.025,
+    "h_mean": 0.06623103964520852,
+    "h_min": 0.003378602396696806,
+    "action_abs": 0.12086194751464063
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "baseline": {
+    "name": "h_only_final_20ep",
+    "steps": 16384,
+    "episodes": 20,
+    "metrics": {
+      "official_reach": 0.56875,
+      "official_success": 0.5125,
+      "official_safety": 0.88125,
+      "safe_episode": 0.5,
+      "collision_episode": 0.5,
+      "episode_return": 68.68043823069893,
+      "h_mean": 0.11242015769312275,
+      "action_abs": 0.2784481822876842,
+      "cbf_true_sat": 0.95322265625,
+      "cbf_violation": 0.08035757159241481
+    },
+    "path": "outputs/v6/independent/single_seed_16k/h_only/summary.json"
+  },
+  "runs": [
+    {
+      "name": "cost_s0",
+      "screen": {
+        "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/safety_opt/cost_s0/policy_final.pth",
+        "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+        "steps": 16384,
+        "episodes": 20,
+        "training_seed": 0,
+        "eval_seed": 10000,
+        "metrics": {
+          "episode_return": 19.467532733501866,
+          "safety": 0.991943359375,
+          "unsafe": 0.008056640625,
+          "safe_mask": 0.943212890625,
+          "warning": 0.01533203125,
+          "collision_episode": 0.7,
+          "safe_episode": 0.3,
+          "warning_episode": 0.9,
+          "collision_final_any": 0.0,
+          "reach": 0.15,
+          "reach_episode_any": 0.7,
+          "reach_final": 0.00625,
+          "reach_final_any": 0.05,
+          "official_safety": 0.825,
+          "official_reach": 0.15,
+          "official_success": 0.1375,
+          "h_mean": 0.09157872544747078,
+          "h_min": -0.12966923080384732,
+          "action_abs": 0.299756124727719,
+          "cbf_pred_sat": 0.948681640625,
+          "cbf_true_sat": 0.9355224609375,
+          "cbf_feasible": 0.9809326171875,
+          "cbf_violation": 0.12604765415768474,
+          "grad_vel_norm": 0.590238059456213
+        }
+      },
+      "full": null
+    },
+    {
+      "name": "ft_barrier_s0",
+      "screen": {
+        "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/safety_opt/ft_barrier_s0/policy_final.pth",
+        "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+        "steps": 24576,
+        "episodes": 20,
+        "training_seed": 0,
+        "eval_seed": 10000,
+        "metrics": {
+          "episode_return": 71.42960805385374,
+          "safety": 0.998095703125,
+          "unsafe": 0.001904296875,
+          "safe_mask": 0.9560791015625,
+          "warning": 0.0029541015625,
+          "collision_episode": 0.25,
+          "safe_episode": 0.75,
+          "warning_episode": 0.4,
+          "collision_final_any": 0.0,
+          "reach": 0.36875,
+          "reach_episode_any": 0.85,
+          "reach_final": 0.04375,
+          "reach_final_any": 0.25,
+          "official_safety": 0.94375,
+          "official_reach": 0.36875,
+          "official_success": 0.34375,
+          "h_mean": 0.12254144139005803,
+          "h_min": -0.01658254712820053,
+          "action_abs": 0.21825572648158414,
+          "cbf_pred_sat": 0.9699462890625,
+          "cbf_true_sat": 0.966552734375,
+          "cbf_feasible": 0.992578125,
+          "cbf_violation": 0.04033943343819148,
+          "grad_vel_norm": 0.2658303074750826
+        }
+      },
+      "full": null
+    },
+    {
+      "name": "ft_both_s0",
+      "screen": {
+        "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/safety_opt/ft_both_s0/policy_final.pth",
+        "h_checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/h/v6_h.pkl",
+        "steps": 24576,
+        "episodes": 20,
+        "training_seed": 0,
+        "eval_seed": 10000,
+        "metrics": {
+          "episode_return": 23.12318945978768,
+          "safety": 0.998388671875,
+          "unsafe": 0.001611328125,
+          "safe_mask": 0.9785400390625,
+          "warning": 0.0026123046875,
+          "collision_episode": 0.15,
+          "safe_episode": 0.85,
+          "warning_episode": 0.4,
+          "collision_final_any": 0.0,
+          "reach": 0.10625,
+          "reach_episode_any": 0.55,
+          "reach_final": 0.0125,
+          "reach_final_any": 0.1,
+          "official_safety": 0.96875,
+          "official_reach": 0.10625,
+          "official_success": 0.10625,
+          "h_mean": 0.12603802258890937,
+          "h_min": 0.032594048604369166,
+          "action_abs": 0.19465318177899463,
+          "cbf_pred_sat": 0.968798828125,
+          "cbf_true_sat": 0.9685302734375,
+          "cbf_feasible": 0.9950439453125,
+          "cbf_violation": 0.042671223000378435,
+          "grad_vel_norm": 0.2642826512450075
+        }
+      },
+      "full": null
+    }
+  ],
+  "markdown": "| run | episodes | reach | success | safe_ep | collision_ep | official_safety |\n|---|---:|---:|---:|---:|---:|---:|\n| h_only_final_20ep | 20 | 0.5687 | 0.5125 | 0.500 | 0.500 | 0.8812 |\n| cost_s0 | 20 | 0.1500 | 0.1375 | 0.300 | 0.700 | 0.8250 |\n| ft_barrier_s0 | 20 | 0.3688 | 0.3438 | 0.750 | 0.250 | 0.9437 |\n| ft_both_s0 | 20 | 0.1062 | 0.1062 | 0.850 | 0.150 | 0.9688 |\n"
+}

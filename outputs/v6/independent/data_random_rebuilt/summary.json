@@ -1,0 +1,46 @@
+{
+  "schema": "v6.h_targets.rebuilt.v1",
+  "source": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data",
+  "out": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/data_random_rebuilt",
+  "horizon": 32,
+  "margin_scale": 0.2,
+  "include_wall": false,
+  "splits": {
+    "train": {
+      "rows": 20480,
+      "unsafe_rate": 0.055364990234375,
+      "ignored_rate": 0.07899169921875,
+      "target_negative_rate": 0.134356689453125,
+      "target_mean": 0.7037020921707153,
+      "margin_mean": 0.3468053936958313,
+      "gradient_abs_mean": 0.3050154745578766,
+      "future_margin_mean": 0.28441303968429565,
+      "future_margin_min": -0.09963473677635193,
+      "future_margin_max": 0.44999998807907104
+    },
+    "val": {
+      "rows": 2560,
+      "unsafe_rate": 0.044677734375,
+      "ignored_rate": 0.067431640625,
+      "target_negative_rate": 0.112109375,
+      "target_mean": 0.72899329662323,
+      "margin_mean": 0.354225218296051,
+      "gradient_abs_mean": 0.2817082405090332,
+      "future_margin_mean": 0.29576003551483154,
+      "future_margin_min": -0.08539188653230667,
+      "future_margin_max": 0.44999998807907104
+    },
+    "test": {
+      "rows": 2560,
+      "unsafe_rate": 0.080322265625,
+      "ignored_rate": 0.102490234375,
+      "target_negative_rate": 0.1828125,
+      "target_mean": 0.6250854730606079,
+      "margin_mean": 0.32443228363990784,
+      "gradient_abs_mean": 0.37769991159439087,
+      "future_margin_mean": 0.24898502230644226,
+      "future_margin_min": -0.0957934707403183,
+      "future_margin_max": 0.44999998807907104
+    }
+  }
+}

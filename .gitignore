@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+/build/
+/dist/
+
+# Virtual environments (root only; do not ignore source dirs named env/)
+/.venv/
+/venv/
+/env/
+
+# IDE / editor state
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS / tool metadata
+.DS_Store
+Thumbs.db
+.workbuddy/
+
+# Local training outputs: keep Markdown/JSON summaries, exclude raw artifacts.
+# The local experiment tree is ~3.3 GB (data, checkpoints, logs); these are
+# reproducible from nav/README_V6.md and are not part of the Git history.
+*.npz
+*.npy
+*.pth
+*.pt
+*.pkl
+*.ckpt
+*.onnx
+*.log
+*.jsonl
+*.pre_nanfix
+*.failed_path
+FAILED
+nav/outputs/
+
+# TensorBoard / W&B local runs (root only; project output dirs may be named runs/)
+/runs/
+wandb/
+lightning_logs/
