@@ -92,11 +92,44 @@ Repaired Stage-B 预测式 h gate 通过预注册 3-seed guardrails（16,384 ste
 V5 full（`0.512`）、CBF-QP（`0.781`）和 GCBF+（`0.861`）。`n=3`，seed-level
 差异尚未达到统计显著；安全增益主要由 seeds 0/2 贡献。
 
-记录：`outputs/v6/independent/nav/STAGE_B_REPAIR_MULTISEED.md`。
+**P0 修正（2026-10-27）**：补齐的 original-h + broad-gate 3-seed 行为
+`safe 0.6433 / official_safety 0.9325 / success 0.4263 / reach 0.4525 /
+return 70.33`；P0 − h-only 为 `+19.3pp` safe，A − P0 仅 `+5.0pp` safe
+（per-seed `+14/+2/−1pp`），且 success `−1.6pp`、return `−4.9%`，A 并未在
+任务上支配 P0。P0 与 A 的 gate scope/threshold 也不同，所以“主要靠 gate”
+只适用于 original h + broad gate 这一行，不是 repaired-h 的通用归因。
+
+**P1 repaired-h 2×2（2026-10-27 完成）**：
+
+| cell | h 输入 | gate | safe | official safety | success | return |
+|---|:---:|:---:|---:|---:|---:|---:|
+| A repaired h + gate | on | on | 0.6933 | 0.9417 | 0.4100 | 66.85 |
+| B repaired h, gate off | on | off | 0.6333 | 0.9267 | 0.3229 | 55.67 |
+| C no h input, gate on | off | on | 0.0200 | 0.4987 | 0.0367 | −6.63 |
+| D no h input, gate off | off | off | 0.0333 | 0.5479 | 0.0367 | 7.21 |
+
+清晰对比：B − H0 `+18.3pp` safe 但 success `−8.4pp`；A − B `+6.0pp` safe /
+`+8.7pp` success；A − C、B − D 分别 `+67.3/+60.0pp` safe；C − D `−1.3pp`
+safe、success 持平。结论：在 16k from-scratch 预算下 actor h 输入是必需的
+（C/D 在全部 6 个 seed 上崩溃，D 与无 h 固定惩罚基线一致），gate 离开 h
+输入无效；在 repaired-h 2×2 内只有 repaired h + gate（A）同时保住安全与任务
+（P0 是独立的 original-h broad-gate 行）。`+24.3pp` 可分解为
+repaired h（gate off）`+18.3pp` + progress gate `+6.0pp`；`n=3`，仅作描述性
+归因，不主张策略级显著优越。
+
+记录：`outputs/v6/independent/nav/STAGE_B_REPAIR_MULTISEED.md` 和
+`outputs/v6/independent/nav/BASELINE_COMPARISON.md`。
+
+2026-10-27 补齐了两条 matched 16k 碰撞感知基线：固定
+`collision_penalty=10` 的 MAPPO（safe `0.033`，official safety `0.519`，
+success `0.014`，return `-30.35`）和官方 collision cost 的 MAPPO-Lag 16k
+（safe `0.000`，official safety `0.322`，success `0.086`，return `39.55`）。
+两者都不使用 h/QP，V6 Stage-B 在同预算下仍为 `0.693 / 0.9417 / 0.410 /
+66.85`。旧的 MAPPO-Lag 100k 只作为宽松参考，不再当作 matched 行。
+记录：`outputs/v6/independent/nav_baselines_16k/README.md`。
 
 ### 尚未完成
 
-- 正式 16k h-off 3-seed navigation baseline。
 - Navigation task channel / \(V_T\)：T0w 4k warm-start 的严格
   safety-first 非劣规则未通过（差 1 episode）；task-first 视角下是
   task-heavy Pareto 点（success `+29.9pp`，return `+92.2`，safe `-4pp`），

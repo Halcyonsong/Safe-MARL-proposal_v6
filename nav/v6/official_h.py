@@ -172,6 +172,7 @@ def provider_from_checkpoint(
     *,
     h_offset: float | None = None,
     h_scale: float | None = None,
+    n_agents: int | None = None,
 ) -> OfficialLearnedH:
     ckpt = load_official_h_checkpoint(path)
     if ckpt.get('schema') != 'v6-official-cbf-h':
@@ -182,9 +183,16 @@ def provider_from_checkpoint(
     scale = float(ckpt.get('h_scale', 1.0))
     if h_scale is not None:
         scale = float(h_scale)
+    # ``n_agents`` is an evaluation-time graph-size override for the density
+    # stress test.  The graph net is local/permutation-invariant, so the same
+    # weights can be applied to a larger agent set; the checkpoint's metadata
+    # remains the training-time size.  Default behaviour is unchanged.
+    graph_agents = int(
+        ckpt.get('n_agents', env.num_agents)
+        if n_agents is None else n_agents)
     return OfficialLearnedH(
         ckpt['params'], env,
-        n_agents=int(ckpt.get('n_agents', env.num_agents)),
+        n_agents=graph_agents,
         gnn_layers=int(ckpt.get('gnn_layers', 1)),
         h_offset=offset * scale,
         h_scale=scale,

@@ -237,12 +237,29 @@ Seeds 1/2 then completed with the same frozen repaired h, gate, config,
 | **std** | 0.168 | 0.168 | 0.0378 | 0.0583 | 0.0695 | 5.26 |
 
 Against the matched h-only 3-seed mean (`safe=0.450`, `safety=0.8783`,
-`success=0.4067`, `return=61.73`), the gate adds `+24.3 pp` safe episodes,
-`+6.3 pp` official safety, and `+8.3%` return, with success unchanged
-(`+0.3 pp`).  All pre-registered guardrails pass.  The gain is not uniform:
-seed 1 is nearly neutral on safety; task shifts are `-10.5/+4.0/+7.5 pp`
-success for seeds 0/1/2.  With `n=3`, seed-level paired differences are not
-statistically separated from zero.
+`success=0.4067`, `return=61.73`), the repaired-h + gate package adds
+`+24.3 pp` safe episodes, `+6.3 pp` official safety, and `+8.3%` return, with
+success unchanged (`+0.3 pp`).  All pre-registered guardrails pass.  The gain
+is not uniform: seed 1 is nearly neutral on safety; task shifts are
+`-10.5/+4.0/+7.5 pp` success for seeds 0/1/2.  With `n=3`, seed-level paired
+differences are not statistically separated from zero.
+
+**P0/P1 update (2026-10-27).**  The original-h + broad-gate 3-seed row
+reaches `0.6433/0.9325/0.4263/70.33`; P0 - h-only is `+19.3 pp` safe, but
+A - P0 is `+5.0 pp` safe with `-1.6 pp` success and `-4.9%` return, and P0/A
+differ in gate scope/threshold.  The completed repaired-h 2x2 gives the clean
+attribution: B (gate off) `0.6333/0.9267/0.3229/55.67`, C (no actor h, gate
+on) `0.0200/0.4987/0.0367/-6.63`, D (no actor h, gate off)
+`0.0333/0.5479/0.0367/7.21`.  Actor h input is load-bearing at 16k from
+scratch (C/D collapse; D is consistent with the no-h fixed-penalty baseline), the gate is
+ineffective without it, and within the repaired-h 2x2 only repaired h + gate
+combines safety with retained task (P0 is a separate original-h broad-gate
+row).  B - h-only is `+18.3 pp` safe but `-8.4 pp` success; A - B is
+`+6.0 pp` safe / `+8.7 pp` success.  The `+24.3 pp` decomposes as `+18.3`
+(repaired h) + `6.0` (gate); "mostly gate" applies only to the broad gate on
+the original h.  `n=3`, descriptive only.  See
+[`BASELINE_COMPARISON.md`](BASELINE_COMPARISON.md) and
+[`P1_REPAIRED_H_FACTORIAL.md`](P1_REPAIRED_H_FACTORIAL.md).
 
 Full protocol, per-seed table, and caveats:
 [`STAGE_B_REPAIR_MULTISEED.md`](STAGE_B_REPAIR_MULTISEED.md).  Do not sweep

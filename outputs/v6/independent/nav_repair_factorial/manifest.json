@@ -1,0 +1,171 @@
+{
+  "schema": "v6-nav-repair-factorial-manifest.v1",
+  "created": "2026-10-27",
+  "experiment": "P1 repaired-h 2x2 factorial, navigation (B/C/D)",
+  "protocol": {
+    "steps": 16384,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "episodes": 100,
+    "eval_seed": 10000,
+    "deterministic": true,
+    "checkpoint": "policy_final.pth (fixed final)",
+    "environment": "official GCBF+ DoubleIntegrator, 8 agents, area 4.0, 8 obstacles, 256 steps",
+    "fixed_unsafe_penalty": 10.0,
+    "actor_from_scratch": true
+  },
+  "gate": {
+    "low": 0.0,
+    "high_repaired": 0.26726993918418884,
+    "high_off": 0.0,
+    "scope_repaired": "progress_only",
+    "active_at_eval": false,
+    "note": "C uses the config gate; B/D override high=0.0; gate on/off is a training-time reward-shaping difference"
+  },
+  "config": {
+    "path": "nav/configs/v6/v6_nav_stageb_repair_16k.yaml",
+    "sha256": "4ee69c9e99a427708d17f1157991786d41a60e2624721e7e478b90a0aabebd16"
+  },
+  "h_checkpoint": {
+    "path": "outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+    "sha256": "0f67eaeec99912881017231234aa10846c5edfda767118da2157b2da7df7fb13"
+  },
+  "runners": {
+    "nav/scripts/run_v6_nav_repair_factorial_arm.sh": "a8f74f89f10c889a4a4c8e24827b2899705cf84b9e63c9f99cfd1ca8eb7ea33c",
+    "nav/scripts/run_v6_nav_repair_factorial.sh": "364149112f6cbb6d7a52d760896118128347fb10a1dff88e1ee8b93869063ecc",
+    "nav/scripts/eval_v6_nav_100ep_chunked.sh": "506987d276cc99c5d53ee8f37bac5fe987d16159278f766e8feca6b5a38550f8",
+    "nav/scripts/aggregate_v6_nav_factorial.py": "2b0e0b392921b8287438c31b237c1e0bccda38f7750416450d3a5eaa6bac49f1"
+  },
+  "cells": {
+    "B_h_on_gate_off": {
+      "actor_h_input": true,
+      "training_gate": false,
+      "extra_args": "--task-gate-high 0.0",
+      "seeds": {
+        "0": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed0/policy_final.pth",
+            "sha256": "538a5e415a1d2e8d67f2506c5a0369b8bb0915e4ab1a95a43d4e1b20206d9907"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed0/eval_100ep_final.json",
+            "sha256": "ac520fb3b6d72750e528f5d2bde29583436e62ba912be813991c3888ee8b6fb3"
+          }
+        },
+        "1": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed1/policy_final.pth",
+            "sha256": "03384d6ae6b2e187d538bd990a438cfcf0fcd88ea6407bc06ff70b2d3e17ca32"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed1/eval_100ep_final.json",
+            "sha256": "894f781f73dec84fb87e8bd2c11e77d62f0d7183085e83b9984c730e433eb44b"
+          }
+        },
+        "2": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed2/policy_final.pth",
+            "sha256": "195be171c5134132699e85800074f5cf32234434fb7aeff42b88ee2151f1cd92"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed2/eval_100ep_final.json",
+            "sha256": "cdade9e15a7cd5207fb040a3c88eea57fe2432c5f12322fb5d69ed03f422ed68"
+          }
+        }
+      }
+    },
+    "C_h_off_gate_on": {
+      "actor_h_input": false,
+      "training_gate": true,
+      "extra_args": "--no-use-h-features",
+      "seeds": {
+        "0": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed0/policy_final.pth",
+            "sha256": "985e2d5cc195c0928e63d51f9809d3b0f625c0fe4c4b2ead8e96f9f10e5ab52d"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed0/eval_100ep_final.json",
+            "sha256": "e93f9818ab468a14f4830db715c600e55e3e1cacc4dcffc0047b9a917e7a7380"
+          }
+        },
+        "1": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed1/policy_final.pth",
+            "sha256": "34fb59ba14a14134fe48b4cc41cabdb76ed5197efb2246bdcb4a07d91ddd5769"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed1/eval_100ep_final.json",
+            "sha256": "1ac1bc45f073293fd0aaa3e4c13826d4d6f48ec31130b83af8eb17f62f7d7f8b"
+          }
+        },
+        "2": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed2/policy_final.pth",
+            "sha256": "df1117be63e97723f1b867ec3c6304f5d678fd46c01308ca4c7347fd6facfdbb"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed2/eval_100ep_final.json",
+            "sha256": "fb89c6f21561c78ee8e0ec2a74d514b980c9d455ca170ca95cd1092453bd8307"
+          }
+        }
+      }
+    },
+    "D_h_off_gate_off": {
+      "actor_h_input": false,
+      "training_gate": false,
+      "extra_args": "--no-use-h-features --task-gate-high 0.0",
+      "seeds": {
+        "0": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed0/policy_final.pth",
+            "sha256": "55316ff594c573469a0c20808cac298d7490aaff012e3e815c464635333c72e1"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed0/eval_100ep_final.json",
+            "sha256": "c866107785669443bd4df4d92ebef97d226b67c8901b81f91e168054071aff66"
+          }
+        },
+        "1": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed1/policy_final.pth",
+            "sha256": "f90abcfba06ee5ff616db99cb72f173459cb3482b2d2fcdd3c4b890d627c7b88"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed1/eval_100ep_final.json",
+            "sha256": "1ab40a0093cd110363af89cea9fb986acf41632a9125b0866a4463aa04b978a7"
+          }
+        },
+        "2": {
+          "policy_final": {
+            "path": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed2/policy_final.pth",
+            "sha256": "73a78c09778065dd20d15dbb5d5f59dcc4078f787208aa3d58a61c19ff58edce"
+          },
+          "eval_100ep": {
+            "path": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed2/eval_100ep_final.json",
+            "sha256": "556937e8d92194d799d5b2f39acca2c833e6dac45aba4b8609668d2e48fafe3f"
+          }
+        }
+      }
+    }
+  },
+  "aggregate": {
+    "json": {
+      "path": "outputs/v6/independent/nav_repair_factorial/aggregate_100ep.json",
+      "sha256": "f8ac22bde78367b9c414d7829eacf9f24d80524b6adc46a2071811bd56a04132"
+    },
+    "markdown": {
+      "path": "outputs/v6/independent/nav_repair_factorial/aggregate_100ep.md",
+      "sha256": "647fca5230e7244e31ba11769a4d5463eb2e624aa74b9aa2140f22e7ac3a7931"
+    }
+  },
+  "notes": [
+    "All nine training runs finished 2026-10-27 14:47 CST.",
+    "A server restart interrupted B seed2 evaluation; the seed was re-evaluated from scratch with the identical checkpoint/config/seed. No completed result changed.",
+    "--no-use-h-features zeros actor h/grad channels; the C gate still reads the frozen repaired h_next.",
+    "h_barrier_coef=0.0 in every cell, so no dense h-barrier cost is removed by the ablation."
+  ]
+}

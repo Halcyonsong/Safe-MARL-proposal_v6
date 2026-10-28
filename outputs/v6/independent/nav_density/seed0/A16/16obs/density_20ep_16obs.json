@@ -1,0 +1,37 @@
+{
+  "checkpoint": "outputs/v6/independent/nav_stageb_repair_28k/seed0/policy_step_16384.pth",
+  "steps": 16384,
+  "episodes": 20,
+  "training_seed": 0,
+  "eval_seed": 30000,
+  "seed": 30000,
+  "chunks": [
+    "outputs/v6/independent/nav_density/seed0/A16/16obs/chunks_density_20ep_16obs/chunk_0.json"
+  ],
+  "metrics": {
+    "action_abs": 0.30912488196918275,
+    "cbf_feasible": 0.9879638671875,
+    "cbf_pred_sat": 0.88974609375,
+    "cbf_true_sat": 0.868408203125,
+    "cbf_violation": 0.08042599458771424,
+    "collision_episode": 0.5,
+    "collision_final_any": 0.0,
+    "episode_return": 56.29462252390804,
+    "grad_vel_norm": 0.5815612026509143,
+    "h_mean": 0.7635881294205319,
+    "h_min": 0.5605472713708878,
+    "official_reach": 0.35625,
+    "official_safety": 0.90625,
+    "official_success": 0.34375,
+    "reach": 0.35625,
+    "reach_episode_any": 0.9,
+    "reach_final": 0.025,
+    "reach_final_any": 0.2,
+    "safe_episode": 0.5,
+    "safe_mask": 0.9845947265625,
+    "safety": 0.9924072265625,
+    "unsafe": 0.0075927734375,
+    "warning": 0.008984375,
+    "warning_episode": 0.55
+  }
+}

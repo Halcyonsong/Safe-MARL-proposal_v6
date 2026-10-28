@@ -1,12 +1,13 @@
 # V6 TODO
 
-Updated: 2026-10-26.
+Updated: 2026-10-27.
 
 Canonical status and artifact map: [`STATUS.md`](STATUS.md).
 
-Current state: Ant 10M 3-seed pass; navigation repaired Stage-B 3-seed pass.
-The unchecked items below are follow-ups and explicit non-goals, not blockers
-for the promoted claims.
+Current state: Ant 10M 3-seed pass; navigation repaired Stage-B 3-seed pass;
+navigation P0/P1 attribution complete (actor h input is load-bearing at 16k,
+gate ineffective without it).  The unchecked items below are follow-ups and
+explicit non-goals, not blockers for the promoted claims.
 
 ## Highest priority
 
@@ -23,6 +24,85 @@ for the promoted claims.
       `MULTISEED_10M_PLAN.md`, and `outputs/v6/V6_COMPLETE_RECORD.md`.
 - [ ] Optional: Ant 10M multi-checkpoint evaluation at 2M/5M (retention
       already established at 10M; not needed for the main claim).
+- [x] **Ant 10M from-scratch MAPPO-Lag external baseline — COMPLETE,
+      2026-10-27 19:17.**  Fresh experiment
+      `v6_lag_10m_seed0_restart_20261027`, seed 0, exactly 10M steps,
+      unchanged upstream recipe, no checkpoint selection.  Frozen evaluation
+      at 100 deterministic + 100 stochastic episodes (eval seeds
+      `20000..20099`): deterministic `safe=0.97`, `forward=3011.02`,
+      `return=3603.84`; stochastic `safe=0.66`, `forward=2305.82`,
+      `return=2624.36`.  Matched V6 seed-0: det `safe=0.97`,
+      `forward=3723.09`; stoch `safe=0.78`, `forward=2923.73`.  This is a
+      single-seed external screen, not a main-table row; no 3-seed expansion
+      is launched.  Record:
+      `independent/ant/STAGE_ANT_MAPPO_LAG_10M.md`.
+- [x] **Navigation 28k budget extension — A-only COMPLETED, negative task
+      result (2026-10-28).**  V6 repaired-h + progress-gate, 3 seeds, from
+      scratch, 28,672 steps.  Mean 16k/24k/28k success
+      `0.4100/0.2704/0.2767`; mean safe `0.6933/0.7000/0.7800`; mean
+      official `0.9417/0.9479/0.9604`; mean return `66.85/59.97/63.45`.
+      28k fails mean success (`<0.36`) and worst-seed success
+      (`0.19875<0.20`), while safety/return/spread pass.  **Not promoted;
+      16k remains the promoted row.**  No extra 28k seeds, no endpoint
+      switch, no 24k promotion.  Pre-registration and result:
+      `independent/nav/STAGE_28K_BUDGET_EXTENSION.md`; table:
+      `independent/nav/nav_3seed_16k_24k_28k_table.json`.
+- [x] **MAPPO fixed-penalty 16k sweep — completed 2026-10-28.**
+      `penalty=1` 3-seed mean `official 0.4096`, `safe 0.0100`, `success
+      0.1325`, `return 59.36`; `penalty=100` mean `0.6737/0.0733/0.0158/
+      -59.48`.  Neither is close to V6; penalty 1 remains unsafe, penalty
+      100 trades task away.  `penalty=0/10` already existed.  Fixed penalty
+      only; MAPPO-Lag `cost_limit` sweep remains deferred.  Record:
+      `independent/nav/PENDING_28K_EXPERIMENTS.md` and `STATUS.md`.
+- [x] **V6 density stress test — first block completed 2026-10-28.**
+      4 conditions (8/8, 4 obstacles, 16 obstacles, 16 agents) x 3 policies
+      (A28, A16, H0), seed 0, 20 episodes, scenes `30000..30019`.  A16 keeps
+      substantially more task than A28 in every condition (`success
+      0.34-0.39` vs `0.19-0.22`) with comparable/better safety in 8/8,
+      4 obstacles and 16 agents; A28 is safer only at 16 obstacles
+      (`0.60` vs `0.50`).  H0 has A16-like task but much lower safety at 16
+      obstacles/16 agents (`safe 0.25/0.05`).  **No A28 density-robustness
+      benefit; report the task boundary.**  These are descriptive 20-episode
+      screens; no 100ep x 3-seed confirmatory runs.  12-agent/12-obstacle
+      rows deferred.  Record: `independent/nav/DENSITY_STRESS_TEST.md`,
+      `independent/nav_density/seed0/summary.json`.
+- [x] **P0: original-h + broad-gate 3-seed completion (2026-10-27).**
+      Evaluated `nav_h_gate_16k` seeds 1/2 at 100 deterministic episodes,
+      eval seed 10000.  3-seed mean: `safe=0.6433`, `official_safety=0.9325`,
+      `success=0.4263`, `reach=0.4525`, `return=70.33`.  This isolated the
+      broad-gate effect on the original h: P0 - h-only = `+19.3 pp`; A - P0 =
+      `+5.0 pp` with a task cost and non-uniform per-seed deltas
+      (`+14/+2/-1 pp`).  The later P1 factorial revised the repaired-h
+      attribution (B - H0 `+18.3 pp` h retrain, A - B `+6.0 pp` gate).  Docs
+      updated: `independent/nav/BASELINE_COMPARISON.md`, `STATUS.md`.
+- [x] **P1: repaired-h 2x2 factorial (completed 2026-10-27).**  B = h input
+      on + gate off; C = h input off + gate on; D = h input off + gate off.
+      16,384 steps, seeds 0/1/2, fixed penalty 10, repaired h, 100
+      deterministic episodes, eval seed 10000.  All nine runs trained by
+      14:47 and all nine formal evaluations finished by 17:08.  Means:
+      A `0.6933/0.9417/0.4100/66.85`; B `0.6333/0.9267/0.3229/55.67`;
+      C `0.0200/0.4987/0.0367/-6.63`; D `0.0333/0.5479/0.0367/7.21`
+      (safe / official safety / success / return).  Clean contrasts:
+      B - H0 `+18.3 pp` safe but `-8.4 pp` success; A - B `+6.0 pp` safe /
+      `+8.7 pp` success; A - C / B - D `+67.3/+60.0 pp` safe; C - D
+      `-1.3 pp` safe.  Reading: actor h input is load-bearing at 16k from
+      scratch (C/D collapse; D is consistent with the no-h fixed-penalty baseline), the
+      gate is ineffective without it, and within the repaired-h 2x2 only A
+      combines safety with retained task.  `n=3`, descriptive only.  Artifacts:
+      `independent/nav_repair_factorial/aggregate_100ep.{json,md}`;
+      record: `independent/nav/P1_REPAIRED_H_FACTORIAL.md`.  Docs updated:
+      `BASELINE_COMPARISON.md`, `STATUS.md`, `V6_COMPLETE_RECORD.md`.
+      One server restart interrupted B seed 2 evaluation; it was rerun with
+      the identical checkpoint/config/seed and no completed result changed.
+- [x] **Matched 16k collision-aware navigation baselines (completed
+      2026-10-27):** MAPPO + fixed collision penalty 10 and MAPPO-Lag +
+      official collision cost, seeds 0/1/2, 100 deterministic episodes at
+      eval seed 10000.  Results: fixed penalty `safe=0.033,
+      official_safety=0.519, success=0.014, return=-30.35`; Lag 16k
+      `safe=0.000, official_safety=0.322, success=0.086, return=39.55`;
+      V6 Stage-B `0.693/0.9417/0.410/66.85`.  Artifacts:
+      `independent/nav_baselines_16k/`; updated
+      `independent/nav/BASELINE_COMPARISON.md`.
 - [x] **Ant V_T transfer diagnostic (single seed, closed null):** 1-D `A_T`
       warm-start from the existing seed-0 10M h-only base, 1M extra steps,
       matched no-V_T 1M control; frozen h/cost/reward, V_T trained offline
@@ -44,9 +124,12 @@ for the promoted claims.
 - [x] Run 1-seed 16k h+gate and 100ep eval vs existing h-only.
       Seed 0: safe 0.62 -> 0.70, success 0.53 -> 0.37.  Current gate is a
       safety/task tradeoff, not a promoted result.
-- [ ] Broad-gate seeds 1/2 remain unevaluated; that gate design is archived
+- [x] Broad-gate seeds 1/2 completed (P0, 2026-10-27): 3-seed
+      `0.6433/0.9325/0.4263/70.33`; that gate design remains archived
       (safety/task tradeoff), not promoted.
-- [ ] Add formal 16k h-off 3-seed baseline if needed.
+- [x] Formal 16k h-off 3-seed baseline (P1 D, 2026-10-27): `safe 0.0333`,
+      `official_safety 0.5479`, `success 0.0367`, `return 7.21`; confirms the
+      no-h collapse at the matched budget.
 - [ ] Add monitor-only safety eval and intermediate checkpoints for the next
       run; do not select the formal checkpoint from training eval.
 - [ ] Add 100ep stochastic evaluation of the existing h-only/gate checkpoints.
@@ -198,6 +281,49 @@ for the promoted claims.
 - [ ] Optional (task-first): 3-seed from-scratch `h1 + gate + V_T`
       replication.  Not authorized yet; requires a new pre-registration.
       The strict safety-first line remains stopped.
+- [x] **T0w-28k task warm-start screen (W16; completed 2026-10-28,
+      task-first trade-off).**
+      Primary arm: from the same 28k run's 16k checkpoint,
+      continue 12,288 steps with the frozen V_T task channel to 28,672,
+      saving/evaluating both the **24k and 28k** checkpoints.  Compare each
+      to the from-scratch 24k/28k checkpoints (same seed, same 16k prefix,
+      same total budget); no separate C16/C24 control is required for this
+      procedure-level comparison.  The existing T0w 16k+4k no-V_T control
+      remains the channel-attribution evidence; add a C24 (4k) only if a
+      strict "V_T alone causes the gain" claim is needed.  Optional short
+      arm: 24k -> 28k (4,096 steps) with a V_T retrained on 24k rollouts,
+      only if the 16k -> 28k task gain fades at 28k.  V_T: train on 16k base
+      rollouts for the primary arm; 24k rollouts for the optional short arm.
+      Seed-0 screen first, 3 seeds only if the task gain holds with safety
+      not worse.  100ep eval `10000..10099`; V_T data `30000..30099`.
+      **Queue after the 3-seed 16/24/28 formal table and before the MAPPO
+      sweep / density block.**  This is a separate warm-start arm, not the
+      from-scratch 28k budget claim.  Seed-0 100ep passed: 24k
+      `0.93/0.98875/0.57/152.42`; 28k `0.83/0.9725/0.62125/237.36`
+      (safe/official/success/return), versus control 28k
+      `0.86/0.975/0.19875/55.52`.  Seeds 1/2 used per-seed V_T; the 3-seed
+      result is a task-first trade-off: W16 28k mean `safe 0.6633`,
+      `official 0.9329`, `success 0.6175`, `return 198.57`; the 24k
+      diagnostic mean is `0.7233/0.9504/0.5958/143.73`.  Rule 7.1 fails on
+      28k mean safe/official and on the safe range (0.27; 24k range 0.38),
+      while task/return/worst-seed bounds pass.  **Keep 16k promoted; do not
+      switch to 28k/24k post hoc.**  A safety-regularized task channel or a
+      5-seed confirmatory pre-registration is a separate proposal.  MAPPO
+      was preempted for this block and restarted after.
+- [x] **Ant V_T failure diagnosis (completed 2026-10-28).**  The 1-D
+      `A_T` warm-start did not improve task (forward `3960.83` vs control
+      `4014.03`, `-1.33%`).  The V_T predictor passed quality (EV `0.4838`,
+      Pearson `0.6597`), so the interface was the primary suspect.  The
+      fixed `[A_T, unit_norm(grad_s V_T)]` 250k pilot is also null on task:
+      deterministic forward `3816.50` vs control `3811.20` (`+0.14%`),
+      return `4458.09` vs `4449.88` (`+0.18%`); safety improved (`0.99` vs
+      `0.89`, cost `0.00094` vs `0.00661`), stochastic forward `2968.53` vs
+      `2856.21`, safe `0.78` vs `0.62`.  `vt_grad_supported=false`.
+      **Do not expand this arm to 3 seeds and do not claim an Ant task
+      channel.**  Remaining candidates (longer warm-start / V_T refresh,
+      V_T-vs-critic residual, actor capacity, task-reward scale) require a
+      new pre-registration; one cause at a time; no test-set tuning.  The
+      nav W16 gate is unaffected and remains the task-feasibility test.
 - [ ] Safety coupling / action conditioning only if work resumes and is
       approved; action conditioning/filtering requires explicit approval.
       The impact-time failure is actor/action-limited.

@@ -389,6 +389,23 @@ All pre-registered guardrails pass:
 - mean `episode_return=66.85 >= 55`;
 - worst seed `safe_episode=0.510 >= 0.30` and `success=0.345 >= 0.20`.
 
+**Attribution update (P0, 2026-10-27).**  The comparison above mixes gate
+activation with h retraining: h-only has no gate, repaired Stage B has one.
+The completed original-h + broad-gate row reaches `0.6433/0.9325/0.4263/
+70.33` (safe/official safety/success/return), i.e. P0 - h-only is
+`+19.3 pp` safe and A - P0 is only `+5.0 pp` safe (`+0.9 pp` official
+safety) with `-1.6 pp` success and `-4.9%` return.  Per-seed A - P0 safe
+deltas are `+14/+2/-1 pp`.  A does not dominate P0 on task, and P0/A differ
+in gate scope/threshold.  The completed P1 factorial resolves the clean
+repaired-h attribution: B (repaired h, gate off) is
+`safe 0.6333 / official_safety 0.9267 / success 0.3229 / return 55.67`, so
+B - h-only is `+18.3 pp` safe but `-8.4 pp` success and `-6.1` return, while
+A - B is `+6.0 pp` safe and `+8.7 pp` success.  Thus `+24.3 pp` decomposes
+descriptively as `+18.3` (repaired h) + `6.0` (gate): most of the safe gain is
+the h retrain, but the gate recovers the task performance that h retrain alone
+loses.  "Mostly gate" applies only to the broad gate on the original h.
+See [`P1_REPAIRED_H_FACTORIAL.md`](P1_REPAIRED_H_FACTORIAL.md).
+
 **Verdict (3 seeds): pass.**  The repaired Stage B is promoted as the first
 V6 navigation 3-seed gate result.  Safety improves by `+24.3 pp` safe
 episodes and `+6.3 pp` official safety, while mean success is unchanged

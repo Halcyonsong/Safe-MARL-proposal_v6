@@ -48,6 +48,14 @@ def main():
     ap.add_argument('--device', default='auto')
     ap.add_argument('--stochastic', action='store_true',
                     help='sample actions for Ant-style robustness evaluation')
+    ap.add_argument('--num-agents', type=int,
+                    help='evaluation-only density override (>= max_neighbors)')
+    ap.add_argument('--num-obstacles', type=int,
+                    help='evaluation-only density override')
+    ap.add_argument('--area-size', type=float,
+                    help='evaluation-only area-size override')
+    ap.add_argument('--max-step', type=int,
+                    help='evaluation-only episode-length override')
     args = ap.parse_args()
 
     device = _device(args.device)
@@ -56,7 +64,21 @@ def main():
     model, task_net, ema, ckpt = load_v6_checkpoint(
         ckpt_path, device=device)
     config = ckpt['config']
-    env_cfg = config['env']
+    env_cfg = dict(config['env'])
+    env_overrides = {
+        'num_agents': args.num_agents,
+        'num_obstacles': args.num_obstacles,
+        'area_size': args.area_size,
+        'max_step': args.max_step,
+    }
+    for key, value in env_overrides.items():
+        if value is not None:
+            env_cfg[key] = value
+    if int(env_cfg['num_agents']) < int(env_cfg['max_neighbors']):
+        raise SystemExit(
+            f"num_agents={env_cfg['num_agents']} is below "
+            f"max_neighbors={env_cfg['max_neighbors']}; the 92-dim "
+            "observation would be truncated. Use >= 5 agents.")
     env = OfficialDoubleIntegrator(
         num_agents=env_cfg['num_agents'],
         area_size=env_cfg['area_size'],
@@ -85,7 +107,8 @@ def main():
     if h_path.suffix.lower() in ('.pkl', '.pickle'):
         hnet = official_h_provider(
             h_path, env, h_offset=None if h_offset is None else float(h_offset),
-            h_scale=config['h'].get('h_scale'))
+            h_scale=config['h'].get('h_scale'),
+            n_agents=int(env.num_agents))
     else:
         hnet = LocalSafetyProvider.from_checkpoint(
             h_path, env, device=device,
@@ -116,7 +139,13 @@ def main():
         checkpoint=str(args.checkpoint), h_checkpoint=str(h_path),
         steps=ckpt['steps'], episodes=args.num_episodes,
         training_seed=config.get('seed'), eval_seed=args.seed,
-        stochastic=bool(args.stochastic), metrics=result)
+        stochastic=bool(args.stochastic),
+        env={key: env_cfg[key] for key in (
+            'num_agents', 'num_obstacles', 'area_size', 'max_step',
+            'n_rays', 'max_neighbors')},
+        env_overrides={key: value for key, value in env_overrides.items()
+                       if value is not None},
+        metrics=result)
     print(json.dumps(payload, indent=2))
     if args.out:
         out = _cwd_path(args.out)

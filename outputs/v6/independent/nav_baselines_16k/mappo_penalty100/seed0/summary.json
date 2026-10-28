@@ -1,0 +1,1416 @@
+{
+  "steps": 16384,
+  "seed": 0,
+  "obs_dim": 92,
+  "state_dim": 104,
+  "device": "cpu",
+  "eval": {
+    "episode_return": -45.187414527125654,
+    "safety": 0.96630859375,
+    "unsafe": 0.03369140625,
+    "safe_mask": 0.91630859375,
+    "warning": 0.039794921875,
+    "collision_episode": 1.0,
+    "safe_episode": 0.0,
+    "warning_episode": 1.0,
+    "collision_final_any": 0.0,
+    "reach": 0.025,
+    "reach_episode_any": 0.2,
+    "reach_final": 0.0,
+    "reach_final_any": 0.0,
+    "official_safety": 0.5875,
+    "official_reach": 0.025,
+    "official_success": 0.0125,
+    "action_abs": 0.24514331722748467
+  },
+  "best_step": 16384,
+  "best_score": 0.02606258547287435,
+  "history": [
+    {
+      "steps": 256,
+      "update": {
+        "loss": 1330.1412734985352,
+        "policy": -0.002803852636134252,
+        "value": 2660.3001708984375,
+        "entropy": 1.2003864012658596,
+        "ratio": 1.0018430352210999
+      },
+      "completed": {
+        "episode_return": -731.6301034539938,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0283203125
+      },
+      "reward_mean": -2.8579297065734863,
+      "action_abs": 0.4039599895477295
+    },
+    {
+      "steps": 512,
+      "update": {
+        "loss": 4290.938499450684,
+        "policy": -0.005428893433418125,
+        "value": 8581.89973449707,
+        "entropy": 1.1913965940475464,
+        "ratio": 0.9999861586838961
+      },
+      "completed": {
+        "episode_return": -1645.9338793829083,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.06396484375
+      },
+      "reward_mean": -6.429429531097412,
+      "action_abs": 0.408940851688385
+    },
+    {
+      "steps": 768,
+      "update": {
+        "loss": 763.377763748169,
+        "policy": -0.004860605287831277,
+        "value": 1526.7771492004395,
+        "entropy": 1.1885094344615936,
+        "ratio": 0.9991673864424229
+      },
+      "completed": {
+        "episode_return": -458.2851496934891,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.017578125
+      },
+      "reward_mean": -1.7901763916015625,
+      "action_abs": 0.4018610715866089
+    },
+    {
+      "steps": 1024,
+      "update": {
+        "loss": 860.3939247131348,
+        "policy": -0.003527868349920027,
+        "value": 1720.8067436218262,
+        "entropy": 1.1846257336437702,
+        "ratio": 1.002111330628395
+      },
+      "completed": {
+        "episode_return": -448.80065101385117,
+        "official_safety": 0.875,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0166015625
+      },
+      "reward_mean": -1.7531274557113647,
+      "action_abs": 0.4151144325733185
+    },
+    {
+      "steps": 1280,
+      "update": {
+        "loss": 3237.71590423584,
+        "policy": -0.004969889094354585,
+        "value": 6475.453628540039,
+        "entropy": 1.1877016983926296,
+        "ratio": 1.001144401729107
+      },
+      "completed": {
+        "episode_return": -1183.5026133358479,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04541015625
+      },
+      "reward_mean": -4.6230573654174805,
+      "action_abs": 0.4108290672302246
+    },
+    {
+      "steps": 1536,
+      "update": {
+        "loss": 2182.1791954040527,
+        "policy": -0.0035864755627699196,
+        "value": 4364.377388000488,
+        "entropy": 1.1847856231033802,
+        "ratio": 0.9992302600294352
+      },
+      "completed": {
+        "episode_return": -848.5950823426247,
+        "official_safety": 0.75,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0322265625
+      },
+      "reward_mean": -3.3148245811462402,
+      "action_abs": 0.4052191376686096
+    },
+    {
+      "steps": 1792,
+      "update": {
+        "loss": 1306.0373649597168,
+        "policy": -0.0010796169081004336,
+        "value": 2612.0888137817383,
+        "entropy": 1.1927201710641384,
+        "ratio": 0.9990678764879704
+      },
+      "completed": {
+        "episode_return": -748.8829571269453,
+        "official_safety": 0.5,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.02978515625
+      },
+      "reward_mean": -2.925323963165283,
+      "action_abs": 0.4032437801361084
+    },
+    {
+      "steps": 2048,
+      "update": {
+        "loss": 2092.9361152648926,
+        "policy": -0.0031633484759368002,
+        "value": 4185.8905029296875,
+        "entropy": 1.1946984827518463,
+        "ratio": 1.0004936065524817
+      },
+      "completed": {
+        "episode_return": -941.7782536447048,
+        "official_safety": 0.25,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.03662109375
+      },
+      "reward_mean": -3.678821563720703,
+      "action_abs": 0.4037153422832489
+    },
+    {
+      "steps": 2304,
+      "update": {
+        "loss": 476.919659614563,
+        "policy": -0.0021899767161812633,
+        "value": 953.8555545806885,
+        "entropy": 1.1859400011599064,
+        "ratio": 0.9992672000080347
+      },
+      "completed": {
+        "episode_return": -420.02292931079865,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.015625
+      },
+      "reward_mean": -1.6407145261764526,
+      "action_abs": 0.4093606472015381
+    },
+    {
+      "steps": 2560,
+      "update": {
+        "loss": 372.4994955062866,
+        "policy": -0.004006989547633566,
+        "value": 745.0187225341797,
+        "entropy": 1.1715559288859367,
+        "ratio": 1.001522844657302
+      },
+      "completed": {
+        "episode_return": -269.2137227654457,
+        "official_safety": 0.875,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.009765625
+      },
+      "reward_mean": -1.0516160726547241,
+      "action_abs": 0.41226282715797424
+    },
+    {
+      "steps": 2816,
+      "update": {
+        "loss": 1014.4640293121338,
+        "policy": -0.0034841971355490386,
+        "value": 2028.9467811584473,
+        "entropy": 1.1747139170765877,
+        "ratio": 0.9993445314466953
+      },
+      "completed": {
+        "episode_return": -594.5219374895096,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0224609375
+      },
+      "reward_mean": -2.3223512172698975,
+      "action_abs": 0.40967440605163574
+    },
+    {
+      "steps": 3072,
+      "update": {
+        "loss": 1098.0456924438477,
+        "policy": -0.0033354229235555977,
+        "value": 2196.1097831726074,
+        "entropy": 1.1744239926338196,
+        "ratio": 0.9999348744750023
+      },
+      "completed": {
+        "episode_return": -739.2035477757454,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.02783203125
+      },
+      "reward_mean": -2.8875138759613037,
+      "action_abs": 0.4120391607284546
+    },
+    {
+      "steps": 3328,
+      "update": {
+        "loss": 497.5361137390137,
+        "policy": -0.0035205630119889975,
+        "value": 995.0910930633545,
+        "entropy": 1.1824128702282906,
+        "ratio": 0.9973002690821886
+      },
+      "completed": {
+        "episode_return": -309.2742049396038,
+        "official_safety": 0.875,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.01171875
+      },
+      "reward_mean": -1.2081023454666138,
+      "action_abs": 0.41012346744537354
+    },
+    {
+      "steps": 3584,
+      "update": {
+        "loss": 0.3042552834376693,
+        "policy": -0.005348680599126965,
+        "value": 0.6307183112949133,
+        "entropy": 1.1510381512343884,
+        "ratio": 0.9983016569167376
+      },
+      "completed": {
+        "episode_return": -27.219322621822357,
+        "official_safety": 1.0,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 1.0,
+        "collision_episode": 0.0,
+        "per_step_collision": 0.0
+      },
+      "reward_mean": -0.10632548481225967,
+      "action_abs": 0.41122621297836304
+    },
+    {
+      "steps": 3840,
+      "update": {
+        "loss": 809.134765625,
+        "policy": -0.0014260727039072663,
+        "value": 1618.2840194702148,
+        "entropy": 1.1631757766008377,
+        "ratio": 1.0008131489157677
+      },
+      "completed": {
+        "episode_return": -454.4453697502613,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0166015625
+      },
+      "reward_mean": -1.775177240371704,
+      "action_abs": 0.41298216581344604
+    },
+    {
+      "steps": 4096,
+      "update": {
+        "loss": 1380.2895278930664,
+        "policy": 0.0001417968887835741,
+        "value": 2760.5905532836914,
+        "entropy": 1.1792683973908424,
+        "ratio": 1.0001919083297253
+      },
+      "completed": {
+        "episode_return": -770.3504349589348,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0302734375
+      },
+      "reward_mean": -3.009181261062622,
+      "action_abs": 0.41248148679733276
+    },
+    {
+      "steps": 4352,
+      "update": {
+        "loss": 5198.526412963867,
+        "policy": -0.004711498797405511,
+        "value": 10397.073913574219,
+        "entropy": 1.1613853387534618,
+        "ratio": 1.0013125408440828
+      },
+      "completed": {
+        "episode_return": -1540.7795269936323,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0595703125
+      },
+      "reward_mean": -6.018669605255127,
+      "action_abs": 0.4144902527332306
+    },
+    {
+      "steps": 4608,
+      "update": {
+        "loss": 309.12385272979736,
+        "policy": -0.001371861930238083,
+        "value": 618.2621974945068,
+        "entropy": 1.1755100302398205,
+        "ratio": 0.9999055787920952
+      },
+      "completed": {
+        "episode_return": -307.780275631696,
+        "official_safety": 0.75,
+        "official_reach": 0.125,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.01171875
+      },
+      "reward_mean": -1.2022666931152344,
+      "action_abs": 0.41125890612602234
+    },
+    {
+      "steps": 4864,
+      "update": {
+        "loss": 2455.380039215088,
+        "policy": -0.002163081633625552,
+        "value": 4910.7758712768555,
+        "entropy": 1.1481630839407444,
+        "ratio": 1.0000861547887325
+      },
+      "completed": {
+        "episode_return": -1235.0757557749748,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04736328125
+      },
+      "reward_mean": -4.824514389038086,
+      "action_abs": 0.41464540362358093
+    },
+    {
+      "steps": 5120,
+      "update": {
+        "loss": 6345.697845458984,
+        "policy": -0.0017921105900313705,
+        "value": 12691.410278320312,
+        "entropy": 1.1153632402420044,
+        "ratio": 1.002807715907693
+      },
+      "completed": {
+        "episode_return": -1724.8439099788666,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0673828125
+      },
+      "reward_mean": -6.737671375274658,
+      "action_abs": 0.42818793654441833
+    },
+    {
+      "steps": 5376,
+      "update": {
+        "loss": 3505.257568359375,
+        "policy": -0.0013357560092117637,
+        "value": 7010.529083251953,
+        "entropy": 1.121227689087391,
+        "ratio": 1.0004157703369856
+      },
+      "completed": {
+        "episode_return": -1526.6514983773232,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.05810546875
+      },
+      "reward_mean": -5.963482856750488,
+      "action_abs": 0.42319512367248535
+    },
+    {
+      "steps": 5632,
+      "update": {
+        "loss": 6146.041595458984,
+        "policy": -0.005210308794630691,
+        "value": 12292.105041503906,
+        "entropy": 1.1457919143140316,
+        "ratio": 0.9988466259092093
+      },
+      "completed": {
+        "episode_return": -1927.3135787397623,
+        "official_safety": 0.5,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.07470703125
+      },
+      "reward_mean": -7.528568744659424,
+      "action_abs": 0.42334192991256714
+    },
+    {
+      "steps": 5888,
+      "update": {
+        "loss": 479.7969722747803,
+        "policy": -0.0026182562360190786,
+        "value": 959.6107978820801,
+        "entropy": 1.1608297415077686,
+        "ratio": 1.0008781999349594
+      },
+      "completed": {
+        "episode_return": -412.97048968076706,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.01513671875
+      },
+      "reward_mean": -1.6131659746170044,
+      "action_abs": 0.4174724519252777
+    },
+    {
+      "steps": 6144,
+      "update": {
+        "loss": 13476.684265136719,
+        "policy": -0.0017143951990874484,
+        "value": 26953.383544921875,
+        "entropy": 1.1278090849518776,
+        "ratio": 0.9981426279991865
+      },
+      "completed": {
+        "episode_return": -2961.4802564382553,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.115234375
+      },
+      "reward_mean": -11.568282127380371,
+      "action_abs": 0.4330786466598511
+    },
+    {
+      "steps": 6400,
+      "update": {
+        "loss": 216.49776935577393,
+        "policy": 0.0011918463569600135,
+        "value": 433.00439262390137,
+        "entropy": 1.1232813112437725,
+        "ratio": 1.0016226675361395
+      },
+      "completed": {
+        "episode_return": -251.99653711169958,
+        "official_safety": 0.875,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.009765625
+      },
+      "reward_mean": -0.9843615293502808,
+      "action_abs": 0.4224731922149658
+    },
+    {
+      "steps": 6656,
+      "update": {
+        "loss": 7469.121398925781,
+        "policy": -0.002234237443190068,
+        "value": 14938.258728027344,
+        "entropy": 1.1474155336618423,
+        "ratio": 1.0003461968153715
+      },
+      "completed": {
+        "episode_return": -2087.7133138403296,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.08154296875
+      },
+      "reward_mean": -8.155129432678223,
+      "action_abs": 0.4151531457901001
+    },
+    {
+      "steps": 6912,
+      "update": {
+        "loss": 4170.778289794922,
+        "policy": -8.874718332663178e-06,
+        "value": 8341.568145751953,
+        "entropy": 1.157779935747385,
+        "ratio": 0.9995458871126175
+      },
+      "completed": {
+        "episode_return": -1011.5173559710383,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0390625
+      },
+      "reward_mean": -3.951239824295044,
+      "action_abs": 0.41643524169921875
+    },
+    {
+      "steps": 7168,
+      "update": {
+        "loss": 433.03739643096924,
+        "policy": -0.0016635506763122976,
+        "value": 866.0896587371826,
+        "entropy": 1.1544474624097347,
+        "ratio": 1.001043051481247
+      },
+      "completed": {
+        "episode_return": -437.4342663884163,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0166015625
+      },
+      "reward_mean": -1.7087275981903076,
+      "action_abs": 0.4144954979419708
+    },
+    {
+      "steps": 7424,
+      "update": {
+        "loss": 3041.574951171875,
+        "policy": 0.0005785156390629709,
+        "value": 6083.160232543945,
+        "entropy": 1.1516354754567146,
+        "ratio": 1.0008365623652935
+      },
+      "completed": {
+        "episode_return": -1256.1711104661226,
+        "official_safety": 0.5,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04931640625
+      },
+      "reward_mean": -4.906918048858643,
+      "action_abs": 0.42421582341194153
+    },
+    {
+      "steps": 7680,
+      "update": {
+        "loss": 2702.908966064453,
+        "policy": -0.0024032435030676425,
+        "value": 5405.834320068359,
+        "entropy": 1.1542128548026085,
+        "ratio": 0.9971318580210209
+      },
+      "completed": {
+        "episode_return": -1070.0029036700726,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04150390625
+      },
+      "reward_mean": -4.179698467254639,
+      "action_abs": 0.4211367964744568
+    },
+    {
+      "steps": 7936,
+      "update": {
+        "loss": 17346.437866210938,
+        "policy": -0.002823812363203615,
+        "value": 34692.893127441406,
+        "entropy": 1.1453042849898338,
+        "ratio": 1.0001071523874998
+      },
+      "completed": {
+        "episode_return": -3856.8836213052273,
+        "official_safety": 0.25,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.150390625
+      },
+      "reward_mean": -15.065951347351074,
+      "action_abs": 0.420772910118103
+    },
+    {
+      "steps": 8192,
+      "update": {
+        "loss": 19.243024706840515,
+        "policy": -0.001172079071693588,
+        "value": 38.49995106458664,
+        "entropy": 1.155710607767105,
+        "ratio": 0.9996459297835827
+      },
+      "completed": {
+        "episode_return": -52.06162968277931,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.001953125
+      },
+      "reward_mean": -0.203365758061409,
+      "action_abs": 0.41779401898384094
+    },
+    {
+      "steps": 8448,
+      "update": {
+        "loss": 7678.778900146484,
+        "policy": -0.0035613578656921163,
+        "value": 15357.576385498047,
+        "entropy": 1.140224289149046,
+        "ratio": 1.0002870485186577
+      },
+      "completed": {
+        "episode_return": -2144.5266275405884,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.083984375
+      },
+      "reward_mean": -8.377058029174805,
+      "action_abs": 0.4127829670906067
+    },
+    {
+      "steps": 8704,
+      "update": {
+        "loss": 292.36238050460815,
+        "policy": -0.001149306059232913,
+        "value": 584.7386093139648,
+        "entropy": 1.1555164270102978,
+        "ratio": 1.0015614945441484
+      },
+      "completed": {
+        "episode_return": -314.582736030221,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.01171875
+      },
+      "reward_mean": -1.2288388013839722,
+      "action_abs": 0.42607009410858154
+    },
+    {
+      "steps": 8960,
+      "update": {
+        "loss": 703.537525177002,
+        "policy": -0.0009028697677422315,
+        "value": 1407.0884132385254,
+        "entropy": 1.1560734808444977,
+        "ratio": 1.0000787694007158
+      },
+      "completed": {
+        "episode_return": -410.39353746175766,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.015625
+      },
+      "reward_mean": -1.6030998229980469,
+      "action_abs": 0.41684773564338684
+    },
+    {
+      "steps": 9216,
+      "update": {
+        "loss": 8102.471466064453,
+        "policy": -0.003794006974203512,
+        "value": 16204.962005615234,
+        "entropy": 1.1336972527205944,
+        "ratio": 0.9958341810852289
+      },
+      "completed": {
+        "episode_return": -2179.600920855999,
+        "official_safety": 0.125,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.08544921875
+      },
+      "reward_mean": -8.514065742492676,
+      "action_abs": 0.41884899139404297
+    },
+    {
+      "steps": 9472,
+      "update": {
+        "loss": 1914.4710655212402,
+        "policy": -0.001848394749686122,
+        "value": 3828.9568252563477,
+        "entropy": 1.0981570594012737,
+        "ratio": 0.9983029253780842
+      },
+      "completed": {
+        "episode_return": -1119.756414078176,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04296875
+      },
+      "reward_mean": -4.374048233032227,
+      "action_abs": 0.4302416145801544
+    },
+    {
+      "steps": 9728,
+      "update": {
+        "loss": 21917.366455078125,
+        "policy": 0.000671412592055276,
+        "value": 43834.74328613281,
+        "entropy": 1.1354097090661526,
+        "ratio": 0.9993587024509907
+      },
+      "completed": {
+        "episode_return": -3534.9754190146923,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.1376953125
+      },
+      "reward_mean": -13.80849838256836,
+      "action_abs": 0.4253043830394745
+    },
+    {
+      "steps": 9984,
+      "update": {
+        "loss": 3713.922187805176,
+        "policy": -0.0007972013845574111,
+        "value": 7427.857284545898,
+        "entropy": 1.1346597447991371,
+        "ratio": 1.001610141247511
+      },
+      "completed": {
+        "episode_return": -1450.3727344423532,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0556640625
+      },
+      "reward_mean": -5.665518283843994,
+      "action_abs": 0.41433629393577576
+    },
+    {
+      "steps": 10240,
+      "update": {
+        "loss": 7604.969482421875,
+        "policy": -0.00012333353515714407,
+        "value": 15209.950805664062,
+        "entropy": 1.1375448629260063,
+        "ratio": 1.0006635189056396
+      },
+      "completed": {
+        "episode_return": -2152.418751105666,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.08349609375
+      },
+      "reward_mean": -8.407885551452637,
+      "action_abs": 0.41979795694351196
+    },
+    {
+      "steps": 10496,
+      "update": {
+        "loss": 5256.783157348633,
+        "policy": -0.0013105039251968265,
+        "value": 10513.579895019531,
+        "entropy": 1.0936255231499672,
+        "ratio": 0.9999024216085672
+      },
+      "completed": {
+        "episode_return": -1781.8189804255962,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.068359375
+      },
+      "reward_mean": -6.960229873657227,
+      "action_abs": 0.42862260341644287
+    },
+    {
+      "steps": 10752,
+      "update": {
+        "loss": 421.30967903137207,
+        "policy": -0.0009014835814014077,
+        "value": 842.6324481964111,
+        "entropy": 1.1290540881454945,
+        "ratio": 1.0008001998066902
+      },
+      "completed": {
+        "episode_return": -322.1799651160836,
+        "official_safety": 0.625,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.01220703125
+      },
+      "reward_mean": -1.258515477180481,
+      "action_abs": 0.42609745264053345
+    },
+    {
+      "steps": 11008,
+      "update": {
+        "loss": 4498.751007080078,
+        "policy": -0.0009162226342596114,
+        "value": 8997.514999389648,
+        "entropy": 1.1208337470889091,
+        "ratio": 1.0000423807650805
+      },
+      "completed": {
+        "episode_return": -1114.8814958631992,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04248046875
+      },
+      "reward_mean": -4.355005741119385,
+      "action_abs": 0.43148475885391235
+    },
+    {
+      "steps": 11264,
+      "update": {
+        "loss": 2392.904136657715,
+        "policy": -0.0007442804198944941,
+        "value": 4785.821029663086,
+        "entropy": 1.1285070478916168,
+        "ratio": 0.9985165428370237
+      },
+      "completed": {
+        "episode_return": -1230.2377470880747,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.046875
+      },
+      "reward_mean": -4.8056159019470215,
+      "action_abs": 0.43330255150794983
+    },
+    {
+      "steps": 11520,
+      "update": {
+        "loss": 2690.054039001465,
+        "policy": -0.0001954100443981588,
+        "value": 5380.119812011719,
+        "entropy": 1.1320846416056156,
+        "ratio": 1.0013716481626034
+      },
+      "completed": {
+        "episode_return": -1144.0159376561642,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.04296875
+      },
+      "reward_mean": -4.468811988830566,
+      "action_abs": 0.42112529277801514
+    },
+    {
+      "steps": 11776,
+      "update": {
+        "loss": 45.32443118095398,
+        "policy": -0.0002086943422909826,
+        "value": 90.66062498092651,
+        "entropy": 1.1345860436558723,
+        "ratio": 0.9993035718798637
+      },
+      "completed": {
+        "episode_return": -95.02918562293053,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0029296875
+      },
+      "reward_mean": -0.3712077736854553,
+      "action_abs": 0.42063650488853455
+    },
+    {
+      "steps": 12032,
+      "update": {
+        "loss": 7401.559814453125,
+        "policy": 0.0016398599254898727,
+        "value": 14803.127532958984,
+        "entropy": 1.1188430935144424,
+        "ratio": 0.9994369801133871
+      },
+      "completed": {
+        "episode_return": -1874.095940310508,
+        "official_safety": 0.375,
+        "official_reach": 0.125,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.07373046875
+      },
+      "reward_mean": -7.320687294006348,
+      "action_abs": 0.4154028296470642
+    },
+    {
+      "steps": 12288,
+      "update": {
+        "loss": 670.2206058502197,
+        "policy": -0.0011180369037901983,
+        "value": 1340.4549751281738,
+        "entropy": 1.1549178026616573,
+        "ratio": 0.999622967094183
+      },
+      "completed": {
+        "episode_return": -376.570037137717,
+        "official_safety": 0.875,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0146484375
+      },
+      "reward_mean": -1.4709765911102295,
+      "action_abs": 0.4088626205921173
+    },
+    {
+      "steps": 12544,
+      "update": {
+        "loss": 1965.044792175293,
+        "policy": -0.0020541940175462514,
+        "value": 3930.1045989990234,
+        "entropy": 1.0893963351845741,
+        "ratio": 0.9967278204858303
+      },
+      "completed": {
+        "episode_return": -827.5834434628487,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.03173828125
+      },
+      "reward_mean": -3.2327475547790527,
+      "action_abs": 0.43531903624534607
+    },
+    {
+      "steps": 12800,
+      "update": {
+        "loss": 2118.8906860351562,
+        "policy": -0.0005912613414693624,
+        "value": 4237.793487548828,
+        "entropy": 1.09499485604465,
+        "ratio": 0.9995238706469536
+      },
+      "completed": {
+        "episode_return": -965.9015120491385,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.037109375
+      },
+      "reward_mean": -3.773052930831909,
+      "action_abs": 0.42867961525917053
+    },
+    {
+      "steps": 13056,
+      "update": {
+        "loss": 1859.0530471801758,
+        "policy": -0.000942745158681646,
+        "value": 3718.119071960449,
+        "entropy": 1.1085474863648415,
+        "ratio": 1.0021745059639215
+      },
+      "completed": {
+        "episode_return": -922.0536313354969,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.03515625
+      },
+      "reward_mean": -3.6017720699310303,
+      "action_abs": 0.42527660727500916
+    },
+    {
+      "steps": 13312,
+      "update": {
+        "loss": 2612.013023376465,
+        "policy": -0.00393737739068456,
+        "value": 5224.045028686523,
+        "entropy": 1.108105905354023,
+        "ratio": 1.0004529543220997
+      },
+      "completed": {
+        "episode_return": -1320.328954204917,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.05126953125
+      },
+      "reward_mean": -5.157535076141357,
+      "action_abs": 0.43600305914878845
+    },
+    {
+      "steps": 13568,
+      "update": {
+        "loss": 8070.644958496094,
+        "policy": -0.0027957948623225093,
+        "value": 16141.306762695312,
+        "entropy": 1.1093492694199085,
+        "ratio": 0.9992236383259296
+      },
+      "completed": {
+        "episode_return": -2135.626533821225,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.08251953125
+      },
+      "reward_mean": -8.342290878295898,
+      "action_abs": 0.43515604734420776
+    },
+    {
+      "steps": 13824,
+      "update": {
+        "loss": 1927.7574844360352,
+        "policy": -0.006362700223689899,
+        "value": 3855.538703918457,
+        "entropy": 1.098908245563507,
+        "ratio": 1.0016434583812952
+      },
+      "completed": {
+        "episode_return": -1071.3913060873747,
+        "official_safety": 0.25,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.041015625
+      },
+      "reward_mean": -4.185122013092041,
+      "action_abs": 0.42310160398483276
+    },
+    {
+      "steps": 14080,
+      "update": {
+        "loss": 2826.743019104004,
+        "policy": -0.0016027624951675534,
+        "value": 5653.500335693359,
+        "entropy": 1.1053943447768688,
+        "ratio": 0.9981202352792025
+      },
+      "completed": {
+        "episode_return": -998.3720965087414,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.03759765625
+      },
+      "reward_mean": -3.8998911380767822,
+      "action_abs": 0.4277917742729187
+    },
+    {
+      "steps": 14336,
+      "update": {
+        "loss": 1951.3466110229492,
+        "policy": 0.0013114649045746773,
+        "value": 3902.701461791992,
+        "entropy": 1.0847336240112782,
+        "ratio": 0.9994894545525312
+      },
+      "completed": {
+        "episode_return": -836.1912927925587,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.03076171875
+      },
+      "reward_mean": -3.2663722038269043,
+      "action_abs": 0.43447422981262207
+    },
+    {
+      "steps": 14592,
+      "update": {
+        "loss": 2245.2639961242676,
+        "policy": -0.0005263419734546915,
+        "value": 4490.539901733398,
+        "entropy": 1.0889495052397251,
+        "ratio": 0.9987525772303343
+      },
+      "completed": {
+        "episode_return": -1015.3137370795012,
+        "official_safety": 0.5,
+        "official_reach": 0.125,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0390625
+      },
+      "reward_mean": -3.966069221496582,
+      "action_abs": 0.4277235269546509
+    },
+    {
+      "steps": 14848,
+      "update": {
+        "loss": 911.7746028900146,
+        "policy": -0.003304896003101021,
+        "value": 1823.5668106079102,
+        "entropy": 1.0996171608567238,
+        "ratio": 0.9979237299412489
+      },
+      "completed": {
+        "episode_return": -520.5012778937817,
+        "official_safety": 0.75,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0185546875
+      },
+      "reward_mean": -2.033208131790161,
+      "action_abs": 0.4261254370212555
+    },
+    {
+      "steps": 15104,
+      "update": {
+        "loss": 6447.203842163086,
+        "policy": -0.0033258014591410756,
+        "value": 12894.42562866211,
+        "entropy": 1.1229504235088825,
+        "ratio": 0.999897750094533
+      },
+      "completed": {
+        "episode_return": -2019.3454860299826,
+        "official_safety": 0.375,
+        "official_reach": 0.125,
+        "official_success": 0.125,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.078125
+      },
+      "reward_mean": -7.888068675994873,
+      "action_abs": 0.42171335220336914
+    },
+    {
+      "steps": 15360,
+      "update": {
+        "loss": 7198.321151733398,
+        "policy": -0.0014294403663370758,
+        "value": 14396.656341552734,
+        "entropy": 1.1233462244272232,
+        "ratio": 1.0025043059140444
+      },
+      "completed": {
+        "episode_return": -2052.022979617119,
+        "official_safety": 0.375,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.07861328125
+      },
+      "reward_mean": -8.015714645385742,
+      "action_abs": 0.4296295642852783
+    },
+    {
+      "steps": 15616,
+      "update": {
+        "loss": 515.4629173278809,
+        "policy": -0.0002465501020196825,
+        "value": 1030.9374408721924,
+        "entropy": 1.1119405217468739,
+        "ratio": 1.0006635710597038
+      },
+      "completed": {
+        "episode_return": -463.10501649975777,
+        "official_safety": 0.625,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.01708984375
+      },
+      "reward_mean": -1.8090039491653442,
+      "action_abs": 0.4224225580692291
+    },
+    {
+      "steps": 15872,
+      "update": {
+        "loss": 2267.406520843506,
+        "policy": -0.0010933083831332624,
+        "value": 4534.825996398926,
+        "entropy": 1.0788229312747717,
+        "ratio": 1.0014819223433733
+      },
+      "completed": {
+        "episode_return": -967.4055557549,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.03662109375
+      },
+      "reward_mean": -3.778927803039551,
+      "action_abs": 0.43185821175575256
+    },
+    {
+      "steps": 16128,
+      "update": {
+        "loss": 2887.8104858398438,
+        "policy": -0.0007626061706105247,
+        "value": 5775.632736206055,
+        "entropy": 1.0209174901247025,
+        "ratio": 0.998142909258604
+      },
+      "completed": {
+        "episode_return": -1057.873207114637,
+        "official_safety": 0.5,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.0400390625
+      },
+      "reward_mean": -4.132317543029785,
+      "action_abs": 0.44179755449295044
+    },
+    {
+      "steps": 16384,
+      "update": {
+        "loss": 161.43828630447388,
+        "policy": -0.0016341351729352027,
+        "value": 322.8907012939453,
+        "entropy": 1.0861890986561775,
+        "ratio": 0.9995823558419943
+      },
+      "completed": {
+        "episode_return": -199.6731713861227,
+        "official_safety": 0.875,
+        "official_reach": 0.0,
+        "official_success": 0.0,
+        "safe_episode": 0.0,
+        "collision_episode": 1.0,
+        "per_step_collision": 0.00634765625
+      },
+      "reward_mean": -0.7799733877182007,
+      "action_abs": 0.4292563498020172
+    }
+  ],
+  "eval_history": [
+    {
+      "steps": 16384,
+      "episode_return": -45.187414527125654,
+      "safety": 0.96630859375,
+      "unsafe": 0.03369140625,
+      "safe_mask": 0.91630859375,
+      "warning": 0.039794921875,
+      "collision_episode": 1.0,
+      "safe_episode": 0.0,
+      "warning_episode": 1.0,
+      "collision_final_any": 0.0,
+      "reach": 0.025,
+      "reach_episode_any": 0.2,
+      "reach_final": 0.0,
+      "reach_final_any": 0.0,
+      "official_safety": 0.5875,
+      "official_reach": 0.025,
+      "official_success": 0.0125,
+      "action_abs": 0.24514331722748467
+    },
+    {
+      "steps": 16384,
+      "episode_return": -45.187414527125654,
+      "safety": 0.96630859375,
+      "unsafe": 0.03369140625,
+      "safe_mask": 0.91630859375,
+      "warning": 0.039794921875,
+      "collision_episode": 1.0,
+      "safe_episode": 0.0,
+      "warning_episode": 1.0,
+      "collision_final_any": 0.0,
+      "reach": 0.025,
+      "reach_episode_any": 0.2,
+      "reach_final": 0.0,
+      "reach_final_any": 0.0,
+      "official_safety": 0.5875,
+      "official_reach": 0.025,
+      "official_success": 0.0125,
+      "action_abs": 0.24514331722748467
+    }
+  ]
+}

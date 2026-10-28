@@ -9,7 +9,19 @@ passed the pre-registered 3-seed guardrails (seeds 0/1/2, 16,384 steps,
 100 deterministic episodes each): `safe_episode=0.693 ± 0.168`,
 `official_safety=0.9417 ± 0.0378`, `official_success=0.4100 ± 0.0583`,
 `episode_return=66.85 ± 5.26`.  Matched h-only is `0.450/0.8783/0.4067/61.73`.
-See `outputs/v6/independent/nav/STAGE_B_REPAIR_MULTISEED.md` and
+
+**P0/P1 attribution (2026-10-27, completed):** the original-h + broad-gate
+3-seed row is `0.6433/0.9325/0.4263/70.33`; A - P0 is `+5.0 pp` safe but
+`-1.6 pp` success, and P0/A differ in gate scope/threshold.  The repaired-h
+2x2 is complete: B (gate off) `0.6333/0.9267/0.3229/55.67`, C (no actor h,
+gate on) `0.0200/0.4987/0.0367/-6.63`, D (no actor h, gate off)
+`0.0333/0.5479/0.0367/7.21`.  Actor h input is load-bearing at 16k from
+scratch (C/D collapse; D is consistent with the no-h fixed-penalty
+baseline), the gate is ineffective without it, and within the repaired-h 2x2
+only repaired h + gate combines safety with retained task (P0 is a separate
+original-h broad-gate row).  B - H0 is `+18.3 pp` safe but `-8.4 pp` success; A - B is
+`+6.0 pp` safe / `+8.7 pp` success.  `n=3`, descriptive only.  See
+`outputs/v6/independent/nav/P1_REPAIRED_H_FACTORIAL.md` and
 `outputs/v6/independent/nav/BASELINE_COMPARISON.md`.
 
 V6 is an **independent** safe multi-agent navigation pipeline.  It replaces

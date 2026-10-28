@@ -276,8 +276,8 @@ Ant 是第二个验证场景，后置。
 |---|---|---|
 | M0 | 独立性契约、文档、配置、清理方案 | 完成 |
 | M1 | V6 自采 h 数据 + 从零 h | 完成 |
-| M2 | 单 seed `scratch_h` vs `scratch_no_h` | 部分完成：8k h-off pilot；正式 16k h-off 3-seed 仍缺 |
-| M3 | 方向明确后 3 seeds × 100 | 完成：h-only 3-seed + repaired Stage-B gate 3-seed |
+| M2 | 单 seed `scratch_h` vs `scratch_no_h` | 完成：8k h-off pilot + 正式 16k h-off 3-seed（P1 D: safe `0.033` / official `0.548` / success `0.037`） |
+| M3 | 方向明确后 3 seeds × 100 | 完成：h-only 3-seed + repaired Stage-B gate 3-seed + P1 repaired-h 2×2（B/C/D） |
 | M4 | V6 self-warm-start（可选） | 未使用 |
 | M5 | task channel | 后置，尚未开启 |
 | M6 | Ant 独立验证 | 完成：predictive-h gate 3 seeds × 10M |

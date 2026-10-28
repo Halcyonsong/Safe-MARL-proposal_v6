@@ -1,0 +1,42 @@
+seed: 2
+env:
+  num_agents: 8
+  area_size: 4.0
+  max_step: 256
+  num_obstacles: 8
+  n_rays: 32
+  max_neighbors: 5
+policy:
+  actor_hidden_dims:
+  - 256
+  - 256
+  critic_hidden_dims:
+  - 256
+  - 256
+  actor_activation: tanh
+  critic_activation: tanh
+  actor_init_gain: 1.4142135623730951
+  actor_output_gain: 0.01
+  initial_log_std: -0.5
+  use_value_norm: false
+training:
+  device: cpu
+  total_steps: 16384
+  rollout_steps: 256
+  lr: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  epochs: 4
+  minibatch_size: 256
+  value_coef: 0.5
+  entropy_coef: 0.005
+  max_grad_norm: 0.5
+  reward_scale: 20.0
+  reach_bonus: 5.0
+  terminal_reach_bonus: 20.0
+  collision_penalty: 10.0
+  eval_interval: 16384
+  eval_episodes: 10
+  eval_seed: 20000
+  save_interval: 16384

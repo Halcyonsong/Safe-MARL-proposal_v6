@@ -262,3 +262,105 @@ therefore available and used weakly; under this 1M 1-D protocol it still did
 not produce a task gain.  This does not establish that a 5-D / longer-budget
 variant would fail; it only closes the pre-registered 1-D screen, and any
 follow-up needs a separate pre-registration and approval.
+
+### Conditional follow-up design (2026-10-27)
+
+The nav T0w pilot showed a large task gain, but the Ant 1-D `A_T` transfer is
+null.  A fix attempt is authorized only after the nav W16 warm-start shows a
+3-seed task gain with safety not worse; otherwise the Ant null stays a
+limitation and no further Ant V_T compute is spent.  If triggered, diagnose
+one cause at a time under a new pre-registration: V_T state-distribution
+shift, frozen-V_T scale/EMA, warm-start length, task-reward scale, and whether
+the 1-D `A_T` channel is too weak for Ant locomotion.  No test-set tuning; do
+not start a 5-D or longer-budget arm before the diagnosis.
+
+### Root-cause analysis (2026-10-27)
+
+The V_T predictor itself is **not** the failure: Ant V_T quality (val EV
+`0.4838`, test Pearson `0.6597`, test RMSE `26.05`) is better than the nav
+T0w V_T (val EV `0.2270`, test Pearson `0.4991`, test RMSE `15.57`), yet nav
+gained `+29.9 pp` success and Ant did not.  The dominant difference is the
+actor interface: Ant fed only the **1-D `A_T` scalar**, while nav fed the
+**5-D `[A_T, grad_s V_T]`** feature.  The scalar is largely redundant with
+the PPO critic and carries no action direction; the gradient is the
+actionable part.  Supporting evidence: the new Ant actor columns learned only
+weak weights (norm `0.086` / `0.098`); the matched 1M control improved
+forward `+7.8%` over the base while the V_T arm improved only `+6.4%`, so the
+channel did not add value and may have interfered; the stochastic warm-start
+was worse (forward `-5.59%`, safe `-0.05`).
+
+Secondary contributors:
+
+- **1M frozen-V_T warm-start** (nav used 4k): V_T and its EMA are trained on
+  the 10M base; over 1M steps the policy drifts and the feature goes stale.
+- **Actor capacity**: Ant actor is `[64,64]` vs nav hidden `256`; one task
+  input among ~37 base dims is easy to underuse.
+- **Task structure**: Ant's dense forward reward is already well captured by
+  the PPO critic and is near saturation; nav's sparse reach/terminal bonus
+  leaves more long-horizon value for V_T to add.
+- **Signal quality**: Ant V_T RMSE `26` vs target std `34`, so the normalized
+  `A_T` has SNR roughly `1`; the scalar is noisy even though its EV is decent.
+  Measured on the base data: `A_T` within-episode std `0.91`, between-episode
+  mean std `0.15`, so the scalar is not constant, but much of its variation
+  is prediction noise.
+
+Recommended fix order (new pre-registration): (1) add `grad_s V_T` (or a
+low-dimensional task-relevant projection) and retest with a matched control;
+(2) shorten the warm-start to 250k/500k or refresh V_T at the midpoint;
+(3) run the offline V_T-vs-critic correlation diagnostic and, if collinear,
+feed `V_T - V_critic` or the gradient only; (4) increase actor capacity /
+normalize the task input.  **Do not repeat the 1-D `A_T` arm**; it tests the
+wrong interface.
+
+### Gradient follow-up execution (result, 2026-10-28)
+
+The first fix was implemented and run as a single-seed 250k diagnostic:
+
+- Feature: `[A_T, unit_norm(grad_s V_T)]`, `task_dim=32` for the 31-D Ant
+  observation; the two actor input matrices are expanded with
+  zero-initialized columns so the warm-start begins at the control policy.
+- Warm arm: `outputs/v6/independent/ant_vt_grad_250k/seed0`, 10,000,000 ->
+  10,250,000 steps from the same seed-0 10M base, frozen V_T, same h/cost/
+  reward/optimizer.
+- Control: `outputs/v6/independent/ant_vt_grad_control_250k/seed0`, matched
+  no-V_T continuation.
+- Decision rule (pre-registered in the runner): deterministic `forward` or
+  `return` at least `1.05x` control, safe `>= control - 0.03`, and
+  cost_fraction `<= control + 0.005`.
+- Code/config: `nav/v6/ant_task_value.py`,
+  `nav/scripts/train_v6_ant_mappo.py`,
+  `nav/configs/v6/v6_ant_vt_grad_250k.yaml`,
+  `nav/configs/v6/v6_ant_vt_grad_control_250k.yaml`,
+  `nav/scripts/run_v6_ant_vt_grad_pilot.sh`.
+
+This run was started by explicit request as an interface diagnostic.  It does
+not replace the nav W16 task gate, and its result will not be used to promote
+an Ant row.  If it is null, the next step is **not** another 1-D run; the
+remaining candidates (shorter warm-start, V_T-vs-critic residual, actor
+capacity) require a new pre-registration.
+
+**Result (100 deterministic + 100 stochastic episodes, seed 20000):**
+
+| arm | deterministic forward | deterministic return | safe | cost_fraction |
+|---|---:|---:|---:|---:|
+| `[A_T, grad_s V_T]` warm | `3816.50` | `4458.09` | `0.99` | `0.00094` |
+| matched no-V_T control | `3811.20` | `4449.88` | `0.89` | `0.00661` |
+
+Stochastic: warm forward `2968.53`, safe `0.78`; control forward `2856.21`,
+safe `0.62`.  The warm arm is `+0.14%` on deterministic forward and `+0.18%`
+on return, far below the pre-registered `1.05x` task-gain threshold.
+`task_gain=false`, `safety_not_worse=true`, `vt_grad_supported=false`.
+
+Interpretation: replacing the 1-D scalar with the state-gradient interface
+removed the task harm seen in the 1-D pilot (and improved safety/cost in this
+single seed), but it still did not produce a task gain.  This is a **null on
+the task question**, not evidence that a longer warm-start, a V_T-vs-critic
+residual, or a larger actor would fail.  Do not expand this arm to 3 seeds
+and do not claim an Ant task-channel result.  The result is recorded in
+`independent/ant_vt_grad_250k/decision.json`.
+
+Operational note: the original pilot shell was edited while it was running,
+so it exited after the warm arm with an EOF error.  The warm checkpoint was
+valid; the matched control and both 100ep evaluations were run by
+`/tmp/opencode/finish_ant_grad.sh` from the same base/config.  No result was
+selected or discarded based on the failure.

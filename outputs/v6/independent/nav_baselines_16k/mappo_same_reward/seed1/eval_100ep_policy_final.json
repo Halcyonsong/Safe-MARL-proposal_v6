@@ -1,0 +1,34 @@
+{
+  "checkpoint": "../outputs/v6/independent/nav_baselines_16k/mappo_same_reward/seed1/policy_final.pth",
+  "steps": 16384,
+  "episodes": 100,
+  "training_seed": 1,
+  "eval_seed": 10000,
+  "seed": 10000,
+  "chunks": [
+    "../outputs/v6/independent/nav_baselines_16k/mappo_same_reward/seed1/chunks_policy_final/chunk_0.json",
+    "../outputs/v6/independent/nav_baselines_16k/mappo_same_reward/seed1/chunks_policy_final/chunk_1.json",
+    "../outputs/v6/independent/nav_baselines_16k/mappo_same_reward/seed1/chunks_policy_final/chunk_2.json",
+    "../outputs/v6/independent/nav_baselines_16k/mappo_same_reward/seed1/chunks_policy_final/chunk_3.json",
+    "../outputs/v6/independent/nav_baselines_16k/mappo_same_reward/seed1/chunks_policy_final/chunk_4.json"
+  ],
+  "metrics": {
+    "action_abs": 0.12415313404402695,
+    "collision_episode": 0.96,
+    "collision_final_any": 0.18,
+    "episode_return": -43.04789250223898,
+    "official_reach": 0.02375,
+    "official_safety": 0.58375,
+    "official_success": 0.013750000000000002,
+    "reach": 0.02375,
+    "reach_episode_any": 0.16,
+    "reach_final": 0.0,
+    "reach_final_any": 0.0,
+    "safe_episode": 0.04,
+    "safe_mask": 0.8915478515625,
+    "safety": 0.95166015625,
+    "unsafe": 0.04833984375,
+    "warning": 0.05950195312499999,
+    "warning_episode": 0.96
+  }
+}

@@ -17,13 +17,27 @@ Canonical status snapshot and promoted/archived artifact map:
   3-seed guardrails: `safe_episode=0.693 +/- 0.168`,
   `official_safety=0.9417 +/- 0.0378`, `success=0.4100 +/- 0.0583`,
   `return=66.85 +/- 5.26`, versus h-only `0.450/0.8783/0.4067/61.73`.
+  **P0 correction (2026-10-27):** the original-h + broad-gate row also
+  reaches `0.6433/0.9325/0.4263/70.33`; A - P0 is `+5.0 pp` safe with a task
+  cost.  **P1 repaired-h 2x2 (completed 2026-10-27):** B
+  `0.6333/0.9267/0.3229/55.67`, C `0.0200/0.4987/0.0367/-6.63`, D
+  `0.0333/0.5479/0.0367/7.21` (safe / official safety / success / return).
+  Actor h input is load-bearing at 16k from scratch (C/D collapse; D is consistent with
+  the no-h fixed-penalty baseline), the gate is ineffective without h input,
+  and within the repaired-h 2x2 only A combines safety with retained task.
+  The `+24.3 pp` vs h-only
+  decomposes descriptively into `+18.3 pp` from repaired h (gate off, at a
+  task cost) and `+6.0 pp` from the progress gate (which recovers task).
 - **Positioning:** navigation safety is near CBF-QP/V5 full, but task remains
   below V5 full/CBF-QP/GCBF+; this is not a formal safety certificate.
 - **Closed null diagnostic:** Ant V_T 1-D transfer (single seed); the
   warm-start did not beat the matched no-V_T control, so the line is stopped
   and the promoted claims are unchanged.  See section 4.5.
-- **Open:** formal 16k h-off 3-seed navigation baseline; navigation task
-  channel; optional stochastic evaluation; Ant multi-checkpoint evaluation.
+- **Open:** navigation task channel; optional stochastic evaluation; Ant
+  multi-checkpoint evaluation.  The Ant 10M MAPPO-Lag external baseline is
+  running from scratch since 2026-10-27 17:19 under fresh experiment
+  `v6_lag_10m_seed0_restart_20261027`; its earlier partial run remains
+  archived as do-not-resume.
 
 ## 1. Scope and independence
 
@@ -117,8 +131,10 @@ Standard deviations across seeds: reach `0.1332`, success `0.1316`, safe
 `0.1931`, official safety `0.0659`, return `10.64`.
 
 This is a **mixed** result: h-on is better than the no-h pilot, but seed 2 is
-weak and the mean success is only 0.407.  A formal 16k h-off three-seed
-baseline is not present yet; the h-off evidence is the 8k single-seed pilot.
+weak and the mean success is only 0.407.  The formal 16k h-off three-seed
+control is now P1's D cell (`safe 0.0333`, `official_safety 0.5479`,
+`success 0.0367`, `return 7.21`), confirming the h-on/h-off gap; the earlier
+h-off evidence was the 8k single-seed pilot.
 
 ### 3.5 Navigation safety screen
 
@@ -309,6 +325,63 @@ success `>=0.36`, return `>=55`, and no seed below safe `0.30` / success
 `+8.3%`, while success is unchanged (`+0.3 pp`).  This is the first promoted
 V6 navigation 3-seed gate result.
 
+**P0 correction (2026-10-27).**  The `+24.3 pp` above is not a single-factor
+h-retrain effect.  The original-h + broad-gate row
+(`nav_h_gate_16k`, gate high `0.13`, scope `all_positive`) had only a seed-0
+evaluation.  Seeds 1/2 were completed with the same formal protocol:
+
+| original-h broad gate | safe_ep | collision_ep | official_safety | success | reach | return |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 0.700 | 0.300 | 0.9400 | 0.3725 | 0.3913 | 64.96 |
+| 1 | 0.490 | 0.510 | 0.9000 | 0.4838 | 0.5275 | 80.91 |
+| 2 | 0.740 | 0.260 | 0.9575 | 0.4225 | 0.4387 | 65.11 |
+| **mean** | **0.6433** | **0.3567** | **0.9325** | **0.4263** | **0.4525** | **70.33** |
+| **std** | 0.1343 | 0.1343 | 0.0295 | 0.0557 | 0.0692 | 9.17 |
+
+Three-row attribution:
+
+| row | h | training gate | safe_ep | official_safety | success | reach | return |
+|---|---|---|---:|---:|---:|---:|---:|
+| H0 formal h-only | original | off | 0.4500 | 0.8783 | 0.4067 | 0.4450 | 61.73 |
+| **P0 original h + broad gate** | original | on | **0.6433** | **0.9325** | **0.4263** | **0.4525** | **70.33** |
+| A repaired h + progress gate | repaired | on | 0.6933 | 0.9417 | 0.4100 | 0.4296 | 66.85 |
+
+P0 - H0 is `+19.3 pp` safe / `+5.4 pp` safety; A - P0 is only `+5.0 pp`
+safe / `+0.9 pp` safety, with per-seed safe deltas `+14/+2/-1 pp`, and A is
+**worse** on success (`-1.6 pp`), reach (`-2.3 pp`), and return (`-4.9%`).
+P0 and A also differ in gate scope/threshold, so A - P0 is not a clean
+h-retrain estimate.  "Mostly the gate" is specific to the broad gate on the
+original h; see the P1 factorial below for the repaired-h attribution.
+
+**P1 repaired-h 2x2 (completed 2026-10-27).**  B = repaired h, gate off;
+C = no actor h input, gate on; D = no actor h input, gate off.  Same frozen
+repaired h, 16,384 steps, seeds 0/1/2, 100 deterministic episodes at eval
+seed 10000.
+
+| cell | actor h input | training gate | safe_ep | official_safety | success | reach | return |
+|---|:---:|:---:|---:|---:|---:|---:|---:|
+| A repaired h + gate | on | on | 0.6933 | 0.9417 | 0.4100 | 0.4296 | 66.85 |
+| B repaired h, gate off | on | off | 0.6333 | 0.9267 | 0.3229 | 0.3517 | 55.67 |
+| C no actor h, gate on | off | on | 0.0200 | 0.4987 | 0.0367 | 0.1008 | -6.63 |
+| D no actor h, gate off | off | off | 0.0333 | 0.5479 | 0.0367 | 0.0708 | 7.21 |
+
+Clean contrasts: B - H0 `+18.3 pp` safe but `-8.4 pp` success and `-6.1`
+return; A - B `+6.0 pp` safe, `+8.7 pp` success, `+11.2` return; A - C and
+B - D `+67.3/+60.0 pp` safe; C - D `-1.3 pp` safe and `0.0 pp` success.
+Actor h input is load-bearing at 16k from scratch: C/D collapse across all six
+seeds, and D is consistent with the archived no-h fixed-penalty baseline (safe `0.033` vs
+`0.033`, official safety `0.548` vs `0.519`), so this is not an evaluation
+artifact.  The gate cannot substitute for h input (C - D flat), while with h
+input it improves every endpoint directionally (A - B).  Repaired h alone is a
+safety/task trade; within the repaired-h 2x2 only A combines safety with
+retained task.  The `+24.3 pp`
+vs h-only decomposes exactly as `(B - H0) + (A - B) = +18.3 + 6.0 pp` safe:
+most of the safe gain comes from repaired h with the gate off, and the gate
+adds a smaller safe increment while recovering task.  `n=3`, descriptive only;
+the only `p<0.05` contrast is the h-input effect driven by the collapsed cells.
+Record: `independent/nav/P1_REPAIRED_H_FACTORIAL.md`; aggregate:
+`independent/nav_repair_factorial/aggregate_100ep.{json,md}`.
+
 Caveats: `n=3`, seed-level paired differences are not statistically
 separated from zero (safe `p=0.216`, success `p=0.957`); the safety gain is
 carried by seeds 0/2 and seed 1 is nearly neutral.  Against archived external
@@ -320,6 +393,23 @@ Full comparison, including the h-only 3-seed reference and the unmatched
 barrier/h-off references:
 `outputs/v6/independent/nav/BASELINE_COMPARISON.md`.  Protocol and per-seed
 caveats: `outputs/v6/independent/nav/STAGE_B_REPAIR_MULTISEED.md`.
+
+Two matched 16k collision-aware baselines were added on 2026-10-27 to close
+the archived-row fairness gap (pure MAPPO had no penalty; MAPPO-Lag was only
+available at 100k).  Same protocol: official DoubleIntegrator, 16,384 steps,
+seeds 0/1/2, 100 deterministic episodes at eval seed 10000, final checkpoint.
+
+| arm | safe_ep | official_safety | success | reach | return |
+|---|---:|---:|---:|---:|---:|
+| MAPPO + fixed penalty 10, 16k | 0.0333 | 0.5192 | 0.0142 | 0.0433 | -30.35 |
+| MAPPO-Lag, 16k | 0.0000 | 0.3217 | 0.0863 | 0.2729 | 39.55 |
+| **V6 repaired Stage B, 16k** | **0.6933** | **0.9417** | **0.4100** | **0.4296** | **66.85** |
+
+The fixed penalty collapses task (`reach=0.043`; return includes `-10` per
+collision step).  The 16k MAPPO-Lag arm moves more but never produces a
+collision-free episode.  Neither approaches V6.  The 100k MAPPO-Lag row is a
+generous reference, not a matched row.  Artifacts:
+`outputs/v6/independent/nav_baselines_16k/`.
 
 ### 3.10 Read-only h2/actor2 diagnostic
 
@@ -574,10 +664,11 @@ official_safety  0.878 ± 0.066     0.942 ± 0.038
 return           61.73 ± 10.64     66.85 ± 5.26
 ```
 
-That supports the gate itself, but the formal 16k h-off baseline is still not
-present, and the task-channel effect would be confounded with the gate change.
-Do not open the task channel/V_T until the h-off baseline exists and a separate
-pre-registered task-channel experiment is approved.
+That supports the gate itself.  The formal 16k h-off baseline is now complete
+(P1 D: `safe 0.0333`, `official_safety 0.5479`, `success 0.0367`), confirming
+the no-h collapse at the matched budget.  The task-channel effect would still
+be confounded with the gate change; do not open the task channel/V_T until a
+separate pre-registered task-channel experiment is approved.
 
 ## 7. Proposed navigation transfer
 
@@ -664,7 +755,9 @@ Primary: `safe_episode`, `collision_episode`, `official_safety`; guardrail:
       return (`4574.53` vs `4630.37`); safety equal (`0.96`).
       `vt_transfer_supported = false`; line stopped.  Record:
       `outputs/v6/independent/ant/STAGE_ANT_VT_TRANSFER.md`.
-- [ ] Navigation h-off formal 16k baseline, 3 seeds x 100 episodes.
+- [x] Navigation h-off formal 16k baseline, 3 seeds x 100 episodes.  Completed
+      as P1 D: `safe 0.0333`, `official_safety 0.5479`, `success 0.0367`,
+      `return 7.21`; confirms the no-h collapse at the matched budget.
 - [x] Navigation predictive-h task-gate pilot, 1 seed x 100 episodes.
 - [x] Navigation Stage A (progress-only gate), 1 seed x 100 episodes.
 - [x] Navigation Stage B (on-policy h + future-min target), 1 seed x 100
@@ -719,7 +812,8 @@ Primary: `safe_episode`, `collision_episode`, `official_safety`; guardrail:
 - [ ] Next controlled arm, if approved: safety coupling or action
       conditioning (one axis only).  Do not combine with a gate/cost/task
       change.
-- [ ] Formal 16k h-off 3-seed baseline remains absent.
+- [x] Formal 16k h-off 3-seed baseline completed as P1 D (`safe 0.0333`,
+      `official_safety 0.5479`, `success 0.0367`, `return 7.21`).
 - [x] **T0w task-channel line: strict safety-first rule missed; task-heavy
       trade-off documented.**  Actor1 + frozen finite-horizon V_T 4k
       warm-start; h1/gate/cost unchanged.  V_T passed its quality gate

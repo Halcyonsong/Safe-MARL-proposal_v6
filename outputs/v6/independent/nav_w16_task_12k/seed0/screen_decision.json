@@ -1,0 +1,82 @@
+{
+  "schema": "v6.nav.w16_task_warmstart_screen.v1",
+  "paths": {
+    "w16_24k": "outputs/v6/independent/nav_w16_task_12k/seed0/eval_100ep_step24576.json",
+    "w16_28k": "outputs/v6/independent/nav_w16_task_12k/seed0/eval_100ep_final.json",
+    "control_24k": "outputs/v6/independent/nav_stageb_repair_28k/seed0/eval_100ep_step24576.json",
+    "control_28k": "outputs/v6/independent/nav_stageb_repair_28k/seed0/eval_100ep_final.json"
+  },
+  "w16_24k": {
+    "safe_episode": 0.93,
+    "official_safety": 0.9887500000000001,
+    "official_success": 0.5700000000000001,
+    "official_reach": 0.5725,
+    "episode_return": 152.42142196490664,
+    "unsafe": 0.0008056640625,
+    "cbf_violation": 0.03413902348368837
+  },
+  "w16_28k": {
+    "safe_episode": 0.8300000000000001,
+    "official_safety": 0.9724999999999999,
+    "official_success": 0.6212499999999999,
+    "official_reach": 0.63625,
+    "episode_return": 237.35781514932924,
+    "unsafe": 0.0021874999999999998,
+    "cbf_violation": 0.04930904139107327
+  },
+  "control_24k": {
+    "safe_episode": 0.65,
+    "official_safety": 0.9324999999999999,
+    "official_success": 0.36875,
+    "official_reach": 0.38,
+    "episode_return": 73.16604765413794,
+    "unsafe": 0.0036181640625000005,
+    "cbf_violation": 0.060296367860122345
+  },
+  "control_28k": {
+    "safe_episode": 0.8600000000000001,
+    "official_safety": 0.975,
+    "official_success": 0.19875,
+    "official_reach": 0.20625,
+    "episode_return": 55.520964642679324,
+    "unsafe": 0.0013574218750000001,
+    "cbf_violation": 0.034146511429212836
+  },
+  "delta_28k": {
+    "safe_episode": -0.030000000000000027,
+    "official_safety": -0.0025000000000000577,
+    "official_success": 0.4224999999999999,
+    "official_reach": 0.43,
+    "episode_return": 181.8368505066499,
+    "unsafe": 0.0008300781249999997,
+    "cbf_violation": 0.015162529961860433
+  },
+  "delta_24k": {
+    "safe_episode": 0.28,
+    "official_safety": 0.056250000000000244,
+    "official_success": 0.20125000000000004,
+    "official_reach": 0.1925,
+    "episode_return": 79.2553743107687,
+    "unsafe": -0.0028125000000000008,
+    "cbf_violation": -0.026157344376433973
+  },
+  "thresholds": {
+    "task_success_min": 0.3,
+    "task_return_min": 65.0,
+    "safe_episode_min": 0.8,
+    "official_safety_min": 0.95,
+    "cost_margin": 0.005
+  },
+  "task_benefit": true,
+  "safety_ok": true,
+  "cost_ok": true,
+  "passed": true,
+  "interpretation": "seed-0 screen passed; expand to seeds 1/2 with per-seed V_T before any promotion decision",
+  "caveats": [
+    "one seed; seed-0 V_T trained on seed-0 16k states",
+    "procedure-level comparison to from-scratch 24k/28k",
+    "no C16/C24 control; T0w no-V_T remains channel attribution",
+    "24k is diagnostic and cannot rescue a 28k fade",
+    "no test-set tuning or best-checkpoint selection"
+  ]
+}

@@ -97,6 +97,24 @@ worse), but seed 1 is nearly neutral and seed 2 carries most of the gain.
 Task is neutral on average, not uniformly retained: seed 0 loses 10.5 pp
 success while seeds 1/2 gain 4.0/7.5 pp.
 
+**Attribution update (P0, 2026-10-27).**  The table above compares different
+gate states: h-only has no gate, repaired Stage B has a gate.  P0 completes
+the original-h + broad-gate 3-seed row and reaches
+`safe 0.6433 / official_safety 0.9325 / success 0.4263 / reach 0.4525 /
+return 70.33`.  Thus P0 - h-only is `+19.3 pp` safe, and A - P0 is only
+`+5.0 pp` safe (`+0.9 pp` official safety) with `-1.6 pp` success and
+`-4.9%` return; per-seed A - P0 safe deltas are `+14/+2/-1 pp`.  A does not
+dominate P0 on task, and P0/A differ in gate scope/threshold.  The completed
+P1 factorial gives the clean repaired-h attribution: B (repaired h, gate off)
+is `safe 0.6333 / official_safety 0.9267 / success 0.3229 / return 55.67`,
+so B - h-only is `+18.3 pp` safe but `-8.4 pp` success and `-6.1` return,
+while A - B is `+6.0 pp` safe and `+8.7 pp` success.  The `+24.3 pp`
+decomposes descriptively as `+18.3` (repaired h) + `6.0` (gate); most of the
+safe gain is the h retrain, but the gate recovers the task performance that h
+retrain alone loses.  "Mostly gate" applies only to the broad gate on the
+original h.  See [`BASELINE_COMPARISON.md`](BASELINE_COMPARISON.md) and
+[`P1_REPAIRED_H_FACTORIAL.md`](P1_REPAIRED_H_FACTORIAL.md).
+
 ## Guardrail check
 
 | rule | required | observed | pass |
@@ -110,7 +128,9 @@ success while seeds 1/2 gain 4.0/7.5 pp.
 
 **Verdict: pass.**  The repaired Stage-B predictive-h gate is promoted as the
 first V6 navigation 3-seed gate result.  It keeps task success at the h-only
-level on average while raising episode-level safety by 24.3 pp.
+level on average while raising episode-level safety by 24.3 pp; P0 shows that
+most of that gain is the gate, with a smaller and seed-dependent incremental
+contribution from the repaired h.
 
 ## Caveats
 
@@ -126,8 +146,9 @@ level on average while raising episode-level safety by 24.3 pp.
   `success=0.454`, `return=70.29` versus final `0.693/0.410/66.85`.
 - Eval scenes are the same 100 scenes for every seed; this controls scene
   difficulty but not training-seed variance.
-- Formal 16k h-off 3-seed baseline is still absent, so h-off is not a matched
-  comparison.
+- The formal 16k h-off 3-seed baseline is now P1's D cell (`safe 0.0333`,
+  `official_safety 0.5479`, `success 0.0367`, `return 7.21`); it confirms that
+  h-off collapses at the matched budget.
 - No `task_gate_high` sweep, no cost-schedule change, no action conditioning.
   Any next arm requires new approval; do not silently combine changes.
 

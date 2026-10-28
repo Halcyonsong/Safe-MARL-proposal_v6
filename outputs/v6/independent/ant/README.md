@@ -35,6 +35,7 @@ Raw artifacts:
 | [`GATE_2M_RESULTS.md`](GATE_2M_RESULTS.md) | archived: earlier safety-gated forward gate; did not pass its robust rule, superseded by predictive h |
 | [`DYNAMIC_H_GATE.md`](DYNAMIC_H_GATE.md) | archived negative: dynamic-h + barrier, terminated |
 | [`STAGE_ANT_VT_TRANSFER.md`](STAGE_ANT_VT_TRANSFER.md) | diagnostic, **closed null**: single-seed 1-D `A_T` warm-start did not beat the matched no-V_T 1M control |
+| [`STAGE_ANT_MAPPO_LAG_10M.md`](STAGE_ANT_MAPPO_LAG_10M.md) | external baseline, **running since 2026-10-27 17:19**: 10M from-scratch upstream MAPPO-Lag, single seed, fresh restart experiment; partial run archived do-not-resume; not a V6 claim |
 | [`EFFECT_ANALYSIS.md`](EFFECT_ANALYSIS.md) | analysis of the dynamic-h failure; not a promoted result |
 | [`PILOT_DIAGNOSIS.md`](PILOT_DIAGNOSIS.md) | historical 1M pilot diagnosis; its "h branch terminated" refers to static/dynamic h, not predictive h |
 
@@ -46,6 +47,9 @@ Raw artifacts:
   safety-gated forward gate.
 - **Open:** optional 2M/5M multi-checkpoint retention evaluation; navigation
   task-joint run not started.
+- **In progress (external baseline):** 10M from-scratch upstream MAPPO-Lag,
+  single seed, 100 det + 100 stoch episodes at eval seed 20000.  Not a V6
+  main claim and not comparable to the 2M Lag fine-tune as a matched budget.
 - **Closed null diagnostic:** the single-seed Ant V_T transfer screen
   ([`STAGE_ANT_VT_TRANSFER.md`](STAGE_ANT_VT_TRANSFER.md)) passed its V_T
   quality gate and had a valid control, but the 1-D `A_T` warm-start did not

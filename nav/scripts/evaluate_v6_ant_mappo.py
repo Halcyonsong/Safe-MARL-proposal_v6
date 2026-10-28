@@ -61,6 +61,7 @@ def main():
         args.task_value_checkpoint
         or (cfg.get('task_value') or {}).get('checkpoint'))
     task_feature_fn = None
+    task_feature = None
     if model.use_task_value:
         if not task_value_path:
             raise ValueError(
@@ -69,8 +70,20 @@ def main():
         task_value_path = _resolve(task_value_path)
         assert_independent_path(
             task_value_path, kind='V6 Ant task-value checkpoint')
+        task_cfg = dict(cfg.get('task_value') or {})
+        task_feature = str(task_cfg.get('feature', 'A_T'))
+        task_grad_scale = float(task_cfg.get('grad_scale', 1.0))
         task_value = load_ant_task_value(task_value_path, device=device)
-        task_feature_fn = make_task_feature_fn(task_value, device=device)
+        task_feature_fn = make_task_feature_fn(
+            task_value, device=device, mode=task_feature,
+            grad_scale=task_grad_scale)
+        expected_dim = (
+            1 + int(task_value.payload['obs_dim'])
+            if task_feature == 'A_T_grad' else 1)
+        if expected_dim != int(model.task_dim):
+            raise ValueError(
+                f'checkpoint task_dim={model.task_dim} but feature '
+                f'{task_feature!r} produces {expected_dim}')
     elif task_value_path:
         # A checkpoint without a V_T input must not silently ignore the flag.
         raise ValueError(
@@ -114,6 +127,9 @@ def main():
             str(task_value_path) if task_value_path else None),
         use_h_features=bool(use_h),
         use_task_value=bool(model.use_task_value),
+        task_feature=task_feature,
+        task_feature_dim=(
+            int(model.task_dim) if model.use_task_value else 0),
         stochastic=bool(args.stochastic),
         episodes=int(args.episodes),
         seed=int(args.seed),

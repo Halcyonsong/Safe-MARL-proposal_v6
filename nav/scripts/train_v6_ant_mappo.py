@@ -137,6 +137,9 @@ def main():
     env_cfg = dict(cfg.get('env', {}))
     policy_cfg = dict(cfg.get('policy', {}))
     h_cfg = dict(cfg.get('h', {}))
+    task_cfg = dict(cfg.get('task_value', {}))
+    task_feature = str(task_cfg.get('feature', 'A_T'))
+    task_grad_scale = float(task_cfg.get('grad_scale', 1.0))
 
     out = _resolve(args.out or cfg.get(
         'out', 'outputs/v6/independent/ant/mappo_h_only'))
@@ -215,15 +218,34 @@ def main():
     env = envs[0]
     task_value = None
     task_feature_fn = None
+    task_dim = 0
     if task_value_path is not None:
         task_value = load_ant_task_value(task_value_path, device=device)
-        task_feature_fn = make_task_feature_fn(task_value, device=device)
-        print(f'loaded frozen Ant V_T: {task_value_path}', flush=True)
+        if task_feature == 'A_T':
+            task_dim = 1
+        elif task_feature == 'A_T_grad':
+            task_dim = 1 + int(task_value.payload['obs_dim'])
+        else:
+            raise ValueError(
+                f'unknown task_value.feature {task_feature!r}; '
+                "expected 'A_T' or 'A_T_grad'")
+        declared_dim = task_cfg.get('feature_dim')
+        if declared_dim is not None and int(declared_dim) != task_dim:
+            raise ValueError(
+                f'task_value.feature_dim={declared_dim} does not match '
+                f'{task_feature} (expected {task_dim})')
+        task_feature_fn = make_task_feature_fn(
+            task_value, device=device, mode=task_feature,
+            grad_scale=task_grad_scale)
+        print(
+            f'loaded frozen Ant V_T: {task_value_path} '
+            f'feature={task_feature} dim={task_dim} '
+            f'grad_scale={task_grad_scale}', flush=True)
     if resume_path is not None:
         model, base_ckpt = load_ant_mappo_model(
             resume_path, device=device,
             task_value_expand=bool(task_value_path),
-            task_dim=1 if task_value_path else 0)
+            task_dim=task_dim)
         base_use_h = bool(
             base_ckpt.get('model_config', {}).get('use_h_features', True))
         if base_use_h != use_h:
@@ -242,7 +264,7 @@ def main():
             num_agents=env.num_agents,
             use_h_features=use_h,
             use_task_value=bool(task_value_path),
-            task_dim=1 if task_value_path else 0,
+            task_dim=task_dim,
             actor_hidden=tuple(policy_cfg.get('actor_hidden', (64, 64))),
             critic_hidden=tuple(policy_cfg.get('critic_hidden', (128, 128))),
             actor_activation=str(policy_cfg.get(
@@ -317,8 +339,9 @@ def main():
             dict(
                 checkpoint=str(task_value_path),
                 freeze=True,
-                feature='A_T',
-                feature_dim=1,
+                feature=task_feature,
+                feature_dim=task_dim,
+                grad_scale=task_grad_scale,
             ) if task_value_path else None),
         env=env.get_env_info(),
         env_cfg=env_cfg,

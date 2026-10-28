@@ -1,0 +1,7 @@
+ARM=D_h_off_gate_off
+SEED=2
+CONFIG=configs/v6/v6_nav_stageb_repair_16k.yaml
+H=outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl
+TOTAL_STEPS=16384
+UNSAFE_PENALTY=10.0
+EXTRA_ARGS=--no-use-h-features --task-gate-high 0.0

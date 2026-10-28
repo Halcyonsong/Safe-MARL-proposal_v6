@@ -19,13 +19,38 @@ Matched h-only 3-seed: `safe 0.450`, `official_safety 0.8783`,
 `success 0.4067`, `return 61.73`.  All pre-registered aggregate guardrails
 pass.  `n=3`; seed-level differences are not statistically separated.
 
+**P0/P1 attribution (2026-10-27, completed):** the original-h + broad-gate
+3-seed row is `safe 0.6433`, `official_safety 0.9325`, `success 0.4263`,
+`reach 0.4525`, `return 70.33`; P0 - h-only is `+19.3 pp` safe, while A - P0
+is `+5.0 pp` safe with `-1.6 pp` success and `-4.9%` return.  P0 and A differ
+in gate scope/threshold too, so A - P0 is not a clean h-retrain estimate.
+The repaired-h 2x2 is complete: B `0.6333/0.9267/0.3229/55.67`, C
+`0.0200/0.4987/0.0367/-6.63`, D `0.0333/0.5479/0.0367/7.21` (safe / official
+safety / success / return).  Actor h input is load-bearing at 16k from scratch
+(C/D collapse; D is consistent with the no-h fixed-penalty baseline), the gate is
+ineffective without it, and within the repaired-h 2x2 only repaired h + gate
+combines safety with retained task (P0 is a separate original-h broad-gate
+row).  B - H0 is `+18.3 pp` safe but `-8.4 pp` success; A - B is
+`+6.0 pp` safe / `+8.7 pp` success.  `n=3`, descriptive only.  See
+[`BASELINE_COMPARISON.md`](BASELINE_COMPARISON.md) and
+[`P1_REPAIRED_H_FACTORIAL.md`](P1_REPAIRED_H_FACTORIAL.md).
+
 Raw artifacts: `../nav_stageb_repair_16k/` (see `manifest.json` for config/h/
 runner hashes); baseline h-only: `../formal_3seed/h_only/`.
+
+**28k budget extension (running, not promoted):** A-only 3-seed
+from-scratch 28,672-step run, launched 2026-10-27 19:29.  H0/B 28k and
+external 28k rows are not approved, so it is a budget-sensitivity result, not
+a replacement for the 16k promoted row.  See
+[`STAGE_28K_BUDGET_EXTENSION.md`](STAGE_28K_BUDGET_EXTENSION.md).
 
 ## Document index
 
 | document | role |
 |---|---|
+| [`P1_REPAIRED_H_FACTORIAL.md`](P1_REPAIRED_H_FACTORIAL.md) | P0 h-quality correction and repaired-h 2x2 (A/B/C/D): pre-registered protocol, estimands, guards, completed results |
+| [`STAGE_28K_BUDGET_EXTENSION.md`](STAGE_28K_BUDGET_EXTENSION.md) | A-only 28k from-scratch budget extension: frozen config/runner/h hashes, endpoints, variance rule |
+| [`DENSITY_STRESS_TEST.md`](DENSITY_STRESS_TEST.md) | evaluation-only density grid, evaluator overrides, cost tiering, within-density comparison rule |
 | [`STAGE_B_REPAIR_MULTISEED.md`](STAGE_B_REPAIR_MULTISEED.md) | pre-registered protocol, per-seed results, guardrails, caveats |
 | [`BASELINE_COMPARISON.md`](BASELINE_COMPARISON.md) | matched internal arms, h-only reference, CBF/Safe-MARL references |
 | [`H2_ACTOR2_DIAGNOSTIC.md`](H2_ACTOR2_DIAGNOSTIC.md) | read-only h2/actor2 diagnostic: collision-state h/gate, warning lead, actor1-state calibration, decision |
@@ -97,7 +122,18 @@ runner hashes); baseline h-only: `../formal_3seed/h_only/`.
   [`STAGE_T0W_VT_WARMSTART.md`](STAGE_T0W_VT_WARMSTART.md).
 - **Archived/not promoted:** broad gate, Stage A, original Stage B,
   gate-off diagnostic, barrier/CBF-loss screens.
-- **Still open:** formal 16k h-off 3-seed baseline; optional stochastic
-  100ep evaluation; optional 3-seed task-first `h1 + gate + V_T` replication;
-  next controlled arm (safety coupling or action conditioning) pending
-  approval.
+- **Completed (P1, 2026-10-27):** repaired-h 2x2 B/C/D, 3 seeds x 100ep.
+  Actor h input is load-bearing at 16k from scratch; gate is ineffective
+  without it; within the repaired-h 2x2, only repaired h + gate combines
+  safety with retained task.
+  Record: [`P1_REPAIRED_H_FACTORIAL.md`](P1_REPAIRED_H_FACTORIAL.md);
+  aggregate: `../nav_repair_factorial/aggregate_100ep.{json,md}`.
+- **Still open:** optional stochastic 100ep evaluation; optional 3-seed
+  task-first `h1 + gate + V_T` replication; next controlled arm (safety
+  coupling or action conditioning) pending approval.
+- **Completed (external baselines, 2026-10-27):** matched 16k MAPPO + fixed
+  collision penalty (`safe=0.033`, `official_safety=0.519`) and MAPPO-Lag +
+  official collision cost (`safe=0.000`, `official_safety=0.322`), 3 seeds
+  each.  V6 Stage-B remains `0.693/0.9417`.  Records:
+  [`../nav_baselines_16k/README.md`](../nav_baselines_16k/README.md).
+  Baseline fills only; the promoted V6 row is unchanged.

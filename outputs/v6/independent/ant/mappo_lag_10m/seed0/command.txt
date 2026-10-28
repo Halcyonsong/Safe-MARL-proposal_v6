@@ -1,0 +1,6 @@
+TRAIN_SEED=0
+STEPS=10000000
+EXPERIMENT=v6_lag_10m_seed0
+N_ROLLOUT=16
+N_THREADS=4
+RUN_ROOT=/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/../Safe-MARL-proposal_v2/third_party/mappo_lag/MAPPO-Lagrangian/mappo_lagrangian/scripts/results/mujoco/Ant-v2/mappo_lagr/v6_lag_10m_seed0

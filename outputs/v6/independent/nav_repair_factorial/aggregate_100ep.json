@@ -1,0 +1,629 @@
+{
+  "protocol": {
+    "environment": "official GCBF+ DoubleIntegrator",
+    "num_agents": 8,
+    "area_size": 4.0,
+    "max_step": 256,
+    "steps": 16384,
+    "training_seeds": [
+      0,
+      1,
+      2
+    ],
+    "episodes": 100,
+    "eval_seed": 10000,
+    "deterministic": true,
+    "fixed_unsafe_penalty": 10.0,
+    "repaired_h": "outputs/v6/independent/h_stageb_repair/v6_h_stageb_repair.pkl",
+    "original_h": "outputs/v6/independent/h/v6_h.pkl",
+    "gate_high_repaired": 0.26726993918418884,
+    "gate_high_original": 0.13
+  },
+  "rows": [
+    {
+      "id": "H0",
+      "h": "original v6_h.pkl",
+      "h_input": true,
+      "gate": false,
+      "note": "existing formal h-only row, not retrained; reference",
+      "directory": "outputs/v6/independent/formal_3seed/h_only",
+      "complete": true,
+      "seeds": {
+        "0": {
+          "source": "outputs/v6/independent/formal_3seed/h_only/seed0/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.62,
+          "collision_episode": 0.38,
+          "official_safety": 0.92875,
+          "official_success": 0.5325,
+          "official_reach": 0.57625,
+          "episode_return": 69.77963927437085
+        },
+        "1": {
+          "source": "outputs/v6/independent/formal_3seed/h_only/seed1/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.49,
+          "collision_episode": 0.51,
+          "official_safety": 0.9025,
+          "official_success": 0.4175,
+          "official_reach": 0.44875,
+          "episode_return": 65.73931176987476
+        },
+        "2": {
+          "source": "outputs/v6/independent/formal_3seed/h_only/seed2/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.24,
+          "collision_episode": 0.76,
+          "official_safety": 0.80375,
+          "official_success": 0.27,
+          "official_reach": 0.31,
+          "episode_return": 49.66688951065764
+        }
+      },
+      "aggregate": {
+        "safe_episode": {
+          "mean": 0.44999999999999996,
+          "std": 0.19313207915827965,
+          "values": [
+            0.62,
+            0.49,
+            0.24
+          ]
+        },
+        "collision_episode": {
+          "mean": 0.5499999999999999,
+          "std": 0.19313207915827965,
+          "values": [
+            0.38,
+            0.51,
+            0.76
+          ]
+        },
+        "official_safety": {
+          "mean": 0.8783333333333333,
+          "std": 0.06591108278076863,
+          "values": [
+            0.92875,
+            0.9025,
+            0.80375
+          ]
+        },
+        "official_success": {
+          "mean": 0.4066666666666667,
+          "std": 0.13158489021667089,
+          "values": [
+            0.5325,
+            0.4175,
+            0.27
+          ]
+        },
+        "official_reach": {
+          "mean": 0.445,
+          "std": 0.13316460678423528,
+          "values": [
+            0.57625,
+            0.44875,
+            0.31
+          ]
+        },
+        "episode_return": {
+          "mean": 61.728613518301096,
+          "std": 10.639311590197863,
+          "values": [
+            69.77963927437085,
+            65.73931176987476,
+            49.66688951065764
+          ]
+        }
+      }
+    },
+    {
+      "id": "P0",
+      "h": "original v6_h.pkl",
+      "h_input": true,
+      "gate": true,
+      "note": "original-h + broad gate, 3-seed completion",
+      "directory": "outputs/v6/independent/nav_h_gate_16k",
+      "complete": true,
+      "seeds": {
+        "0": {
+          "source": "outputs/v6/independent/nav_h_gate_16k/seed0/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.7,
+          "collision_episode": 0.3,
+          "official_safety": 0.94,
+          "official_success": 0.3725,
+          "official_reach": 0.39125,
+          "episode_return": 64.95755220654887
+        },
+        "1": {
+          "source": "outputs/v6/independent/nav_h_gate_16k/seed1/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.49000000000000005,
+          "collision_episode": 0.51,
+          "official_safety": 0.9,
+          "official_success": 0.48375,
+          "official_reach": 0.5275,
+          "episode_return": 80.91325240951265
+        },
+        "2": {
+          "source": "outputs/v6/independent/nav_h_gate_16k/seed2/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.74,
+          "collision_episode": 0.25999999999999995,
+          "official_safety": 0.9574999999999999,
+          "official_success": 0.4225,
+          "official_reach": 0.4387499999999999,
+          "episode_return": 65.10503507092362
+        }
+      },
+      "aggregate": {
+        "safe_episode": {
+          "mean": 0.6433333333333333,
+          "std": 0.1342882471898912,
+          "values": [
+            0.7,
+            0.49000000000000005,
+            0.74
+          ]
+        },
+        "collision_episode": {
+          "mean": 0.3566666666666667,
+          "std": 0.13428824718989127,
+          "values": [
+            0.3,
+            0.51,
+            0.25999999999999995
+          ]
+        },
+        "official_safety": {
+          "mean": 0.9325,
+          "std": 0.02947456530637893,
+          "values": [
+            0.94,
+            0.9,
+            0.9574999999999999
+          ]
+        },
+        "official_success": {
+          "mean": 0.42625,
+          "std": 0.05571972272005668,
+          "values": [
+            0.3725,
+            0.48375,
+            0.4225
+          ]
+        },
+        "official_reach": {
+          "mean": 0.45249999999999996,
+          "std": 0.06915788096811526,
+          "values": [
+            0.39125,
+            0.5275,
+            0.4387499999999999
+          ]
+        },
+        "episode_return": {
+          "mean": 70.32527989566171,
+          "std": 9.169749683844607,
+          "values": [
+            64.95755220654887,
+            80.91325240951265,
+            65.10503507092362
+          ]
+        }
+      }
+    },
+    {
+      "id": "A",
+      "h": "repaired",
+      "h_input": true,
+      "gate": true,
+      "note": "existing promoted Stage-B row, not retrained",
+      "directory": "outputs/v6/independent/nav_stageb_repair_16k",
+      "complete": true,
+      "seeds": {
+        "0": {
+          "source": "outputs/v6/independent/nav_stageb_repair_16k/seed0/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.84,
+          "collision_episode": 0.16,
+          "official_safety": 0.97375,
+          "official_success": 0.4275,
+          "official_reach": 0.435,
+          "episode_return": 60.908530456952285
+        },
+        "1": {
+          "source": "outputs/v6/independent/nav_stageb_repair_16k/seed1/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.51,
+          "collision_episode": 0.49,
+          "official_safety": 0.9,
+          "official_success": 0.4575,
+          "official_reach": 0.49625,
+          "episode_return": 70.91862423684448
+        },
+        "2": {
+          "source": "outputs/v6/independent/nav_stageb_repair_16k/seed2/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.73,
+          "collision_episode": 0.27,
+          "official_safety": 0.95125,
+          "official_success": 0.345,
+          "official_reach": 0.3575,
+          "episode_return": 68.7362941424013
+        }
+      },
+      "aggregate": {
+        "safe_episode": {
+          "mean": 0.6933333333333334,
+          "std": 0.1680277754817141,
+          "values": [
+            0.84,
+            0.51,
+            0.73
+          ]
+        },
+        "collision_episode": {
+          "mean": 0.3066666666666667,
+          "std": 0.16802777548171413,
+          "values": [
+            0.16,
+            0.49,
+            0.27
+          ]
+        },
+        "official_safety": {
+          "mean": 0.9416666666666668,
+          "std": 0.037797431570588666,
+          "values": [
+            0.97375,
+            0.9,
+            0.95125
+          ]
+        },
+        "official_success": {
+          "mean": 0.41,
+          "std": 0.05825590098865524,
+          "values": [
+            0.4275,
+            0.4575,
+            0.345
+          ]
+        },
+        "official_reach": {
+          "mean": 0.4295833333333334,
+          "std": 0.06953341522845931,
+          "values": [
+            0.435,
+            0.49625,
+            0.3575
+          ]
+        },
+        "episode_return": {
+          "mean": 66.85448294539935,
+          "std": 5.26368733934972,
+          "values": [
+            60.908530456952285,
+            70.91862423684448,
+            68.7362941424013
+          ]
+        }
+      }
+    },
+    {
+      "id": "B",
+      "h": "repaired",
+      "h_input": true,
+      "gate": false,
+      "note": "h-input effect with gate off",
+      "directory": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off",
+      "complete": true,
+      "seeds": {
+        "0": {
+          "source": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed0/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.64,
+          "collision_episode": 0.36,
+          "official_safety": 0.9425000000000001,
+          "official_success": 0.37375,
+          "official_reach": 0.39249999999999996,
+          "episode_return": 56.54236745432485
+        },
+        "1": {
+          "source": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed1/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.39,
+          "collision_episode": 0.61,
+          "official_safety": 0.8625,
+          "official_success": 0.4625,
+          "official_reach": 0.525,
+          "episode_return": 78.58269312132384
+        },
+        "2": {
+          "source": "outputs/v6/independent/nav_repair_factorial/B_h_on_gate_off/seed2/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.8699999999999999,
+          "collision_episode": 0.12999999999999998,
+          "official_safety": 0.975,
+          "official_success": 0.1325,
+          "official_reach": 0.1375,
+          "episode_return": 31.899386881280225
+        }
+      },
+      "aggregate": {
+        "safe_episode": {
+          "mean": 0.6333333333333333,
+          "std": 0.24006943440041112,
+          "values": [
+            0.64,
+            0.39,
+            0.8699999999999999
+          ]
+        },
+        "collision_episode": {
+          "mean": 0.36666666666666664,
+          "std": 0.2400694344004112,
+          "values": [
+            0.36,
+            0.61,
+            0.12999999999999998
+          ]
+        },
+        "official_safety": {
+          "mean": 0.9266666666666667,
+          "std": 0.057897178975605805,
+          "values": [
+            0.9425000000000001,
+            0.8625,
+            0.975
+          ]
+        },
+        "official_success": {
+          "mean": 0.3229166666666667,
+          "std": 0.170771838525365,
+          "values": [
+            0.37375,
+            0.4625,
+            0.1325
+          ]
+        },
+        "official_reach": {
+          "mean": 0.3516666666666666,
+          "std": 0.19695071295462055,
+          "values": [
+            0.39249999999999996,
+            0.525,
+            0.1375
+          ]
+        },
+        "episode_return": {
+          "mean": 55.674815818976306,
+          "std": 23.353741772046313,
+          "values": [
+            56.54236745432485,
+            78.58269312132384,
+            31.899386881280225
+          ]
+        }
+      }
+    },
+    {
+      "id": "C",
+      "h": "repaired",
+      "h_input": false,
+      "gate": true,
+      "note": "gate effect without actor h input",
+      "directory": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on",
+      "complete": true,
+      "seeds": {
+        "0": {
+          "source": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed0/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.06000000000000001,
+          "collision_episode": 0.9400000000000001,
+          "official_safety": 0.7275,
+          "official_success": 0.01625,
+          "official_reach": 0.025,
+          "episode_return": -58.13244874460622
+        },
+        "1": {
+          "source": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed1/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.0,
+          "collision_episode": 1.0,
+          "official_safety": 0.45,
+          "official_success": 0.051250000000000004,
+          "official_reach": 0.1,
+          "episode_return": 5.274039634694345
+        },
+        "2": {
+          "source": "outputs/v6/independent/nav_repair_factorial/C_h_off_gate_on/seed2/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.0,
+          "collision_episode": 1.0,
+          "official_safety": 0.31875,
+          "official_success": 0.0425,
+          "official_reach": 0.1775,
+          "episode_return": 32.96407740546856
+        }
+      },
+      "aggregate": {
+        "safe_episode": {
+          "mean": 0.020000000000000004,
+          "std": 0.03464101615137755,
+          "values": [
+            0.06000000000000001,
+            0.0,
+            0.0
+          ]
+        },
+        "collision_episode": {
+          "mean": 0.98,
+          "std": 0.03464101615137751,
+          "values": [
+            0.9400000000000001,
+            1.0,
+            1.0
+          ]
+        },
+        "official_safety": {
+          "mean": 0.49874999999999997,
+          "std": 0.20869011116964795,
+          "values": [
+            0.7275,
+            0.45,
+            0.31875
+          ]
+        },
+        "official_success": {
+          "mean": 0.036666666666666674,
+          "std": 0.018214577495328663,
+          "values": [
+            0.01625,
+            0.051250000000000004,
+            0.0425
+          ]
+        },
+        "official_reach": {
+          "mean": 0.10083333333333333,
+          "std": 0.0762534152240628,
+          "values": [
+            0.025,
+            0.1,
+            0.1775
+          ]
+        },
+        "episode_return": {
+          "mean": -6.631443901481106,
+          "std": 46.70063889097689,
+          "values": [
+            -58.13244874460622,
+            5.274039634694345,
+            32.96407740546856
+          ]
+        }
+      }
+    },
+    {
+      "id": "D",
+      "h": "repaired",
+      "h_input": false,
+      "gate": false,
+      "note": "V6-code no-h/no-gate cell",
+      "directory": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off",
+      "complete": true,
+      "seeds": {
+        "0": {
+          "source": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed0/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.030000000000000006,
+          "collision_episode": 0.97,
+          "official_safety": 0.55625,
+          "official_success": 0.0325,
+          "official_reach": 0.07625,
+          "episode_return": -37.260903956522235
+        },
+        "1": {
+          "source": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed1/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.06999999999999999,
+          "collision_episode": 0.93,
+          "official_safety": 0.58125,
+          "official_success": 0.0375,
+          "official_reach": 0.07749999999999999,
+          "episode_return": 29.64527704177424
+        },
+        "2": {
+          "source": "outputs/v6/independent/nav_repair_factorial/D_h_off_gate_off/seed2/eval_100ep_final.json",
+          "episodes": 100,
+          "eval_seed": 10000,
+          "safe_episode": 0.0,
+          "collision_episode": 1.0,
+          "official_safety": 0.50625,
+          "official_success": 0.04,
+          "official_reach": 0.058750000000000004,
+          "episode_return": 29.24284916364588
+        }
+      },
+      "aggregate": {
+        "safe_episode": {
+          "mean": 0.03333333333333333,
+          "std": 0.03511884584284246,
+          "values": [
+            0.030000000000000006,
+            0.06999999999999999,
+            0.0
+          ]
+        },
+        "collision_episode": {
+          "mean": 0.9666666666666667,
+          "std": 0.03511884584284244,
+          "values": [
+            0.97,
+            0.93,
+            1.0
+          ]
+        },
+        "official_safety": {
+          "mean": 0.5479166666666667,
+          "std": 0.0381881307912987,
+          "values": [
+            0.55625,
+            0.58125,
+            0.50625
+          ]
+        },
+        "official_success": {
+          "mean": 0.036666666666666674,
+          "std": 0.003818813079129866,
+          "values": [
+            0.0325,
+            0.0375,
+            0.04
+          ]
+        },
+        "official_reach": {
+          "mean": 0.07083333333333333,
+          "std": 0.010483121354507597,
+          "values": [
+            0.07625,
+            0.07749999999999999,
+            0.058750000000000004
+          ]
+        },
+        "episode_return": {
+          "mean": 7.209074082965961,
+          "std": 38.51265632456031,
+          "values": [
+            -37.260903956522235,
+            29.64527704177424,
+            29.24284916364588
+          ]
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "P0 uses the original h; A/B/C/D use the repaired h. P0 is the h-quality control, not a cell of the repaired-h 2x2.",
+    "C/D call --no-use-h-features, which zeros the policy h/grad_h channels (shared actor/value trunk). The gate in C still uses the frozen repaired h h_next. Both cells collapse, and D is consistent with the matched no-h fixed-penalty baseline.",
+    "The gate is disabled at evaluation in every row; gate ON/OFF is a training-time reward-shaping difference."
+  ]
+}

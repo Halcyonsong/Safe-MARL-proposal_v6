@@ -45,6 +45,12 @@ Thumbs.db
 FAILED
 nav/outputs/
 
+# Raw per-scene evaluation chunks; the combined eval JSON is kept.
+chunks_*/
+
+# TensorBoard event files (training logs are reproducible).
+events.out.tfevents.*
+
 # TensorBoard / W&B local runs (root only; project output dirs may be named runs/)
 /runs/
 wandb/

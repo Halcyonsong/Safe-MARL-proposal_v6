@@ -11,6 +11,7 @@ Canonical status and promoted results: [`STATUS.md`](STATUS.md).
 | pending TODO | `TODO_V6.md` |
 | navigation design/result index | `independent/nav/README.md` |
 | navigation baseline comparison | `independent/nav/BASELINE_COMPARISON.md` |
+| navigation P0/P1 attribution (completed) | `independent/nav/P1_REPAIRED_H_FACTORIAL.md` |
 | h2/actor2 diagnostic (read-only) | `independent/nav/H2_ACTOR2_DIAGNOSTIC.md` |
 | Stage C0 h2-only screen (C0a failed) | `independent/nav/STAGE_C0_H2_TEMPORAL.md` |
 | Post-hoc seed-0 h2+actor1 h-swap (diagnostic) | `independent/nav_c0_h2_actor1_swap/README.md` |
@@ -37,6 +38,8 @@ Useful entry points:
 - `independent/h_stageb_repair/` — repaired predictive h for the promoted
   Stage-B gate.
 - `independent/nav_stageb_repair_16k/` — promoted 3-seed actor and aggregate.
+- `independent/nav_repair_factorial/` — P1 repaired-h 2x2 (B/C/D), 3-seed
+  aggregate and manifest.
 - `independent/formal_3seed/h_only/` — matched h-only 3-seed baseline.
 - `independent/ant/h_predictive/` — Ant predictive h.
 - `independent/ant/mappo_h_pred_gate_10m/` — Ant 10M gate seeds 0/1/2.

@@ -1,0 +1,103 @@
+{
+  "schema": "v6.nav.density_screen.v1",
+  "episodes": 20,
+  "eval_seed_start": 30000,
+  "policies": {
+    "A28": {
+      "16agents": {
+        "safe_episode": 0.3,
+        "official_safety": 0.91875,
+        "official_success": 0.21875,
+        "official_reach": 0.234375,
+        "episode_return": 61.031784853164574
+      },
+      "8x8": {
+        "safe_episode": 0.75,
+        "official_safety": 0.95,
+        "official_success": 0.2125,
+        "official_reach": 0.21875,
+        "episode_return": 60.11351361295674
+      },
+      "16obs": {
+        "safe_episode": 0.6,
+        "official_safety": 0.9,
+        "official_success": 0.1875,
+        "official_reach": 0.19375,
+        "episode_return": 51.47867500573047
+      },
+      "4obs": {
+        "safe_episode": 0.7,
+        "official_safety": 0.95,
+        "official_success": 0.1875,
+        "official_reach": 0.2,
+        "episode_return": 55.0584922844544
+      }
+    },
+    "A16": {
+      "16agents": {
+        "safe_episode": 0.45,
+        "official_safety": 0.921875,
+        "official_success": 0.359375,
+        "official_reach": 0.378125,
+        "episode_return": 61.51729383156635
+      },
+      "8x8": {
+        "safe_episode": 0.75,
+        "official_safety": 0.95625,
+        "official_success": 0.35625,
+        "official_reach": 0.3625,
+        "episode_return": 55.45351178406272
+      },
+      "16obs": {
+        "safe_episode": 0.5,
+        "official_safety": 0.90625,
+        "official_success": 0.34375,
+        "official_reach": 0.35625,
+        "episode_return": 56.29462252390804
+      },
+      "4obs": {
+        "safe_episode": 0.8,
+        "official_safety": 0.96875,
+        "official_success": 0.3875,
+        "official_reach": 0.39375,
+        "episode_return": 54.502443660737484
+      }
+    },
+    "H0": {
+      "16agents": {
+        "safe_episode": 0.05,
+        "official_safety": 0.853125,
+        "official_success": 0.309375,
+        "official_reach": 0.353125,
+        "episode_return": 65.07201127011794
+      },
+      "8x8": {
+        "safe_episode": 0.65,
+        "official_safety": 0.93125,
+        "official_success": 0.35625,
+        "official_reach": 0.3875,
+        "episode_return": 70.00020420151995
+      },
+      "16obs": {
+        "safe_episode": 0.25,
+        "official_safety": 0.84375,
+        "official_success": 0.34375,
+        "official_reach": 0.375,
+        "episode_return": 64.84845680827274
+      },
+      "4obs": {
+        "safe_episode": 0.6,
+        "official_safety": 0.91875,
+        "official_success": 0.4125,
+        "official_reach": 0.44375,
+        "episode_return": 65.64533470065798
+      }
+    }
+  },
+  "conditions": [
+    "8x8",
+    "4obs",
+    "16obs",
+    "16agents"
+  ]
+}

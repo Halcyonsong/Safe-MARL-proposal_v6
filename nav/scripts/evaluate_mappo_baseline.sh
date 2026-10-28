@@ -24,6 +24,12 @@ for variant in ${VARIANTS}; do
     same_reward|same-reward)
       out_variant="${OUT_ROOT}/mappo_same_reward"
       ;;
+    penalty1|penalty_1)
+      out_variant="${OUT_ROOT}/mappo_penalty1"
+      ;;
+    penalty100|penalty_100)
+      out_variant="${OUT_ROOT}/mappo_penalty100"
+      ;;
     *)
       echo "unknown MAPPO variant: ${variant}" >&2
       exit 2

@@ -9,6 +9,8 @@ PYTHON="${PYTHON:-python}"
 SEEDS="${SEEDS:-0 1 2}"
 CHECKPOINT="${CHECKPOINT:-policy_final.pth}"
 OUT_ROOT="${OUT_ROOT:-../outputs/v5/baselines/mappo_lag}"
+CHUNK="${CHUNK:-10}"
+EPISODES="${EPISODES:-100}"
 OMP="${OMP_NUM_THREADS:-2}"
 MKL="${MKL_NUM_THREADS:-2}"
 
@@ -17,13 +19,14 @@ for seed in ${SEEDS}; do
   chunks="${out}/chunks_$(basename "${CHECKPOINT}" .pth)"
   rm -rf "${chunks}"
   mkdir -p "${chunks}"
-  for i in 0 1 2 3 4 5 6 7 8 9; do
+  n_chunks=$((EPISODES / CHUNK))
+  for i in $(seq 0 $((n_chunks - 1))); do
     (
       OMP_NUM_THREADS="${OMP}" MKL_NUM_THREADS="${MKL}" \
       "${PYTHON}" scripts/evaluate_mappo_lag_official.py \
         --checkpoint "${out}/${CHECKPOINT}" \
-        --num-episodes 10 \
-        --seed $((10000 + i * 10)) \
+        --num-episodes "${CHUNK}" \
+        --seed $((10000 + i * CHUNK)) \
         --device cpu \
         --out "${chunks}/chunk_${i}.json" \
         > "${chunks}/chunk_${i}.log" 2>&1

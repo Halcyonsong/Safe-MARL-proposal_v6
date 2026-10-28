@@ -1,0 +1,34 @@
+{
+  "checkpoint": "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_baselines_16k/mappo_penalty1/seed1/policy_final.pth",
+  "steps": 16384,
+  "episodes": 100,
+  "training_seed": 1,
+  "eval_seed": 10000,
+  "seed": 10000,
+  "chunks": [
+    "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_baselines_16k/mappo_penalty1/seed1/chunks_policy_final/chunk_0.json",
+    "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_baselines_16k/mappo_penalty1/seed1/chunks_policy_final/chunk_1.json",
+    "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_baselines_16k/mappo_penalty1/seed1/chunks_policy_final/chunk_2.json",
+    "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_baselines_16k/mappo_penalty1/seed1/chunks_policy_final/chunk_3.json",
+    "/home/xiang/workspace/python-project/Safe-MARL-proposal_v6/outputs/v6/independent/nav_baselines_16k/mappo_penalty1/seed1/chunks_policy_final/chunk_4.json"
+  ],
+  "metrics": {
+    "action_abs": 0.16750475841909065,
+    "collision_episode": 1.0,
+    "collision_final_any": 0.42000000000000004,
+    "episode_return": 46.9670807976788,
+    "official_reach": 0.30375,
+    "official_safety": 0.26625000000000004,
+    "official_success": 0.08,
+    "reach": 0.30375,
+    "reach_episode_any": 0.9099999999999999,
+    "reach_final": 0.026249999999999996,
+    "reach_final_any": 0.2,
+    "safe_episode": 0.0,
+    "safe_mask": 0.8367236328125,
+    "safety": 0.9226953124999999,
+    "unsafe": 0.0773046875,
+    "warning": 0.0941650390625,
+    "warning_episode": 1.0
+  }
+}
